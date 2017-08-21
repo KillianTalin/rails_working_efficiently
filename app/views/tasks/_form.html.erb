@@ -1,1 +1,13 @@
-_form.html.erb
+<div class="container">
+  <div class="col-sm-4 col-sm-offset-4">
+    <%= simple_form_for @task do |f| %>
+      <%= f.input :name, label: 'Task', placeholder: 'Finir mon buisiness plan' %>
+      <%= f.input :project, placeholder: 'Préparer mon tour du monde' %>
+      <%= f.input :forecast_duration, placeholder: 'En combien de temps' %>
+      <%= f.select :category, placeholder: 'Vie pro'%>
+      <div class="text-center">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+  </div>
+</div>
