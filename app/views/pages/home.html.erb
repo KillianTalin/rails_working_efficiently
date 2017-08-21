@@ -1,2 +1,8 @@
 <h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<% if user_signed_in? %>
+
+
+<% else %>
+<!-- Faire ici la landing page quand l'utilsateur n'est pas logguée -->
+<% end %>
