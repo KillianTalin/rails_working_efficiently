@@ -1,1 +1,6 @@
-index.html.erb
+<div class="container">
+  <h1>Index</h1>
+  <% @tasks.each do |task| %>
+    <%= task.name %>
+  <% end %>
+</div>
