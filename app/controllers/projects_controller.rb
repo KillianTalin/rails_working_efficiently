@@ -1,21 +1,24 @@
 class ProjectsController < ApplicationController
   def index
+    @projects = policy_scope(Project)
   end
 
   def show
   end
 
   def new
-    # @project = Project.new
+    @project = Project.new
+    authorize(@project)
   end
 
   def create
-    # @project = Project.new(project_params)
-    # @project.user = current_user
-    #   if @project.save
-    #     redirect_to projects_path
-    #   else
-    #     render :new
+    @project = Project.new(project_params)
+    @project.user = current_user
+    authorize(@project)
+    if @project.save
+      redirect_to projects_path
+    else
+      render :new
   end
 
   def edit
@@ -30,6 +33,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :start_date, :end_date, :color, :avg_productivity_score, :total_worktime)
+    params.require(:project).permit(:name, :user_id, :start_date, :end_date, :color, :avg_productivity_score, :total_worktime)
   end
 end
