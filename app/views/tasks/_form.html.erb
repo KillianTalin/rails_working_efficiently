@@ -3,8 +3,8 @@
     <%= simple_form_for @task do |f| %>
       <%= f.input :name, label: 'Task', placeholder: 'Finir mon buisiness plan' %>
       <%= f.association :project, placeholder: 'Préparer mon tour du monde' %>
-      <%= f.input :forecast_duration, placeholder: 'En combien de temps' %>
-      <%= f.input :category, placeholder: 'Vie pro'%>
+      <%= f.input :forecast_duration, label: 'Time', placeholder: '60 min' %>
+      <%= f.input :category, label: 'Priority', placeholder: 'MIT, secondary task'%>
       <%= f.association :tag, placeholder: 'choice your tag' %>
       <div class="text-center">
         <%= f.button :submit %>
