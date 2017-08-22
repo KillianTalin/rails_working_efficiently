@@ -21,6 +21,6 @@ class TaskPolicy < ApplicationPolicy
   private
 
   def is_user_the_owner?
-    record.user == user || user.admin?
+    record.user == user
   end
 end
