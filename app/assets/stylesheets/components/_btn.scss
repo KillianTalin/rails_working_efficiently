@@ -151,7 +151,7 @@ $button-helpful-font-sizes: (
 $button-helpful-text-padding: 10px;
 $button-helpful-count-padding: 10px;
 $button-helpful-count-margin: 10px;
-$button-helpful-count-border-color: #dce0e0;
+$button-helpful-count-border-color: #FFF;
 $button-helpful-count-font-weight: $global-font-weight;
 
 $button-google-icon-width: 20px;
@@ -183,7 +183,7 @@ $button-google-icon-bg-path: '../images/google-icon.svg';
             color: map-get($button-helpful-colors, primary);
 
             &:hover {
-                border-color: map-get($button-helpful-colors, primary);
+                border-color: map-get($button-helpful-colors, white);
             }
         }
 
@@ -191,7 +191,7 @@ $button-google-icon-bg-path: '../images/google-icon.svg';
             color: map-get($button-helpful-colors, secondary);
 
             &:hover {
-                border-color: map-get($button-helpful-colors, secondary);
+                border-color: map-get($button-helpful-colors, white);
             }
         }
 
@@ -308,39 +308,3 @@ r
 //btn-fb 
 
 
-.btn-fb {
-  margin-top: 25px;
-  background-color: #4C69BA;
-  background-image: linear-gradient(#4C69BA, #3B55A0);
-  font-weight: bolder;
-  margin: 15px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  color : white;
-  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
-  text-shadow: 0 -1px 0 #354C8C;
-}
-
-.btn-fb:hover {
-  text-decoration: none;
-  color : white;
-}
-
-//btn pour le sign-in 
-
-.btn-sign {
-  margin-top: 25px;
-  background-color: rgba(82, 196, 132, 1.00) ;
-  font-weight: bolder;
-  margin: 15px;
-  padding: 10px 20px;
-  border-radius: 5px;
-  color : white;
-  /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
-  text-shadow: 0 -1px 0 grey;
-}
-
-.btn-sign:hover {
-  text-decoration: none;
-  color : white;
-}
