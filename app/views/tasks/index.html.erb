@@ -1,6 +1,16 @@
 <div class="container">
-  <h1>Index</h1>
+  <h1>Tasks</h1>
   <% @tasks.each do |task| %>
-    <%= task.name %>
+    <div>Task: <b> <%= task.name %> </b> </div>
+    <div>Durée: <%= task.forecast_duration %> </div>
+    <div> Projet: <%= task.project.name %> </div>
+    <div>Priority: <%= task.category %></div>
+    <div>Tag: #<%= task.tag.name %> </div>
+    <%= link_to edit_task_path(task) do %>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    <% end %>
+    <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure?" } do %>
+      <i class="fa fa-times" aria-hidden="true"></i>
+    <% end %>
   <% end %>
 </div>
