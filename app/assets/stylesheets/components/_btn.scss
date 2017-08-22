@@ -1,0 +1,310 @@
+
+///                      BUTTON CORE
+///_____________________________________________________________
+
+///
+/// Note: This file contains the button core css (e.g. colors, sizes, resets, etc.)
+/// The button-core file is the same in every 'buttons set', we send it in each buttons
+/// set, but it is not necessary you collect each 'button-core' that we send you:
+/// You just need one 'button-core' file.
+
+
+/// VARIABLES
+
+$global-font-weight: 700;
+
+$button-radius: 5px;
+$button-border: 2px solid;
+
+$button-paddings: (
+  small: 8px 16px,
+  default: 12px 22px,
+
+
+  large: 12px 24px,
+);
+
+$button-line-heights: (
+  small: 15px,
+  default: 22px,
+  large: 22px,
+);
+
+$button-font-sizes: (
+    small: 14px,
+    default: 17px,
+    large: 19px,
+);
+
+$button-font-weight: (
+    small: $global-font-weight,
+    default: $global-font-weight,
+    large: $global-font-weight,
+);
+
+$button-opacity-disabled: 0.25;
+$button-block-width: 100%;
+
+/// END: VARIABLES
+
+.space-left-2 {margin-left: 12px;}
+
+.ma-btn {
+
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    -webkit-border-radius: $button-radius;
+    -moz-border-radius: $button-radius;
+    border-radius: $button-radius;
+    border: $button-border;
+    width: auto;
+    -webkit-font-smoothing: antialiased;
+
+
+    ///BUTTON_SIZE
+
+    &--small {
+        padding: map-get($button-paddings, small);
+        font-size: map-get($button-font-sizes, small);
+        font-weight: map-get($button-font-weight, small);
+        line-height: map-get($button-line-heights, small);
+    }
+
+    &--default {
+        padding: map-get($button-paddings, default);
+        font-size: map-get($button-font-sizes, default);
+        font-weight: map-get($button-font-weight, default);
+        line-height: map-get($button-line-heights, default);
+    }
+
+    &--large {
+        padding: map-get($button-paddings, large);
+        font-size: map-get($button-font-sizes, large);
+        font-weight: map-get($button-font-weight, large);
+        line-height: map-get($button-line-heights, large);
+    }
+
+    &--block {
+        display: block;
+        white-space: normal;
+        width: $button-block-width;
+    }
+
+}
+
+.ma-btn[disabled] {
+    opacity: $button-opacity-disabled;
+    cursor: not-allowed;
+}
+
+
+/**********************************************************/
+/*                        BUTTONS                         */
+/**********************************************************/
+
+
+/// VARIABLES
+
+$white: #FFF;
+
+$main-palette: (
+  primary: #FF5A5F,
+  secondary: #008489,
+);
+
+$button-bg-color: (
+    facebook: #4568b2,
+    google: $white,
+);
+
+$button-font-colors: (
+    minimal: #484848,
+    facebook: $white,
+    google: #484848,
+);
+
+$button-border-colors: (
+    minimal: #C4C4C4,
+    facebook: transparent,
+    google: #484848,
+);
+
+$button-helpful-font-color: #767676;
+$button-helpful-bg-color: $white;
+$button-helpful-bg-color-hover: #f5f5f5;
+$button-helpful-colors: (
+    primary: map-get($main-palette, primary),
+    secondary: map-get($main-palette, secondary),
+    minimal: $button-helpful-font-color,
+);
+$button-helpful-paddings: (
+    small: 4px 12px,
+);
+$button-helpful-font-sizes: (
+    icon: 15px,
+    text: 15px,
+    count: 14px,
+);
+$button-helpful-text-padding: 10px;
+$button-helpful-count-padding: 10px;
+$button-helpful-count-margin: 10px;
+$button-helpful-count-border-color: #FFF;
+$button-helpful-count-font-weight: $global-font-weight;
+
+$button-google-icon-width: 20px;
+$button-google-icon-height: 20px;
+$button-google-icon-bg-size: 20px;
+///NOTE: Put this image in images folder in your project, and change the path here.
+$button-google-icon-bg-path: '../images/google-icon.svg';
+
+/// END: VARIABLES
+
+
+.ma-btn {
+
+    // Helpful Button
+    &--helpful {
+        border: 1px solid map-get($button-border-colors, minimal);
+        overflow: hidden;
+        background: $button-helpful-bg-color;
+
+        // Helpful size
+
+        &--small {
+            padding: map-get($button-helpful-paddings, small);
+        }
+
+        // Helpful color
+
+        &--primary {
+            color: map-get($button-helpful-colors, primary);
+
+            &:hover {
+                border-color: map-get($button-helpful-colors, white);
+            }
+        }
+
+        &--secondary {
+            color: map-get($button-helpful-colors, secondary);
+
+            &:hover {
+                border-color: map-get($button-helpful-colors, white);
+            }
+        }
+
+        &--minimal {
+            color: map-get($button-helpful-colors, minimal);
+
+            &:hover {
+                background-color: $button-helpful-bg-color-hover;
+            }
+        }
+
+
+        // Helpful elements
+
+        i {
+            font-size: map-get($button-helpful-font-sizes, icon);
+        }
+
+        &__text {
+            font-size: map-get($button-helpful-font-sizes, text);
+            padding-left: $button-helpful-text-padding;
+            display: inline;
+            font-weight: normal;
+        }
+
+        &__count {
+            font-size: map-get($button-helpful-font-sizes, count);
+            border-left: 1px solid $button-helpful-count-border-color;
+            margin-left: $button-helpful-count-margin;
+            padding-left: $button-helpful-count-padding;
+            display: inline-block;
+            overflow: hidden;
+            font-weight: $button-helpful-count-font-weight;
+            vertical-align: bottom;
+        }
+    }
+
+
+    // Facebook Button
+    &--facebook {
+        color: map-get($button-font-colors, facebook);
+        background-color: map-get($button-bg-color, facebook);
+    }
+
+    &--facebook & {
+        &__content {
+            margin: 0px auto;
+            display: table;
+
+            &__icon-container {
+                display: table-cell;
+                vertical-align: middle;
+            }
+        }
+    }
+
+
+    // Google Button
+    &--google {
+        color: map-get($button-font-colors, google);
+        background-color: map-get($button-bg-color, google);
+        border-color: map-get($button-border-colors, google);
+    }
+
+    &--google & {
+        &__content {
+            margin: 0px auto;
+            display: table;
+
+            &__icon-container {
+                display: table-cell;
+                vertical-align: middle;
+                .google-icon {
+                    display: block;
+                    text-indent: -9999px;
+                    width: $button-google-icon-width;
+                    height: $button-google-icon-height;
+                    background: url($button-google-icon-bg-path);
+                    background-size: $button-google-icon-bg-size;
+                }
+            }
+        }
+    }
+
+}
+
+r
+
+//  Other Btn
+
+// Btn-class : On peut aussi utiliser --> class:"btn btn-primary btn-lg" pour un bouton primaire.
+
+.btn-medium {
+  background-color: rgba(82, 196, 132, 1.00);
+  color: white;
+  font-weight: bolder;
+  border: 1px solid rgba(25, 165, 152, 1.00);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 10px 25px;
+  border-radius: 50px;
+  opacity: 1;
+  margin-bottom: 15px;
+}
+r
+.btn-medium:hover {
+  opacity: 0.8;
+  color: white;
+  text-decoration: none;
+  border: 1px solid rgba(25, 165, 152, 1.00);
+  background-color: rgba(82, 196, 132, 1.00);
+}
+
+
+//btn-fb 
+
+

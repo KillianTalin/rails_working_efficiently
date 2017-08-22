@@ -1,0 +1,175 @@
+//  General Containers
+
+body {
+	// padding-top: 50px!important;
+
+  h1,h2 {
+    font-family: 'Baloo Bhaijaan', cursive;
+    margin: 0px;
+    padding: 5px;
+;
+  }
+
+  h3,h4,h5 {
+    font-family: "Cabin", sans-serif;
+    margin: 0px;
+    padding: 5px;
+  }
+
+  p { 
+    font-family: "Exo2", sans-serif;
+  }
+
+}
+
+.container {
+  position: relative;
+  min-height: 100%;
+}
+
+#sign_up .pagewrapper {
+	display: flex;
+	text-align: left;
+	justify-content: space-around;
+	align-items: center;
+	background-size: cover;
+	background-position: center;
+}
+
+.photo-landing{
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  flex-direction: column;
+  height: 100%;
+}
+
+.photo-landing img {
+    width: 100%;
+}
+
+//  Texts
+
+.title-black {
+  color: rgba( 60, 60, 60, 1.00);
+}
+
+.title-white {
+  color: white;
+}
+
+.text-white{
+  color: white;
+}
+
+.text-black{
+  color: rgba( 72, 72, 72, 1.00);
+}
+
+.text-emerald{
+  color: rgba(82, 196, 132, 1.00);
+}
+
+.uppercased{
+  text-transform: uppercase;
+}
+
+.text-ms{
+  font-size: 24px;
+}
+
+.font-bolder{
+  font-weight: bolder;
+}
+
+.font-lighter{
+  font-weight: lighter;
+}
+
+.decoration-none {
+  text-decoration: none;
+}
+
+.justify {
+  text-align: justify;
+}
+// Backgrounds colors : utile pour les forms.  
+
+.bg-white{
+  background-color: white;
+  opacity: 0.9;
+}
+
+.bg-emerald{
+  background-color: $emerald!important;
+  opacity: 1;
+}
+
+.bg-fade{
+  background-color: black!important;
+  opacity: 0.7;
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, $emerald, $java);
+}
+
+
+//  Positioning 
+
+.margin-top-classic{
+  margin-top: 30px;
+}
+
+.margin-bottom-classic{
+  margin-bottom: 30px;
+}
+
+.padded{
+  padding: 30px 30px;
+}
+.display-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+// Border style 
+
+.box-shadowed{
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+
+.column-align{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+// Forms 
+.form-control.numeric {
+  height: 41px;
+}
+
+.inline {
+  display: inline-block; //Or display: inline;
+}
+
+.banner-form {
+  opacity: 0.7;
+
+}
+
+.device-form-container {
+  margin-top: 20px
+}
+
+
+
+
+
+
