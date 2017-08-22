@@ -19,8 +19,10 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      <%= link_to "Pause", task_path(@task), id: "button-pause", class: "btn ma-btn btn-lg" %>
-      <%= link_to "Stop", root_path, id: "button-stop", class: "btn ma-btn btn-lg"  %>
+      <div class="btn ma-btn btn-lg btn-timer" id="button-pause">
+      Pause
+      </div>
+      <%= link_to "Stop", root_path, id: "button-stop", class: "btn ma-btn btn-lg btn-timer"  %>
     </div>
   </div>
 </div>
@@ -35,6 +37,7 @@
   // Appel ajax à la méthode update du controller de tasks
 
   let start = new Date(0);
+  let paused = false;
   function getTime(starttime) {
     let t = starttime.setSeconds(starttime.getSeconds() + 1);
 
@@ -64,13 +67,19 @@
 
   updateClock(); // run function once at first to avoid delay
   let timeinterval = setInterval(updateClock, 1000);
-  }
-
 
   const buttonPause = document.getElementById("button-pause");
   const buttonStop = document.getElementById("button-stop");
-  // buttonPause.addEventListener("click", event() => {
-  //   clearInterval(timeinterval);
-  // });
+  buttonPause.addEventListener("click", (event) => {
+    console.log(paused);
+    let paused = true;
+  // clearInterval(timeinterval);
+  // Garder la valeur de starttime
+  // Relancer à partir de cette valeur
+
+  console.log("toto");
+  });
+  }
+
 
 </script>
