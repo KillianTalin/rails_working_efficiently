@@ -6,6 +6,8 @@
       <%= f.input :forecast_duration, label: 'Time', placeholder: '60 min' %>
       <%= f.input :category, label: 'Priority', placeholder: 'MIT, secondary task'%>
       <%= f.association :tag, placeholder: 'choice your tag' %>
+      <%= f.input :productivity_score %>
+      <%= f.input :real_duration %>
       <div class="text-center">
         <%= f.button :submit %>
       </div>
