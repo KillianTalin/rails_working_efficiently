@@ -1,1 +1,85 @@
-show.html.erb
+<!-- Put the timer -->
+<h1>Countdown Clock</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div id="clockdiv">
+        <div>
+          <span class="hours"></span>
+          <div class="smalltext">Hours</div>
+        </div>
+        <div>
+          <span class="minutes"></span>
+          <div class="smalltext">Minutes</div>
+        </div>
+        <div>
+          <span class="seconds"></span>
+          <div class="smalltext">Seconds</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="btn ma-btn btn-lg btn-timer" id="button-pause">
+      Pause
+      </div>
+      <%= link_to "Stop", root_path, id: "button-stop", class: "btn ma-btn btn-lg btn-timer"  %>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  window.addEventListener("load", function(event) {
+    initializeClock('clockdiv', start);
+  });
+  // let start = <% @task.starts_at %>
+  // Appel ajax à la méthode update du controller de tasks
+
+  let start = new Date(0);
+  let paused = false;
+  function getTime(starttime) {
+    let t = starttime.setSeconds(starttime.getSeconds() + 1);
+
+    const seconds = Math.floor( (t/1000) % 60 );
+    const minutes = Math.floor( (t/1000/60) % 60 );
+    const hours = Math.floor( (t/(1000*60*60)) % 24 );
+    const days = Math.floor( t/(1000*60*60*24) );
+    return {
+      'total': t,
+      'hours': hours,
+      'minutes': minutes,
+      'seconds': seconds
+    };
+  };
+
+  function initializeClock(id, starttime) {
+    const clock = document.getElementById(id);
+    const hoursSpan = clock.querySelector('.hours');
+    const minutesSpan = clock.querySelector('.minutes');
+    const secondsSpan = clock.querySelector('.seconds');
+    function updateClock() {
+      let t = getTime(starttime);
+      hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+      minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+      secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+    }
+
+  updateClock(); // run function once at first to avoid delay
+  let timeinterval = setInterval(updateClock, 1000);
+
+  const buttonPause = document.getElementById("button-pause");
+  const buttonStop = document.getElementById("button-stop");
+  buttonPause.addEventListener("click", (event) => {
+    console.log(paused);
+    let paused = true;
+  // clearInterval(timeinterval);
+  // Garder la valeur de starttime
+  // Relancer à partir de cette valeur
+
+  console.log("toto");
+  });
+  }
+
+
+</script>
