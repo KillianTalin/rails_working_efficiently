@@ -1,0 +1,35 @@
+.homewrapper {
+  color: white;
+  text-align: center;
+  min-height: 95vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 0 300px/50px;
+}
+
+.homewrapper-content {
+  margin-top: 400px ;
+}
+
+.homewrapper-photo {
+  background-size: cover!important;
+}
+
+.homewrapper h1 {
+  font-size: 50px;
+  font-weight: bold;
+  text-shadow: 1px 2px rgba(0, 0, 0, 0.2);
+}
+.homewrapper p {
+  font-size: 25px;
+  font-weight: lighter;
+  color: rgb(255, 255, 255);
+  text-shadow: 1px 2px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+

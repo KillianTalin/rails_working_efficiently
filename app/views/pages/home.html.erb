@@ -1,8 +1,60 @@
-<h1>Pages#home</h1>
+
 
 <% if user_signed_in? %>
 
 
 <% else %>
 <!-- Faire ici la landing page quand l'utilsateur n'est pas logguée -->
+
+<div class="homewrapper" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 50%), url(<%= image_path "Desktop.jpg"%>)">
+	<div class="homewrapper-content" >
+    <h1>Finally Master <span class="typer" id="main" data-words="the Flow.,Productivity.,Yourself." data-colors="white" data-delay="100" data-deleteDelay="5000"></span></h1>
+	<p>Be productive as never before and deliver.</p>
+	<%= link_to "Let's Go Ninja Style !", new_user_session_path, class:"btn ma-btn btn-lg"  %>
+    </div>
+</div>
+
+
+<div class="container"> 
+	
+	<div class="row display-flex text-black padded">
+		<div class="col-xs-8">
+			<h2>Set Goals.</h2>
+			<h2>Achieve Them.</h2>
+			<p class="text-align">Lorem Ipsum dolor, sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? </p>
+			<%= link_to "Give it a try !", new_user_session_path, class:"btn ma-btn btn-lg"  %>
+		</div>
+		
+		<div class="col-xs-4 photo-landing" >
+		<%= image_tag(asset_path"the-flow.jpg") %>
+		</div>	
+	</div>
+</div>
+
+<div class="row">
+		<div class="col-xs-12 bg-gradient text-align text-center box-shadowed padded">
+			<h2>Be a better Human.</h2>
+			<h2>Become a machine.</h2>
+		</div>
+</div>
+
+<div class="container">
+	
+	<div class="row display-flex text-black padded">
+		<div class="col-xs-4 photo-landing">
+			<%= image_tag(asset_path"the-flow.jpg") %>
+		</div>
+		
+		<div class="col-xs-8" >
+		<h2>Intuitive.</h2>
+		<h2>It's Free.</h2>
+			<p class="text-align">Lorem Ipsum dolor, sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? </p>
+			<%= link_to "Give it a try !", new_user_session_path, class:"btn ma-btn btn-lg"  %>
+		</div>	
+	</div>
+</div>
+
+
+
 <% end %>
+ 
