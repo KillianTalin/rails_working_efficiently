@@ -3,7 +3,24 @@ class TasksController < ApplicationController
 
   def index
     @tasks = policy_scope(Task).where(user_id: current_user.id)
+    @time = @tasks.sum(:real_duration)
+    @projects = Project.where(user_id: current_user.id)
+    @tags = Project.last.tags.uniq
+    @score = (@tasks.average(:productivity_score) / 5) * 100
+    if params[:project_id].present?
+      @project = Project.find(params[:project_id])
+      @tasks = @tasks.where(project: @project)
+      @time = @tasks.where(project: @project).sum(:real_duration)
+      @score = (@tasks.where(project: @project).average(:productivity_score) / 5) * 100
+      if params[:tag_id].present?
+        @tag = Tag.find(params[:tag_id])
+        @tasks = @tasks.where(project: @project).where(params[tag: @tag])
+        @time = @tasks.where(project: @project).where(params[tag: @tag]).sum(:real_duration)
+        @score = (@tasks.where(project: @project).where(params[tag: @tag]).average(:productivity_score) / 5) * 100
 
+
+      end
+    end
   end
 
   def show
@@ -19,7 +36,7 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
     authorize(@task)
       if @task.save
-        redirect_to tasks_path(@task), notice: 'Task was successfully created.'
+        redirect_to tasks_path, notice: 'Task was successfully created 👍'
       else
         render :new
       end
@@ -39,7 +56,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to root_path, notice: 'Task was successfully destroyed.'
+    redirect_to root_path, notice: '❌ Task was successfully destroyed.'
   end
 
   private
@@ -51,6 +68,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :project_id, :name, :starts_at, :ends_at, :forecast_duration, :category, :productivity_score, :tag_id)
+    params.require(:task).permit(:name, :project_id, :name, :starts_at, :ends_at, :forecast_duration, :category, :productivity_score, :tag_id, :real_duration)
   end
 end
