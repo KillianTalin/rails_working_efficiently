@@ -17,11 +17,11 @@
       <% end %>
       <div>
         <h5>My tags</h5>
-          <% @tags.each do |tag| %>
-            <%= link_to tasks_path(tag_id: tag.id) do %>
-              <%= tag.name.capitalize %>
-            <% end %>
+        <% @tags.each do |tag| %>
+          <%= link_to tasks_path(tag_id: tag[:id], project_id: params[:project_id]) do %>
+            <p class='<%= tag == @tag ? "active" : "" %>'><%= tag[:name] %></p>
           <% end %>
+        <% end %>
       </div>
 
 
