@@ -23,18 +23,25 @@
           <% end %>
         <% end %>
       </div>
+      <div class="test">
+        <form action="/tasks" method="get">
+          Du:
+          <input type="date" name="between_first" placeholder="What kind of food?">
+          Au:
+          <input type="date" name="between_last">
 
-
-
+          <%= link_to %>
+        </form>
+      </div>
 
   </div>
   <div class="col-sm-6">
   <h4>My tasks</h4>
       <% @tasks.each do |task| %>
       <div class="card_task_dashboard">
-        <div>Task: <b> <%= task.name %> </b> </div>
+        <div><b> <%= task.name.capitalize %> </b> </div>
         <div>Durée: <%= task.forecast_duration %> </div>
-        <div> Projet: <%= task.project.name %> </div>
+        <div>Projet: <%= task.project.name %> </div>
         <div>Priority: <%= task.category %></div>
         <div>Tag: #<%= task.tag.name %> </div>
         <div>Real duration: <%= task.real_duration %></div>
