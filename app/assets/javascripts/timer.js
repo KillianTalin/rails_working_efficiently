@@ -25,7 +25,7 @@ function initializeClock(id, starttime) {
   const secondsSpan = clock.querySelector('.seconds');
   const buttonHiddenInput = document.querySelector("#task_elapsed_time");
   function updateClock() {
-    let t = getTime(starttime);
+    var t = getTime(starttime);
     buttonHiddenInput.value = (t.total / 1000);
     hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
