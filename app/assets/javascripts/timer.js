@@ -24,14 +24,13 @@ function initializeClock(id, starttime) {
   const minutesSpan = clock.querySelector('.minutes');
   const secondsSpan = clock.querySelector('.seconds');
   const buttonHiddenInput = document.querySelector("#task_elapsed_time");
-  // function updateClock() {
-  //   let t = getTime(starttime);
-  //   console.log(t);
-  //   buttonHiddenInput.value = t.total / 1000;
-  //   hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-  //   minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-  //   secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-  // }
+  function updateClock() {
+    let t = getTime(starttime);
+    buttonHiddenInput.value = (t.total / 1000);
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+  }
 
   // updateClock(); // run function once at first to avoid delay
   // let timeinterval = setInterval(updateClock, 1000);
