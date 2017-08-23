@@ -7,8 +7,4 @@ Rails.application.routes.draw do
     resources :tasks, only: [:index]
   end
 resources :tasks, only: [:show, :new, :update, :destroy]
-  # projects/1/tasks tasks#index
-  # projects/2/tasks tasks#index
-  # # tasks tasks#index_direct
-
 end
