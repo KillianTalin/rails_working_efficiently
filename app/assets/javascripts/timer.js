@@ -1,22 +1,22 @@
-window.addEventListener("load", function(event) {
-  initializeClock('clockdiv', start);
-});
+// window.addEventListener("load", function(event) {
+//   initializeClock('clockdiv', start);
+// });
 
-let start = new Date(0);
-function getTime(starttime) {
-  let t = starttime.setSeconds(starttime.getSeconds() + 1);
-  // console.log(t);
-  const seconds = Math.floor( (t/1000) % 60 );
-  const minutes = Math.floor( (t/1000/60) % 60 );
-  const hours = Math.floor( (t/(1000*60*60)) % 24 );
-  const days = Math.floor( t/(1000*60*60*24) );
-  return {
-    'total': t,
-    'hours': hours,
-    'minutes': minutes,
-    'seconds': seconds
-  };
-};
+// let start = new Date(0);
+// function getTime(starttime) {
+//   let t = starttime.setSeconds(starttime.getSeconds() + 1);
+//   // console.log(t);
+//   const seconds = Math.floor( (t/1000) % 60 );
+//   const minutes = Math.floor( (t/1000/60) % 60 );
+//   const hours = Math.floor( (t/(1000*60*60)) % 24 );
+//   const days = Math.floor( t/(1000*60*60*24) );
+//   return {
+//     'total': t,
+//     'hours': hours,
+//     'minutes': minutes,
+//     'seconds': seconds
+//   };
+// };
 
 // function initializeClock(id, starttime) {
 //   const clock = document.getElementById(id);
@@ -56,4 +56,5 @@ function getTime(starttime) {
 
     // console.log(`localhost:3000/tasks/1/update?t=t`);
   // });
-}
+// }
+//
