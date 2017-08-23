@@ -2,21 +2,21 @@
 //   initializeClock('clockdiv', start);
 // });
 
-let start = new Date(0);
-function getTime(starttime) {
-  let t = starttime.setSeconds(starttime.getSeconds() + 1);
-  // console.log(t);
-  let seconds = Math.floor( (t/1000) % 60 );
-  let minutes = Math.floor( (t/1000/60) % 60 );
-  let hours = Math.floor( (t/(1000*60*60)) % 24 );
-  let days = Math.floor( t/(1000*60*60*24) );
-  return {
-    'total': t,
-    'hours': hours,
-    'minutes': minutes,
-    'seconds': seconds
-  };
-};
+// let start = new Date(0);
+// function getTime(starttime) {
+//   let t = starttime.setSeconds(starttime.getSeconds() + 1);
+//   // console.log(t);
+//   let seconds = Math.floor( (t/1000) % 60 );
+//   let minutes = Math.floor( (t/1000/60) % 60 );
+//   let hours = Math.floor( (t/(1000*60*60)) % 24 );
+//   let days = Math.floor( t/(1000*60*60*24) );
+//   return {
+//     'total': t,
+//     'hours': hours,
+//     'minutes': minutes,
+//     'seconds': seconds
+//   };
+// };
 
 function initializeClock(id, starttime) {
   const clock = document.getElementById(id);
