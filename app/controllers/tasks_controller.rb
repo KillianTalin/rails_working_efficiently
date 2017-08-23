@@ -31,7 +31,6 @@ class TasksController < ApplicationController
       @score = (@tasks.where(tag: @tag).average(:productivity_score).round(2) / 5) * 100
       @time = @tasks.where(tag: @tag).sum(:real_duration)
     end
-
   end
 
   def show
@@ -59,9 +58,9 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-    redirect_to root_path, notice: 'Task was successfully updated.'
+      redirect_to root_path, notice: 'Task was successfully updated.'
     else
-    render :new
+      render :new
     end
   end
 
@@ -75,10 +74,9 @@ class TasksController < ApplicationController
   def task_set
     @task = Task.find(params[:id])
     authorize(@task)
-
   end
 
   def task_params
-    params.require(:task).permit(:name, :project_id, :name, :starts_at, :ends_at, :forecast_duration, :category, :productivity_score, :tag_id, :real_duration)
+    params.require(:task).permit(:name, :project_id, :name, :starts_at, :ends_at, :elapsed_time, :forecast_duration, :category, :productivity_score, :tag_id, :real_duration)
   end
 end
