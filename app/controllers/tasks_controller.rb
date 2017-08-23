@@ -5,19 +5,31 @@ class TasksController < ApplicationController
     @tasks = policy_scope(Task).where(user_id: current_user.id)
     @time = @tasks.sum(:real_duration)
     @projects = Project.where(user_id: current_user.id)
-    @tags = Project.last.tags.uniq
-    @score = (@tasks.average(:productivity_score) / 5) * 100
-    if params[:project_id].present?
+    @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
+
+    @tags = @tasks.map { |task| {id: task.tag.id, name: task.tag.name}  }.uniq
+
+    if params[:project_id].present? && params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      @project = Project.find(params[:project_id])
+      @tasks = @tasks.where(project: @project, tag_id: @tag)
+      @tag_projet = Task.where(project: @project, user_id: current_user.id)
+      @time = @tasks.where(project: @project).where(tag: @tag).sum(:real_duration)
+      @score = (@tasks.where(project: @project).where(tag: @tag).average(:productivity_score) / 5) * 100
+      @tags = @tag_projet.map { |task| {project: @project, id: task.tag.id, name: task.tag.name}  }.uniq
+
+    elsif params[:project_id].present?
       @project = Project.find(params[:project_id])
       @tasks = @tasks.where(project: @project)
       @time = @tasks.where(project: @project).sum(:real_duration)
-      @score = (@tasks.where(project: @project).average(:productivity_score) / 5) * 100
-      if params[:tag_id].present?
-        @tag = Tag.find(params[:tag_id])
-        @tasks = @tasks.where(project: @project).where(params[tag: @tag])
-        @time = @tasks.where(project: @project).where(params[tag: @tag]).sum(:real_duration)
-        @score = (@tasks.where(project: @project).where(params[tag: @tag]).average(:productivity_score) / 5) * 100
-      end
+      @tags = @tasks.map { |task| {project: @project, id: task.tag.id, name: task.tag.name}  }.uniq
+      @score = (@tasks.where(project: @project).average(:productivity_score).round(2) / 5) * 100
+
+    elsif params[:tag_id].present?
+      @tag = Tag.find(params[:tag_id])
+      @tasks = @tasks.where(tag_id: @tag)
+      @score = (@tasks.where(tag: @tag).average(:productivity_score).round(2) / 5) * 100
+      @time = @tasks.where(tag: @tag).sum(:real_duration)
     end
   end
 
@@ -51,10 +63,6 @@ class TasksController < ApplicationController
       render :new
     end
   end
-
-  # def update_elapsed_time
-  #   @task.elapsed_time = params[:elapsed_time]
-  # end
 
   def destroy
     @task.destroy
