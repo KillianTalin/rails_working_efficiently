@@ -9,7 +9,7 @@ gem 'puma'
 gem 'rails', '5.0.5'
 gem 'redis'
 gem "pundit"
-
+gem 'omniauth-facebook'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -26,6 +26,6 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-    gem 'better_errors'
+  gem 'better_errors'
   gem 'binding_of_caller'
 end
