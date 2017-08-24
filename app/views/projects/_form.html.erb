@@ -1,8 +1,18 @@
-<%= simple_form_for(project) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :end_date %>
-  <%= f.input :price_per_day %>
-  <%= f.association :client_id %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-offset-4 col-sm-4">
+      <%= simple_form_for(project) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :end_date %>
+        <%= f.input :price_per_day %>
+        <h3>Client</h3>
+        <%= f.association :client %>
+        <%= f.fields_for :client do |client| %>
+          <%= client.input :name %>
+        <% end %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
