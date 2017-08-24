@@ -7,6 +7,5 @@ Rails.application.routes.draw do
     resources :tasks, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   end
   resources :clients
-  # resources :tasks, only: [:show, :new, :create, :edit, :update, :destroy]
   get '/tasks', to: 'tasks#index_direct'
 end

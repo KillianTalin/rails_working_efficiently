@@ -1,12 +1,11 @@
 <div class="container">
   <div class="col-sm-4 col-sm-offset-4">
-    <%= simple_form_for [@project, @task] do |f| %>
-      <%= f.input :name, label: 'Task', placeholder: 'Finir mon buisiness plan' %>
-      <%= f.association :project, placeholder: 'Préparer mon tour du monde' %>
-      <%= f.input :forecast_duration, label: 'Time', placeholder: '60 min' %>
+          <%= simple_form_for [@project, @task], url: project_tasks_path, :method => :post do |f| %>
+        <%= f.input :name %>
+        <%= f.input :forecast_duration %>
     <div class="text-center">
-        <%= f.button :submit %>
+        <%= f.submit %>
+      <% end %>
       </div>
-    <% end %>
   </div>
 </div>

@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :task_set, only: [:show, :edit, :update, :destroy]
-  before_action :project_set, only: [:index, :show, :edit, :update, :destroy]
+  before_action :project_set, only: [:index, :show, :create, :edit, :update, :destroy]
 
   def index
     @tasks = policy_scope(Task).where(project_id: @project)
@@ -36,10 +36,10 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
-    @project = @task.project
+    @task.project = @project
     authorize(@task)
       if @task.save
-        redirect_to project_tasks_path(@project), notice: 'Task was successfully created 👍'
+        redirect_to project_tasks_path(@task.project_id), notice: 'Task was successfully created 👍'
       else
         render :new
       end
