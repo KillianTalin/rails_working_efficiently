@@ -7,8 +7,6 @@ class TasksController < ApplicationController
     @time = @tasks.sum(:real_duration)
     @projects = Project.where(user_id: current_user.id)
     @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
-    @tags = @tasks.map { |task| {id: task.tag.id, name: task.tag.name}  }.uniq
-
     # if params[:project_id].present? && params[:tag_id].present?
     #   @tag = Tag.find(params[:tag_id])
     #   @project = Project.find(params[:project_id])
@@ -24,13 +22,8 @@ class TasksController < ApplicationController
     #   @time = @tasks.where(project: @project).sum(:real_duration)
     #   @tags = @tasks.map { |task| {project: @project, id: task.tag.id, name: task.tag.name}  }.uniq
     #   @score = (@tasks.where(project: @project).average(:productivity_score).round(2) / 5) * 100
+    @task = Task.new
 
-    if params[:tag_id].present?
-      @tag = Tag.find(params[:tag_id])
-      @tasks = @tasks.where(tag_id: @tag)
-      @score = (@tasks.where(tag: @tag).average(:productivity_score).round(2) / 5) * 100
-      @time = @tasks.where(tag: @tag).sum(:real_duration)
-    end
   end
 
   def show
@@ -44,9 +37,10 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
+    @project = @task.project
     authorize(@task)
       if @task.save
-        redirect_to tasks_path, notice: 'Task was successfully created 👍'
+        redirect_to project_tasks_path(@project), notice: 'Task was successfully created 👍'
       else
         render :new
       end
@@ -70,7 +64,11 @@ class TasksController < ApplicationController
   end
 
   def index_direct
-    @tasks = policy_scope(Task).all
+    @tasks = policy_scope(Task).where(user: current_user)
+    @time = @tasks.sum(:real_duration)
+    @projects = Project.where(user_id: current_user.id)
+    @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
+    @tags = @tasks.map { |task| {id: task.tag.id, name: task.tag.name}  }.uniq
   end
 
   private

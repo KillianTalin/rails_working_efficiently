@@ -15,14 +15,6 @@
       <%= link_to tasks_path do %>
         <p class='<%= "active" unless params[:project_id].present? %>'>All tasks</p>
       <% end %>
-      <div>
-        <h5>My tags</h5>
-        <% @tags.each do |tag| %>
-          <%= link_to project_tasks_path(tag_id: tag[:id]) do %>
-            <p class='<%= tag == @tag ? "active" : "" %>'><%= tag[:name] %></p>
-          <% end %>
-        <% end %>
-      </div>
       <div class="test">
         <form action="/tasks" method="get">
           Du:
@@ -40,9 +32,6 @@
       <div class="card_task_dashboard">
         <div><b> <%= task.name.capitalize %> </b> </div>
         <div>Durée: <%= task.forecast_duration %> </div>
-        <div>Projet: <%= task.project.name %> </div>
-        <div>Priority: <%= task.category %></div>
-        <div>Tag: #<%= task.tag.name %> </div>
         <div>Real duration: <%= task.real_duration %></div>
         <div>Score: <%= task.productivity_score %></div>
         <%= link_to edit_task_path(task) do %>
@@ -53,6 +42,18 @@
         <% end %>
       </div>
     <% end %>
+    <div class="card_task_dashboard">
+      <h4 class="text-center">
+          Ajouter une tâche <i class="fa fa-plus" aria-hidden="true"></i>
+      </h4>
+    <%= simple_form_for [@project, @task], url: tasks_path do |f| %>
+        <%= f.input :name %>
+        <%= f.input :forecast_duration %>
+        <%= f.hidden_field :project_id, value: @project.id %>
+        <%= f.submit %>
+      <% end %>
+
+    </div>
   </div>
 
   <div class="col-sm-3" id="la">
