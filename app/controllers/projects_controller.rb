@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
 
   def index
    @project = Project.all
+   @projects = current_user.projects
   end
 
   def show
@@ -23,12 +24,13 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @peoject = Project.find(params[:id])
-    @project.update(params[:project])
+    @project = Project.find(params[:id])
+    @project.update(project_params)
   end
 
   def destroy
-
+    @project = Project.find(params[:id])
+    @project.destroy
   end
 
 #   private
