@@ -17,20 +17,23 @@
         </div>
       </div>
     </div>
-
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
-      <div class="btn ma-btn btn-lg btn-timer" id="button-pause">
-      Pause
-      </div>
-      <div class="btn ma-btn btn-lg btn-timer hidden" id="button-restart">
-      Resume
-      </div>
-      <%= simple_form_for [@project, @task] do |f| %>
-        <%= f.input :elapsed_time, as: :hidden %>
-        <div class="btn-timer" id="button-finish">
-          <%= f.submit 'Finish', class: "btn ma-btn btn-lg btn-timer" %>
+      <div class="btn-timer-wrapper">
+
+        <div class="btn ma-btn btn-lg" id="button-pause">
+        Pause
         </div>
-      <% end %>
+        <div class="btn ma-btn btn-lg hidden" id="button-restart">
+        Resume
+        </div>
+        <%= simple_form_for [@project, @task] do |f| %>
+          <%= f.input :elapsed_time, as: :hidden %>
+          <div class="" id="button-finish">
+            <%= f.submit 'Finish', class: "btn ma-btn btn-lg" %>
+          </div>
+        <% end %>
+      </div>
+
     </div>
   </div>
   <div class="row">

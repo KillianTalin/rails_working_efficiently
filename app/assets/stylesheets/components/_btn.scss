@@ -105,22 +105,15 @@
     width: auto;
     -webkit-font-smoothing: antialiased;
     text-shadow: 0 -1px 0 #354C8C;
-
 }
-
 
 .btn-fb:hover {
   text-decoration: none;
   color : white;
 }
 
-#button-pause {
-  display: inline-block;
-}
-
-#button-restart {
-  display: inline-block;
-}
-#button-finish {
-  display: inline-block;
+.btn-timer-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 100%;
 }
