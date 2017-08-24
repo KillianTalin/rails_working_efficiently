@@ -33,7 +33,7 @@ User.create!(users_attributes)
 puts 'Creating projects...'
 projects_attributes = [
   {
-    user_id: 1,
+    user: User.first,
     name: "Faire un site pour Poulpe",
     start_date: 20170320,
     end_date: 20170820,
@@ -43,7 +43,6 @@ projects_attributes = [
 ]
 Project.create!(projects_attributes)
 
-
 puts 'Creating tasks...'
 tasks_attributes = [
   {
@@ -52,8 +51,10 @@ tasks_attributes = [
     real_duration: 50,
     category: "MIT",
     productivity_score: 4,
-    starts_at: 20170320
-    ends_at: 20170820
+    starts_at: 20170320,
+    ends_at: 20170820,
+    project: Project.first,
+    user: User.first
   },
   {
     name: "Réaliser le DB model",
@@ -62,8 +63,10 @@ tasks_attributes = [
     category: "Secondary",
     productivity_score: 4,
     starts_at: 20170420,
-    ends_at:20170920
+    ends_at:20170920,
+    project: Project.first,
+    user: User.first
   }
 ]
-Task.create!(task_attributes)
+Task.create!(tasks_attributes)
 puts 'Finished!'
