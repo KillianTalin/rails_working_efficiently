@@ -47,11 +47,11 @@
     color: white;
     background-color: transparent;
     border-color: white;
-    
+
 }
 
 .gd-btn:hover {
- 
+
     cursor: pointer;
     position: relative;
     display: inline-block;
@@ -112,4 +112,15 @@
 .btn-fb:hover {
   text-decoration: none;
   color : white;
+}
+
+#button-pause {
+  display: inline-block;
+}
+
+#button-restart {
+  display: inline-block;
+}
+#button-finish {
+  display: inline-block;
 }
