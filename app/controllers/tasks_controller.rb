@@ -23,7 +23,6 @@ class TasksController < ApplicationController
     #   @tags = @tasks.map { |task| {project: @project, id: task.tag.id, name: task.tag.name}  }.uniq
     #   @score = (@tasks.where(project: @project).average(:productivity_score).round(2) / 5) * 100
     @task = Task.new
-
   end
 
   def show

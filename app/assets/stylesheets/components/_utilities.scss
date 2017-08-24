@@ -139,6 +139,10 @@ body {
   margin-bottom: 40px!important;
 }
 
+.full-sized {
+  height: calc(100vh - 60px)
+}
+
 // Border style 
 
 .box-shadowed{
@@ -173,8 +177,17 @@ body {
   margin-top: 20px
 }
 
+.color-green {
+color: rgba(82, 196, 132, 1.00);
+ }
 
 
+.device-form-container {
+  margin-top: 100px;
+}
+
+
+  
 
 
 
