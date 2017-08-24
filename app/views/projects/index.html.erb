@@ -2,4 +2,7 @@
 <% @projects.each do |project| %>
   <h2><%= project.name %></h2>
   <p><%= project.description %></p>
+  <p><%= project.end_date %></p>
+  <p><%= project.client_id %></p>
+  <p><%= project.price_per_day %></p>
 <% end %>

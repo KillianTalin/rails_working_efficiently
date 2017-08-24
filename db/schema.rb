@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824120251) do
+ActiveRecord::Schema.define(version: 20170824140917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170824120251) do
     t.datetime "updated_at",     null: false
     t.text     "description"
     t.integer  "client_id"
+    t.integer  "price_per_day"
     t.index ["client_id"], name: "index_projects_on_client_id", using: :btree
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end
@@ -44,15 +45,13 @@ ActiveRecord::Schema.define(version: 20170824120251) do
     t.integer  "project_id"
     t.string   "name"
     t.integer  "forecast_duration"
-    t.integer  "real_duration"
-    t.string   "category"
-    t.integer  "productivity_score"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "user_id"
-    t.datetime "starts_at"
-    t.datetime "ends_at"
     t.integer  "elapsed_time"
+    t.text     "description"
+    t.boolean  "mit_task"
+    t.boolean  "secondary_task"
     t.index ["project_id"], name: "index_tasks_on_project_id", using: :btree
     t.index ["user_id"], name: "index_tasks_on_user_id", using: :btree
   end

@@ -47,7 +47,6 @@ tasks_attributes = [
   {
     name: "Finir le cahier des charges",
     forecast_duration: 60,
-    real_duration: 50,
     category: "MIT",
     productivity_score: 4,
     starts_at: 20170320,
