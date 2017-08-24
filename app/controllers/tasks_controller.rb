@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     @tasks = policy_scope(Task).where(project_id: @project)
     @time = @tasks.sum(:real_duration)
     @projects = Project.where(user_id: current_user.id)
-    @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
+    # @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
     # if params[:project_id].present? && params[:tag_id].present?
     #   @tag = Tag.find(params[:tag_id])
     #   @project = Project.find(params[:project_id])
@@ -60,15 +60,14 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to root_path, notice: '❌ Task was successfully destroyed.'
+    redirect_to project_tasks_path, notice: '❌ Task was successfully destroyed.'
   end
 
   def index_direct
     @tasks = policy_scope(Task).where(user: current_user)
     @time = @tasks.sum(:real_duration)
     @projects = Project.where(user_id: current_user.id)
-    @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
-    @tags = @tasks.map { |task| {id: task.tag.id, name: task.tag.name}  }.uniq
+    # @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
   end
 
   private
