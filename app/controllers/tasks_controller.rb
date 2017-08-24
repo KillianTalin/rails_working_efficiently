@@ -68,7 +68,6 @@ class TasksController < ApplicationController
     @time = @tasks.sum(:real_duration)
     @projects = Project.where(user_id: current_user.id)
     @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
-    @tags = @tasks.map { |task| {id: task.tag.id, name: task.tag.name}  }.uniq
   end
 
   private
