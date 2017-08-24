@@ -37,7 +37,7 @@
       <h4 class="text-center">
         Ajouter une tâche <i class="fa fa-plus" aria-hidden="true"></i>
       </h4>
-      <%= simple_form_for [@project, @task], url: project_tasks_path do |f| %>
+      <%= simple_form_for [@project, @task] do |f| %>
         <%= f.input :name %>
         <%= f.input :forecast_duration %>
         <%= f.hidden_field :project_id, value: @project.id %>
