@@ -1,17 +1,40 @@
-<h2>Sign up</h2>
+<div class="contents">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4 bg-white padded device-form-container">
+				<h2 class="color-green">Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+				<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+				  <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-  </div>
+				  <div class="form-inputs color-green">
+				  	<div style="position: relative;">
+				    <%= f.input :email, required: true, autofocus: true, placeholder: "Email address", label: false%>
+				    	<i class="fa fa-envelope-o" style="position: absolute;right: 8px; top: 10px;"></i>
+				    </div>
+				    <div style="position: relative;">	
+				    <%= f.input :password, required: true, placeholder: "Password", label: false %>
+				    <i class="fa fa-lock" style="position: absolute;right: 8px; top: 10px;"></i>
+				    </div>
+				    <div style="position: relative;">	
+				    <%= f.input :password_confirmation, required: true, placeholder: "Password Confirmation", label: false, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+				    	<i class="fa fa-lock" style="position: absolute;right: 8px; top: 10px;"></i>
+				    </div>
+				   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+				  <div class="form-actions text-center">
+				    <%= f.button :submit, "Sign up !", class: "btn-medium" %>
+				    <div style="width: 100%; height: 10px; border-bottom: 1px solid black; text-align: center; position : relative; margin-bottom: 30px;">
+					  <span style="font-size: 10px; color:black; background-color: white; padding: 0 10px; margin: 2px; margin-left: -15px; position: absolute;">
+					    Or
+					  </span>
+					</div>
+				  </div>
+				<% end %>
+				<div class="text-center">			
+				<%= render "devise/shared/links" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
