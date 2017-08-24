@@ -1,0 +1,8 @@
+<h1>My list of clients</h1>
+<% @clients.each do |client| %>
+  <h2><%= client.name %></h2>
+  <p><%= client.siret_num %></p>
+  <p><%= client.address %></p>
+  <p><%= client.phone_number %></p>
+  <p><%= client.email %></p>
+<% end %>
