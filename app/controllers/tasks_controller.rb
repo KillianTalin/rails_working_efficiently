@@ -4,7 +4,7 @@ class TasksController < ApplicationController
 
   def index
     @tasks = policy_scope(Task).where(project_id: @project)
-    @time = @tasks.sum(:real_duration)
+    @time = @tasks.sum(:elapsed_time)
     @projects = Project.where(user_id: current_user.id)
     # @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
     # if params[:project_id].present? && params[:tag_id].present?
@@ -64,7 +64,7 @@ class TasksController < ApplicationController
 
   def index_direct
     @tasks = policy_scope(Task).where(user: current_user)
-    @time = @tasks.sum(:real_duration)
+    @time = @tasks.sum(:elapsed_time)
     @projects = Project.where(user_id: current_user.id)
     # @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
   end
@@ -82,6 +82,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :project_id, :name, :starts_at, :ends_at, :elapsed_time, :forecast_duration, :category, :productivity_score, :tag_id, :real_duration)
+    params.require(:task).permit(:name, :project_id, :name, :starts_at, :ends_at, :elapsed_time, :forecast_duration, :category, :productivity_score, :tag_id,)
   end
 end
