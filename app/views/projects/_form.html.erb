@@ -2,5 +2,7 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :end_date %>
+  <%= f.input :price_per_day %>
+  <%= f.association :client_id %>
   <%= f.submit %>
 <% end %>
