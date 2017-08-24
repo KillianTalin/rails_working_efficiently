@@ -34,6 +34,10 @@ class ApplicationPolicy
     false
   end
 
+  def index_direct?
+    true
+  end
+
   def scope
     Pundit.policy_scope!(user, record.class)
   end

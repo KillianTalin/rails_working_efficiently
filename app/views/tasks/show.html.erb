@@ -1,1 +1,45 @@
-show.html.erb
+<!-- Put the timer -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div id="clockdiv">
+        <h1>Countdown Clock</h1>
+        <div>
+          <span class="hours"></span>
+          <div class="smalltext">Hours</div>
+        </div>
+        <div>
+          <span class="minutes"></span>
+          <div class="smalltext">Minutes</div>
+        </div>
+        <div>
+          <span class="seconds"></span>
+          <div class="smalltext">Seconds</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="btn ma-btn btn-lg btn-timer" id="button-pause">
+      Pause
+      </div>
+      <div class="btn ma-btn btn-lg btn-timer hidden" id="button-restart">
+      Restart
+      </div>
+      <%= simple_form_for @task do |f| %>
+        <%= f.input :elapsed_time, as: :hidden %>
+        <div class="" id="button-finish">
+          <%= f.submit 'Finish', class: "btn ma-btn btn-lg btn-timer" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <div class="timer-description">
+      <h3> @task.name </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+

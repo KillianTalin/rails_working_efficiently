@@ -1,0 +1,58 @@
+<div class="container">
+  <h1 class="text-center">Dashboard</h1>
+    <div class="col-sm-2">
+      <h4>My projects</h4>
+
+      <% @projects.each do |project| %>
+        <%= link_to  project_tasks_path(project_id: project.id) do %>
+          <p class='<%= project == @project ? "active" : "" %>'><%= project.name.capitalize %></p>
+        <% end %>
+      <% end %>
+      <%= link_to tasks_path do %>
+        <p class='<%= "active" unless params[:project_id].present? %>'>All tasks</p>
+      <% end %>
+
+      <div class="test">
+        <form action="/tasks" method="get">
+          Du:
+          <input type="date" name="between_first" placeholder="What kind of food?">
+          Au:
+          <input type="date" name="between_last">
+
+        </form>
+      </div>
+
+  </div>
+  <div class="col-sm-6">
+  <h4>My tasks</h4>
+      <% @tasks.each do |task| %>
+      <div class="card_task_dashboard">
+        <div><b> <%= task.name.capitalize %> </b> </div>
+        <div>Durée: <%= task.forecast_duration %> </div>
+        <div>Real duration: <%= task.real_duration %></div>
+        <%= link_to edit_project_task_path(task.project, task) do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to project_task_path(task.project, task), method: :delete, data: { confirm: "Are you sure?" } do %>
+          <i class="fa fa-times" aria-hidden="true"></i>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-sm-3" id="la">
+    <h4>Data</h4>
+    <p>Productivity score:</p>
+              <div class="clearfix">
+                <div class="c100 p<%= @score.to_i %> big">
+                    <span><%= @score %>%</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+                </div>
+              </div>
+    <p>Total time: <%= @time %> min</p>
+
+  </div>
+</div>

@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821134801) do
+ActiveRecord::Schema.define(version: 20170824120251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "siret_num"
+    t.string   "address"
+    t.string   "phone_number"
+    t.string   "email"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,18 +31,13 @@ ActiveRecord::Schema.define(version: 20170821134801) do
     t.date     "start_date"
     t.date     "end_date"
     t.string   "color"
-    t.float    "avg_productivity_score"
     t.float    "total_worktime"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.text     "description"
+    t.integer  "client_id"
+    t.index ["client_id"], name: "index_projects_on_client_id", using: :btree
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string   "name"
-    t.string   "color"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -42,14 +47,13 @@ ActiveRecord::Schema.define(version: 20170821134801) do
     t.integer  "real_duration"
     t.string   "category"
     t.integer  "productivity_score"
-    t.integer  "tag_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "user_id"
     t.datetime "starts_at"
     t.datetime "ends_at"
+    t.integer  "elapsed_time"
     t.index ["project_id"], name: "index_tasks_on_project_id", using: :btree
-    t.index ["tag_id"], name: "index_tasks_on_tag_id", using: :btree
     t.index ["user_id"], name: "index_tasks_on_user_id", using: :btree
   end
 
@@ -69,12 +73,17 @@ ActiveRecord::Schema.define(version: 20170821134801) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "photo"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "facebook_picture_url"
+    t.string   "token"
+    t.datetime "token_expiry"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "projects", "clients"
   add_foreign_key "projects", "users"
   add_foreign_key "tasks", "projects"
-  add_foreign_key "tasks", "tags"
   add_foreign_key "tasks", "users"
 end

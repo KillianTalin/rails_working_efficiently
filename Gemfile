@@ -9,7 +9,7 @@ gem 'puma'
 gem 'rails', '5.0.5'
 gem 'redis'
 gem "pundit"
-
+gem 'omniauth-facebook'
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -17,6 +17,9 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
+gem 'chartkick'
+gem 'sprockets', '>=3.0.0.beta'
+gem 'sprockets-es6'
 
 group :development, :test do
   gem 'pry-byebug'
@@ -25,6 +28,6 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-    gem 'better_errors'
+  gem 'better_errors'
   gem 'binding_of_caller'
 end

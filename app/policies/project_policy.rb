@@ -5,6 +5,10 @@ class ProjectPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    true
+  end
+
   def create?
     return true
   end
@@ -15,5 +19,9 @@ class ProjectPolicy < ApplicationPolicy
 
   def destroy?
     record.user == user
+  end
+
+  def index_direct?
+    true
   end
 end

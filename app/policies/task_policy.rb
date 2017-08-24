@@ -1,10 +1,13 @@
 class TaskPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.where(user: user)
     end
   end
 
+  def index?
+    true
+  end
 
   def create?
     true
@@ -18,9 +21,13 @@ class TaskPolicy < ApplicationPolicy
     is_user_the_owner?
   end
 
+  def index_direct?
+    true
+  end
+
   private
 
   def is_user_the_owner?
-    record.user == user || user.admin?
+    record.user == user
   end
 end
