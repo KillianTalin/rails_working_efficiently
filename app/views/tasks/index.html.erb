@@ -8,17 +8,17 @@
       <h4>My projects</h4>
 
       <% @projects.each do |project| %>
-        <%= link_to tasks_path(project_id: project.id) do %>
+        <%= link_to  project_tasks_path(project_id: project.id) do %>
           <p class='<%= project == @project ? "active" : "" %>'><%= project.name.capitalize %></p>
         <% end %>
       <% end %>
       <%= link_to tasks_path do %>
-        <p class='<%= "active" unless params[:project_id].present? %>'>All projects</p>
+        <p class='<%= "active" unless params[:project_id].present? %>'>All tasks</p>
       <% end %>
       <div>
         <h5>My tags</h5>
         <% @tags.each do |tag| %>
-          <%= link_to tasks_path(tag_id: tag[:id], project_id: params[:project_id]) do %>
+          <%= link_to project_tasks_path(tag_id: tag[:id]) do %>
             <p class='<%= tag == @tag ? "active" : "" %>'><%= tag[:name] %></p>
           <% end %>
         <% end %>
@@ -30,7 +30,6 @@
           Au:
           <input type="date" name="between_last">
 
-          <%= link_to %>
         </form>
       </div>
 
