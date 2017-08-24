@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824113111) do
+ActiveRecord::Schema.define(version: 20170824120251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "siret_num"
+    t.string   "address"
+    t.string   "phone_number"
+    t.string   "email"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,10 +31,12 @@ ActiveRecord::Schema.define(version: 20170824113111) do
     t.date     "start_date"
     t.date     "end_date"
     t.string   "color"
-    t.float    "avg_productivity_score"
     t.float    "total_worktime"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.text     "description"
+    t.integer  "client_id"
+    t.index ["client_id"], name: "index_projects_on_client_id", using: :btree
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end
 
@@ -70,6 +82,7 @@ ActiveRecord::Schema.define(version: 20170824113111) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "projects", "clients"
   add_foreign_key "projects", "users"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tasks", "users"
