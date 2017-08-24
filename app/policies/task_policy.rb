@@ -5,6 +5,9 @@ class TaskPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    true
+  end
 
   def create?
     true
@@ -16,6 +19,10 @@ class TaskPolicy < ApplicationPolicy
 
   def destroy?
     is_user_the_owner?
+  end
+
+  def index_direct?
+    true
   end
 
   private

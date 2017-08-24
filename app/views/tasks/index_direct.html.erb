@@ -15,6 +15,7 @@
       <%= link_to tasks_path do %>
         <p class='<%= "active" unless params[:project_id].present? %>'>All tasks</p>
       <% end %>
+
       <div class="test">
         <form action="/tasks" method="get">
           Du:
@@ -43,16 +44,12 @@
       </div>
     <% end %>
     <div class="card_task_dashboard">
-      <h4 class="text-center">
-          Ajouter une tâche <i class="fa fa-plus" aria-hidden="true"></i>
-      </h4>
-    <%= simple_form_for [@project, @task], url: tasks_path do |f| %>
-        <%= f.input :name %>
-        <%= f.input :forecast_duration %>
-        <%= f.hidden_field :project_id, value: @project.id %>
-        <%= f.submit %>
-      <% end %>
 
+      <h4 class="text-center">
+        <%= link_to new_task_path do %>
+          Ajouter une tâche <i class="fa fa-plus" aria-hidden="true"></i>
+        <% end %>
+      </h4>
     </div>
   </div>
 
