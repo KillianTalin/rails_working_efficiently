@@ -45,15 +45,13 @@ ActiveRecord::Schema.define(version: 20170824140917) do
     t.integer  "project_id"
     t.string   "name"
     t.integer  "forecast_duration"
-    t.integer  "real_duration"
-    t.string   "category"
-    t.integer  "productivity_score"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "user_id"
-    t.datetime "starts_at"
-    t.datetime "ends_at"
     t.integer  "elapsed_time"
+    t.text     "description"
+    t.boolean  "mit_task"
+    t.boolean  "secondary_task"
     t.index ["project_id"], name: "index_tasks_on_project_id", using: :btree
     t.index ["user_id"], name: "index_tasks_on_user_id", using: :btree
   end

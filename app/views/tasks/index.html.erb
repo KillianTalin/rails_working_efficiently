@@ -23,7 +23,7 @@
     <div class="card_task_dashboard">
       <div><b> <%= task.name.capitalize %> </b> </div>
       <div>Durée: <%= task.forecast_duration %> </div>
-      <div>Real duration: <%= task.real_duration %></div>
+      <div>Real duration: <%= task.elapsed_time %></div>
       <div><%= task.id %></div>
       <%= link_to edit_project_task_path(task.project, task) do %>
         <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -37,7 +37,7 @@
       <h4 class="text-center">
         Ajouter une tâche <i class="fa fa-plus" aria-hidden="true"></i>
       </h4>
-      <%= simple_form_for [@project, @task], url: project_tasks_path do |f| %>
+      <%= simple_form_for [@project, @task] do |f| %>
         <%= f.input :name %>
         <%= f.input :forecast_duration %>
         <%= f.hidden_field :project_id, value: @project.id %>

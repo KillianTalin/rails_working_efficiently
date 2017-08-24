@@ -37,7 +37,6 @@ projects_attributes = [
     name: "Faire un site pour Poulpe",
     start_date: 20170320,
     end_date: 20170820,
-    avg_productivity_score: 88.3,
     total_worktime: 4.2
   }
 ]
@@ -47,23 +46,12 @@ puts 'Creating tasks...'
 tasks_attributes = [
   {
     name: "Finir le cahier des charges",
-    forecast_duration: 60,
-    real_duration: 50,
-    category: "MIT",
-    productivity_score: 4,
-    starts_at: 20170320,
-    ends_at: 20170820,
     project: Project.first,
     user: User.first
   },
   {
     name: "Réaliser le DB model",
     forecast_duration: 60,
-    real_duration: 50,
-    category: "Secondary",
-    productivity_score: 4,
-    starts_at: 20170420,
-    ends_at:20170920,
     project: Project.first,
     user: User.first
   }
