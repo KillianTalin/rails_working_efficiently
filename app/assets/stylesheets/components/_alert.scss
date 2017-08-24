@@ -4,12 +4,16 @@
 
 .alert {
   margin: 0;
+  margin-top: 100px;
   text-align: center;
   color: white;
+  height: 80px;
 }
 .alert-info {
   background: $green;
+  z-index: 100;
 }
 .alert-warning {
   background: $red;
+  z-index: 100;
 }
