@@ -43,4 +43,4 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:name, :user_id, :start_date, :end_date, :color, :total_worktime)
   end
-# end
+end
