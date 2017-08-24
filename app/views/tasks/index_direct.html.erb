@@ -1,9 +1,5 @@
 <div class="container">
-  <h1 class="text-center">Dashbord
-    <%= link_to new_task_path do %>
-      <i class="fa fa-plus" aria-hidden="true"></i>
-    <% end %>
-  </h1>
+  <h1 class="text-center">Dashboard</h1>
     <div class="col-sm-2">
       <h4>My projects</h4>
 
@@ -34,11 +30,10 @@
         <div><b> <%= task.name.capitalize %> </b> </div>
         <div>Durée: <%= task.forecast_duration %> </div>
         <div>Real duration: <%= task.real_duration %></div>
-        <div>Score: <%= task.productivity_score %></div>
-        <%= link_to edit_task_path(task) do %>
+        <%= link_to edit_project_task_path(task.project, task) do %>
           <i class="fa fa-pencil" aria-hidden="true"></i>
         <% end %>
-        <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <%= link_to project_task_path(task.project, task), method: :delete, data: { confirm: "Are you sure?" } do %>
           <i class="fa fa-times" aria-hidden="true"></i>
         <% end %>
       </div>
