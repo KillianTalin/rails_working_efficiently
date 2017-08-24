@@ -46,20 +46,12 @@ puts 'Creating tasks...'
 tasks_attributes = [
   {
     name: "Finir le cahier des charges",
-    forecast_duration: 60,
-    productivity_score: 4,
-    starts_at: 20170320,
-    ends_at: 20170820,
     project: Project.first,
     user: User.first
   },
   {
     name: "Réaliser le DB model",
     forecast_duration: 60,
-    real_duration: 50,
-    productivity_score: 4,
-    starts_at: 20170420,
-    ends_at:20170920,
     project: Project.first,
     user: User.first
   }
