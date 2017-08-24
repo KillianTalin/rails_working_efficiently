@@ -52,8 +52,6 @@ function initializeClock(id, starttime) {
     buttonPause.classList.remove("hidden");
   });
 
-  // buttonFinish.addEventListener("click", (event) => {
+// Maintain Clock progress accross Pages
 
-    // console.log(`localhost:3000/tasks/1/update?t=t`);
-  // });
 }
