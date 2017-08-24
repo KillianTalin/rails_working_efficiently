@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks, only: [:index]
   end
-resources :tasks, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :tasks, only: [:show, :new, :create, :edit, :update, :destroy]
+  get '/tasks', to: 'tasks#index_direct'
 end
