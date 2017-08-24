@@ -20,15 +20,15 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
 
       <div class="btn-timer-wrapper">
-        <div class="btn ma-btn btn-lg" id="button-pause">
+        <div class="btn ma-btn btn-lg btn-timer" id="button-pause">
         Pause
         </div>
-        <div class="btn ma-btn btn-lg hidden" id="button-restart">
+        <div class="btn ma-btn btn-lg hidden btn-timer" id="button-restart">
         Resume
         </div>
         <%= simple_form_for [@project, @task] do |f| %>
           <%= f.input :elapsed_time, as: :hidden %>
-          <div class="" id="button-finish">
+          <div class="btn-timer" id="button-finish">
             <%= f.submit 'Finish', class: "btn ma-btn btn-lg" %>
           </div>
         <% end %>
@@ -39,7 +39,11 @@
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <div class="timer-description">
-      <h4>  <%= @task.name %> </h4>
+      <% if @task.mit_task == true %>
+        <h4> MIT Task : <%= @task.name %></h4>
+      <% else %>
+        <h4> Secondary Task : <%= @task.name %></h4>
+      <% end %>
       <h4> Temps estimé : <%= @task.forecast_duration %>min</h2>
       </div>
     </div>

@@ -47,13 +47,17 @@ tasks_attributes = [
   {
     name: "Finir le cahier des charges",
     project: Project.first,
-    user: User.first
+    user: User.first,
+    mit_task: true,
+    secondary_task: false
   },
   {
     name: "Réaliser le DB model",
     forecast_duration: 60,
     project: Project.first,
-    user: User.first
+    user: User.first,
+    mit_task: false,
+    secondary_task: true
   }
 ]
 Task.create!(tasks_attributes)
