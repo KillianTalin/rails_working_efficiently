@@ -16,6 +16,9 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    unless @project.client
+      @project.client = Client.create(name: params[:project][:client][:name])
+    end
     @project.save
   end
 
@@ -41,6 +44,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :user_id, :start_date, :end_date, :color, :total_worktime)
+    params.require(:project).permit(:name, :user_id, :start_date, :end_date, :color, :total_worktime, :client_id)
   end
 end
