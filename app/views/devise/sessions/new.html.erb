@@ -1,15 +1,37 @@
-<h2>Log in</h2>
+<div class="contents">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4 bg-white padded device-form-container">
+				<h2 class="color-green"> Connect</h2>
+				<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+				  <div class="form-inputs color-green">
+					
+					<div style="position: relative;">
+				    <%= f.input :email, required: false, autofocus: true, placeholder: "Email address", label: false%>
+				    <i class="fa fa-envelope-o" style="position: absolute;right: 8px; top: 10px;"></i>
+				    </div>
+					
+					<div style="position: relative;">
+				    <%= f.input :password, required: false, placeholder: "Password", label: false %>
+				    <i class="fa fa-lock" style="position: absolute;right: 8px; top: 10px;"></i>
+				    </div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+				    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+				  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+				  <div class="form-actions text-center">
+				    <%= f.button :submit, "Connect", class: "btn-medium" %>
+				  </div>
+				<% end %>
+					<div style="width: 100%; height: 10px; border-bottom: 1px solid black; text-align: center; position : relative; margin-bottom: 30px;">
+						  <span style="font-size: 10px; color:black; background-color: white; padding: 0 10px; margin: 2px; margin-left: -15px; position: absolute;">
+						    Or
+						  </span>
+					</div>
+				<div class="text-center">	
+				<%= render "devise/shared/links" %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
