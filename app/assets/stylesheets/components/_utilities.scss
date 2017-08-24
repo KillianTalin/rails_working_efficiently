@@ -135,10 +135,13 @@ body {
 }
 
 .spaced {
-  margin-top : 40px!important;
+  margin-top: 40px!important;
   margin-bottom: 40px!important;
 }
 
+.full-sized {
+  height: calc(100vh - 60px)
+}
 // Border style 
 
 .box-shadowed{
@@ -170,10 +173,13 @@ body {
 }
 
 .device-form-container {
-  margin-top: 20px
+  margin-top: 100px;
 }
 
 
+.color-green {
+  color: $emerald;
+}
 
 
 
