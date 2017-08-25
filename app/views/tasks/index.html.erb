@@ -25,7 +25,10 @@
   <h4>A faire</h4>
   <% @tasks_no_realised.each do |task| %>
     <div class="card_task_dashboard">
-      <div><b> <%= task.name.capitalize %> </b> </div>
+      <div><b>
+      <%= link_to project_task_path(task.project, task) do %>
+      <%= task.name.capitalize %> </b>
+      <% end %></div>
       <div>Durée: <%= task.forecast_duration %> </div>
       <div>Real duration: <%= task.elapsed_time %></div>
       <div><%= task.id %></div>

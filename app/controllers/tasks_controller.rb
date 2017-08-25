@@ -41,6 +41,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user_id = current_user.id
+    @task.elapsed_time = 0
     @task.project = @project
     authorize(@task)
       if @task.save
@@ -56,7 +57,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to root_path, notice: 'Task was successfully updated.'
+      redirect_to project_tasks_path(@task.project), notice: 'Task was successfully updated.'
     else
       render :new
     end
