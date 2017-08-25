@@ -121,6 +121,11 @@ body {
   margin-top: 30px;
 }
 
+.margin-top-max {
+  margin-top: 15vh;
+}
+
+
 .margin-bottom-classic{
   margin-bottom: 30px;
 }
@@ -190,7 +195,13 @@ color: rgba(82, 196, 132, 1.00);
   color: $emerald;
 }
 
-  
 
+// Photos 
+
+.photo-background {
+  position: relative;
+  background-image: url("back.jpg");
+  background-size: cover!important;
+}
 
 

@@ -1,0 +1,48 @@
+<!-- Display here the page with the hour/tasks/etc -->
+
+
+<div class="container">
+	<div class=" full-sized margin-top-classic">
+		<div class="row ">
+			<div class="col-xs-12">
+				<div class="citation"> </div>
+				<div class="time text-center text-black" style="font-size: 160px;">
+					<%= Time.now.strftime("%H:%M")%>
+				</div>
+				<div class="welcome text-black text-center"> 
+					<% if @selected_tasks.count == 0 %>
+						 <h2><%= current_user.first_name %>, you have nothing left to do ! You Rock ! ✌🏻 </h2> 
+					<% else %>
+					<h2>Hey <%= current_user.first_name %>, you still have <%= @selected_tasks.count %> MIT to do! Hurry up ! 🚀 </h2>
+					<% end %>
+				 </div>
+			</div>
+		</div>
+		<div class="row text-align">
+			<div class="col-xs-12">
+				<% @selected_tasks.each do |task| %>
+
+					<div class="task_card box-shadowed text-center">
+						<div class="l1">
+							<div class="duration">
+								<h2><%= task.forecast_duration %>min</h2> 
+							</div>
+							<div class="task_name">
+								<h2><%= task.name %></h2> 
+							</div>
+							<div class="timer_btn">
+								<i class="fa fa-play-circle"></i>
+							</div>
+						</div>
+						<div class="l2">
+							<div class="project_name">
+								<%= task.project.name %>
+							</div>
+						</div>
+					</div>
+
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
