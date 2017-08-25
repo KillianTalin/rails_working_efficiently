@@ -63,7 +63,7 @@ tasks_attributes = [
     mit_task: true,
     secondary_task: false,
     elapsed_time: 0,
-    done: false
+    done: false,
     selected: true
   },
   {
@@ -74,7 +74,7 @@ tasks_attributes = [
     mit_task: false,
     secondary_task: true,
     elapsed_time: 0,
-    done: false
+    done: false,
     selected: true
   }
 ]
