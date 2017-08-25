@@ -1,2 +1,40 @@
 <!-- Display here the page with the hour/tasks/etc -->
-<!-- Peut etre ne pas séparer dès aujourd'hui les MIT et Secondary vu que je n'ai pas eu le temps de le faire dans le back end -->
+
+
+<div class="container">
+	<div class=" full-sized margin-top-classic">
+		<div class="row ">
+			<div class="col-xs-12">
+				<div class="citation"> </div>
+				<div class="time"></div>
+				<div class="welcome">Bienvenue <%= current_user.first_name %>, you still have <%= @selected_tasks.count%> to do ! Hurry up ! </div>
+			</div>
+		</div>
+		<div class="row text-align">
+			<div class="col-xs-12">
+				<% @selected_tasks.each do |task| %>
+
+					<div class="task_card">
+						<div class="l1">
+							<div class="duration">
+								<%= task.forecast_duration %>
+							</div>
+							<div class="task_name">
+								<%= task.name %>
+							</div>
+							<div class="timer_btn">
+								btn 
+							</div>
+						</div>
+						<div class="l2">
+							<div class="project_name">
+								<%= task.project.name %>
+							</div>
+						</div>
+					</div>
+
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
