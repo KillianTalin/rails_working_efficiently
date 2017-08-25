@@ -31,7 +31,9 @@
                   <h3><%= task.name %></h3> 
                 </div>
                 <div class="timer_btn">
-                  <i class="fa fa-play-circle"></i>
+                  <%= link_to project_task_path(task.project, task) do %>
+                    <i class="fa fa-play-circle"></i>
+                 <% end %>
                 </div>
               </div>
               <div class="l2">

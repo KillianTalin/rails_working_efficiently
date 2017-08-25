@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     @tasks = policy_scope(Task).where(project_id: @project)
     @tasks_finished = @tasks.where(done: true)
     @tasks_no_realised = @tasks.where(elapsed_time: 0)
-    @tasks_futur = @tasks.where("elapsed_time > ?", 0)
+    @tasks_futur = @tasks.where("elapsed_time > ?", 0).where(done: false)
     @time = @tasks.sum(:elapsed_time)
     @projects = Project.where(user_id: current_user.id)
     @date = @project.end_date
@@ -57,6 +57,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
+      @task.update(done: true) if params[:task][:done]
       redirect_to project_tasks_path(@task.project), notice: 'Task was successfully updated.'
     else
       render :new
@@ -70,6 +71,9 @@ class TasksController < ApplicationController
 
   def index_direct
     @tasks = policy_scope(Task).where(user: current_user)
+    @tasks_finished = @tasks.where(done: true)
+    @tasks_no_realised = @tasks.where(elapsed_time: 0)
+    @tasks_futur = @tasks.where("elapsed_time > ?", 0)
     @time = @tasks.sum(:elapsed_time)
     @projects = Project.where(user_id: current_user.id)
     # @score = (@tasks.average(:productivity_score).round(2) / 5) * 100

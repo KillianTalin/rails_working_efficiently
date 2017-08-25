@@ -22,7 +22,7 @@
 
   <div class="col-sm-6">
 <% unless @tasks_no_realised.empty? %>
-  <h4>A faire</h4>
+  <h4>To do</h4>
   <% @tasks_no_realised.each do |task| %>
     <div class="card_task_dashboard">
       <div><b>
@@ -44,8 +44,8 @@
 
 <% unless @tasks_finished.empty? %>
 
-  <h4>En cours</h4>
-  <% @tasks_finished.each do |task| %>
+  <h4>In progress</h4>
+  <% @tasks_futur.each do |task| %>
     <div class="card_task_dashboard">
       <div><b> <%= task.name.capitalize %> </b> </div>
       <div>Durée: <%= task.forecast_duration %> </div>
@@ -62,7 +62,7 @@
     <% end %>
 
 <% unless @tasks_finished.empty? %>
-  <h4>Finis</h4>
+  <h4>Finished</h4>
   <% @tasks_finished.each do |task| %>
     <div class="card_task_dashboard">
       <div><b> <%= task.name.capitalize %> </b> </div>
@@ -93,8 +93,8 @@
 
   <div class="col-sm-3" id="la">
     <h4>Data</h4>
-    <p>Échéance: <%= @date %></p>
-    <p>Productivity score:</p>
+    <p>Deadline: <%= @date %></p>
+    <p>Progress:</p>
     <div class="clearfix">
       <div class="c100 p<%= @avancement.to_i %> big">
           <span><%= @avancement %>%</span>
@@ -104,7 +104,7 @@
           </div>
       </div>
     </div>
-    <p>Total time: <%= @time %> min</p>
+    <p>Total time: <%= @time %> seconds</p>
   </div>
 
 </div>
