@@ -69,6 +69,10 @@ class TasksController < ApplicationController
     # @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
   end
 
+  def select_task
+    @task = task.find(params[:task_id])
+    @task.selected = true
+    @task.save
   private
 
   def task_set
