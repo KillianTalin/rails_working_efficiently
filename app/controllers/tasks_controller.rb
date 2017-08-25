@@ -73,6 +73,7 @@ class TasksController < ApplicationController
     @task = task.find(params[:task_id])
     @task.selected = true
     @task.save
+  end
   private
 
   def task_set
@@ -88,4 +89,5 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:name, :project_id, :name, :starts_at, :ends_at, :elapsed_time, :forecast_duration, :category, :productivity_score, :tag_id,)
   end
+
 end
