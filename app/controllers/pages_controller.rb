@@ -14,10 +14,6 @@ class PagesController < ApplicationController
 
   def select_tasks
     @projects = current_user.projects
-    @projects.each do |project|
-      @project.tasks
-    end
   # Formulaire avec checkbox
   end
-
 end
