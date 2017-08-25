@@ -1,0 +1,17 @@
+  <div class="row">
+    <% @projects.each do |project| %>
+      <div class="col-xs-12 col-sm-4 col-md-4">
+        <div class="project">
+
+        </div>
+      </div>
+    </div>
+  <% @task.mit_task = true %>
+<% else %>
+  <!-- Put here a display of projects with the associated tasks -->
+  <% @task.secondary_task = true %>
+<% end %>
+
+
+<!-- Form tag avec checkbox -->
+<!-- Submit qui part vers list_tasks avec form action-->

@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
   resources :clients
   get '/tasks', to: 'tasks#index_direct'
+  get '/select_tasks', to: 'pages#select_tasks'
 end
