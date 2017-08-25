@@ -11,7 +11,7 @@
           <% if @selected_tasks.count == 0 %>
              <h2><%= current_user.first_name %>, you have nothing left to do ! You Rock ! ✌🏻 </h2>
           <% else %>
-          <h2>Hey <%= current_user.first_name %>, you still have <%= @selected_tasks.count %> MIT to do! Hurry up ! 🚀 </h2>
+          <h2>Hey <%= current_user.first_name %>, you still have <%= @selected_tasks.count %> tasks to do! Hurry up ! 🚀 </h2>
           <% end %>
          </div>
       </div>
