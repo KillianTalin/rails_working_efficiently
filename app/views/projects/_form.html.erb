@@ -8,11 +8,10 @@
         <%= f.input :price_per_day %>
         <h3>Client</h3>
         <%= f.association :client %>
-        <%= f.fields_for :client do |client| %>
-          <%= client.input :name %>
-        <% end %>
+    <input class="form-control string optional" type="text" name="client[name]" id="new_client_name">
         <%= f.submit %>
       <% end %>
+<!-- -->
     </div>
   </div>
 </div>
