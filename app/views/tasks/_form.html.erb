@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-sm-4 col-sm-offset-4">
-          <%= simple_form_for [@project, @task], url: project_tasks_path, :method => :post do |f| %>
+          <%= simple_form_for [@project, @task] do |f| %>
         <%= f.input :name %>
         <%= f.input :forecast_duration %>
     <div class="text-center">
