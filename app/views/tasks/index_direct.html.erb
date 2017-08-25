@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-black">
   <h1 class="text-center">Dashboard</h1>
     <div class="col-sm-2">
       <h4>My projects</h4>
@@ -15,7 +15,7 @@
       <div class="test">
         <form action="/tasks" method="get">
           Du:
-          <input type="date" name="between_first" placeholder="What kind of food?">
+          <input type="date" name="between_first">
           Au:
           <input type="date" name="between_last">
 
@@ -24,22 +24,64 @@
 
   </div>
   <div class="col-sm-6">
-  <h4>My tasks</h4>
-      <% @tasks.each do |task| %>
-      <div class="card_task_dashboard">
-        <div><b> <%= task.name.capitalize %> </b> </div>
-        <div>Durée: <%= task.forecast_duration %> </div>
-        <div>Real duration: <%= task.elapsed_time %></div>
-        <%= link_to edit_project_task_path(task.project, task) do %>
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        <% end %>
-        <%= link_to project_task_path(task.project, task), method: :delete, data: { confirm: "Are you sure?" } do %>
-          <i class="fa fa-times" aria-hidden="true"></i>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+<% unless @tasks_no_realised.empty? %>
+  <h4>To do</h4>
+  <% @tasks_no_realised.each do |task| %>
+    <div class="card_task_dashboard">
+      <div><b>
+      <%= link_to project_task_path(task.project, task) do %>
+      <%= task.name.capitalize %> </b>
+      <% end %></div>
+      <div>Durée: <%= task.forecast_duration %> </div>
+      <div>Real duration: <%= task.elapsed_time %></div>
+      <div><%= task.id %></div>
+      <%= link_to edit_project_task_path(task.project, task) do %>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to project_task_path(task.project.id, task.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fa fa-times" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <% end %>
 
+<% unless @tasks_finished.empty? %>
+
+  <h4>In progress</h4>
+  <% @tasks_futur.each do |task| %>
+    <div class="card_task_dashboard">
+      <div><b> <%= task.name.capitalize %> </b> </div>
+      <div>Durée: <%= task.forecast_duration %> </div>
+      <div>Real duration: <%= task.elapsed_time %></div>
+      <div><%= task.id %></div>
+      <%= link_to edit_project_task_path(task.project, task) do %>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to project_task_path(task.project.id, task.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fa fa-times" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  <% end %>
+    <% end %>
+
+<% unless @tasks_finished.empty? %>
+  <h4>Finished</h4>
+  <% @tasks_finished.each do |task| %>
+    <div class="card_task_dashboard">
+      <div><b> <%= task.name.capitalize %> </b> </div>
+      <div>Durée: <%= task.forecast_duration %> </div>
+      <div>Real duration: <%= task.elapsed_time %></div>
+      <div><%= task.id %></div>
+      <%= link_to edit_project_task_path(task.project, task) do %>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to project_task_path(task.project.id, task.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fa fa-times" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+</div>
   <div class="col-sm-3" id="la">
     <h4>Data</h4>
     <p>Productivity score:</p>
