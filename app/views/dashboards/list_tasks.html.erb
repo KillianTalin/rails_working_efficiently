@@ -1,45 +1,50 @@
-
-<div class="container">
-  <div class=" full-sized margin-top-classic">
-    <div class="row ">
-      <div class="col-xs-12">
-        <div class="citation"> </div>
-        <div class="time text-center text-black" style="font-size: 160px;">
-          <%= Time.now.strftime("%H:%M")%>
-        </div>
-        <div class="welcome text-black text-center">
-          <% if @selected_tasks.count == 0 %>
-             <h2><%= current_user.first_name %>, you have nothing left to do ! You Rock ! ✌🏻 </h2>
-          <% else %>
-          <h2>Hey <%= current_user.first_name %>, you still have <%= @selected_tasks.count %> tasks to do! Hurry up ! 🚀 </h2>
-          <% end %>
-         </div>
-      </div>
-    </div>
-    <div class="row text-align">
-      <div class="col-xs-12">
-        <% @selected_tasks.each do |task| %>
-
-          <div class="task_card box-shadowed">
-            <div class="l1">
-              <div class="duration">
-                <%= task.forecast_duration %>
-              </div>
-              <div class="task_name">
-                <%= task.name %>
-              </div>
-              <div class="timer_btn">
-                <p><%= link_to 'Start', project_task_path(task.project, task) %></p>
-              </div>
-            </div>
-            <div class="l2">
-              <div class="project_name">
-                <%= task.project.name %>
-              </div>
-            </div>
+<!-- Display here the page with the hour/tasks/etc -->
+<% content_for :body_id, "dashboard_user" %>
+<div class="photo-background">
+  <div class="container">
+    <div class=" full-sized margin-top-max">
+      <div class="row ">
+        <div class="col-xs-12">
+          <div class="citation"> </div>
+          <div class="time text-center text-white" style="font-size: 160px;">
+            <%= Time.now.strftime("%H:%M")%>
           </div>
+          <div class="welcome text-white text-center margin-top-classic"> 
+            <% if @selected_tasks.count == 0 %>
+               <h2><%= current_user.first_name %>, you have nothing left to do ! You Rock ! ✌🏻 </h2> 
+            <% else %>
+            <h2>Hey <%= current_user.first_name %>, you still have <%= @selected_tasks.count %> MIT to do ! Hurry up ! 🚀 </h2>
+            <% end %>
+           </div>
+        </div>
+      </div>
+      <div class="row text-align">
+        <div class="col-xs-12">
+          <% @selected_tasks.each do |task| %>
 
-        <% end %>
+            <div class="task_card box-shadowed text-center">
+              <div class="l1">
+                <div class="duration">
+                  <h3><%= task.forecast_duration %>min</h3> 
+                </div>
+                <div class="task_name">
+                  <h3><%= task.name %></h3> 
+                </div>
+                <div class="timer_btn">
+                  <%= link_to project_task_path(task.project, task) do %>
+                    <i class="fa fa-play-circle"></i>
+                 <% end %>
+                </div>
+              </div>
+              <div class="l2">
+                <div class="project_name">
+                  <h4><%= task.project.name %></h4> 
+                </div>
+              </div>
+            </div>
+
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
