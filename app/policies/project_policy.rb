@@ -25,7 +25,11 @@ class ProjectPolicy < ApplicationPolicy
     record.user == user
   end
 
-  def index_direct?
+  def select_tasks?
     true
+  end
+
+  def index_direct?
+    record.user == user
   end
 end

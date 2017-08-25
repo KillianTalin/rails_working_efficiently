@@ -5,8 +5,8 @@ class PagesController < ApplicationController
   end
 
   def list_tasks
-    @selected_tasks = current_user.tasks.where(selected: true)
-    redirect_to select_tasks_path if @select_tasks.blank?
+    @select_tasks = current_user.tasks.where(selected: true)
+    redirect_to dashboards_select_tasks_path if @select_tasks.blank?
   end
 
   def select_tasks
