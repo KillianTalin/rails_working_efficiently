@@ -61,6 +61,8 @@ tasks_attributes = [
     user: User.first,
     mit_task: true,
     secondary_task: false,
+    elapsed_time: 0,
+    done: false
     selected: true
   },
   {
@@ -70,6 +72,8 @@ tasks_attributes = [
     user: User.first,
     mit_task: false,
     secondary_task: true,
+    elapsed_time: 0,
+    done: false
     selected: true
   }
 ]
