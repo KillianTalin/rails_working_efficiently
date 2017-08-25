@@ -10,6 +10,7 @@ puts 'Cleaning database...'
 Task.destroy_all
 Project.destroy_all
 User.destroy_all
+Client.destroy_all
 
 puts 'Creating users...'
 users_attributes = [
@@ -30,6 +31,14 @@ users_attributes = [
 ]
 User.create!(users_attributes)
 
+puts 'creating clients...'
+clients_attributes = [
+{
+  name: "Michel"
+  }
+]
+Client.create!(clients_attributes)
+
 puts 'Creating projects...'
 projects_attributes = [
   {
@@ -37,7 +46,8 @@ projects_attributes = [
     name: "Faire un site pour Poulpe",
     start_date: 20170320,
     end_date: 20170820,
-    total_worktime: 4.2
+    total_worktime: 4.2,
+    client: Client.first
   }
 ]
 Project.create!(projects_attributes)
