@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :task_set, only: [:show, :edit, :update, :destroy]
+  before_action :task_set, only: [:show, :edit, :update, :destroy, :select]
   before_action :project_set, only: [:index, :show, :create, :edit, :update, :destroy]
 
   def index
@@ -75,10 +75,11 @@ class TasksController < ApplicationController
     # @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
   end
 
-  def select_task
-    @task = task.find(params[:task_id])
+  def select
+    @task = Task.find(params[:id])
     @task.selected = true
     @task.save
+    redirect_to dashboards_select_tasks_path
   end
 
   private
@@ -96,4 +97,5 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:name, :project_id, :name, :starts_at, :ends_at, :elapsed_time, :forecast_duration, :category, :productivity_score, :tag_id,)
   end
+
 end

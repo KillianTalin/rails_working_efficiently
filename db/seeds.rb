@@ -43,6 +43,7 @@ puts 'Creating projects...'
 projects_attributes = [
   {
     user: User.first,
+    client: Client.first,
     name: "Faire un site pour Poulpe",
     start_date: 20170320,
     end_date: 20170820,
@@ -56,12 +57,14 @@ puts 'Creating tasks...'
 tasks_attributes = [
   {
     name: "Finir le cahier des charges",
+    forecast_duration: 40,
     project: Project.first,
     user: User.first,
     mit_task: true,
     secondary_task: false,
     elapsed_time: 0,
-    done: false
+    done: false,
+    selected: true
   },
   {
     name: "Réaliser le DB model",
@@ -71,7 +74,8 @@ tasks_attributes = [
     mit_task: false,
     secondary_task: true,
     elapsed_time: 0,
-    done: false
+    done: false,
+    selected: true
   }
 ]
 Task.create!(tasks_attributes)
