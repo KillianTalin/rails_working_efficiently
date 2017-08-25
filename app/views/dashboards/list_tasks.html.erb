@@ -9,11 +9,11 @@
           <div class="time text-center text-white" style="font-size: 160px;">
             <%= Time.now.strftime("%H:%M")%>
           </div>
-          <div class="welcome text-white text-center margin-top-classic"> 
+          <div class="welcome text-white text-center margin-top-classic">
             <% if @selected_tasks.count == 0 %>
-               <h2><%= current_user.first_name %>, you have nothing left to do ! You Rock ! ✌🏻 </h2> 
+               <h2><%= current_user.first_name %>, you have nothing left to do ! You Rock ! ✌🏻 </h2>
             <% else %>
-            <h2>Hey <%= current_user.first_name %>, you still have <%= @selected_tasks.count %> MIT to do ! Hurry up ! 🚀 </h2>
+            <h2>Hey <%= current_user.first_name %>, you still have <%= @selected_tasks.count %> tasks to do ! Hurry up ! 🚀 </h2>
             <% end %>
            </div>
         </div>
@@ -25,10 +25,10 @@
             <div class="task_card box-shadowed text-center">
               <div class="l1">
                 <div class="duration">
-                  <h3><%= task.forecast_duration %>min</h3> 
+                  <h3><%= task.forecast_duration %>min</h3>
                 </div>
                 <div class="task_name">
-                  <h3><%= task.name %></h3> 
+                  <h3><%= task.name %></h3>
                 </div>
                 <div class="timer_btn">
                   <%= link_to project_task_path(task.project, task) do %>
@@ -38,7 +38,7 @@
               </div>
               <div class="l2">
                 <div class="project_name">
-                  <h4><%= task.project.name %></h4> 
+                  <h4><%= task.project.name %></h4>
                 </div>
               </div>
             </div>
