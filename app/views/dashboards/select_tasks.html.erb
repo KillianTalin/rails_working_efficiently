@@ -1,0 +1,25 @@
+<div class="container text-black">
+  <h2 class="text-center"> Quelles sont les tâches que tu veux effectuer aujourd'hui ?</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <% @projects.each do |project| %>
+        <h3> <%= project.name %> </h3>
+        <div class="task-list">
+          <% project.tasks.each do |task| %>
+            <%= simple_form_for task, url: select_task_path(task), method: :patch do |f| %>
+              <h5> <%= task.name %> </h5>
+              <% if task.selected %>
+              <%= f.button :submit, "Select task", class: "btn btn-secondary"%>
+              <% else %>
+              <%= f.button :submit, "Select task", class: "btn btn-primary"%>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Faire des simple form en remote true en ajax pour éviter que ça recharge -->
+

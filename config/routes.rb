@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   end
+  resources :tasks, only: [] do
+    patch :select, on: :member
+  end
   resources :clients
-  get '/select_tasks', to: 'pages#select_tasks'
-  get '/list_tasks', to: 'pages#list_tasks'
   get '/tasks', to: 'tasks#index_direct'
+  get '/dashboards/select_tasks', to: 'dashboards#select_tasks'
+  get '/dashboards', to: 'dashboards#list_tasks'
 end
