@@ -25,6 +25,16 @@ class TaskPolicy < ApplicationPolicy
     true
   end
 
+  def select?
+    is_user_the_owner?
+  end
+
+  def list_tasks?
+    record.each do |r|
+      r.user == user
+    end
+  end
+
   private
 
   def is_user_the_owner?
