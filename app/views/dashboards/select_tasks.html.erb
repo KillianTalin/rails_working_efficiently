@@ -1,5 +1,5 @@
 <div class="container text-black">
-  <h2 class="text-center"> Quelles sont les tâches que tu veux effectuer aujourd'hui ?</h2>
+  <h2 class="text-center"> Quelles tâches veux-tu effectuer aujourd'hui ? :-) </h2>
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <% @projects.each do |project| %>
@@ -17,6 +17,11 @@
           <% end %>
         </div>
       <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center">
+      <%= link_to "C'est parti", dashboards_path, class: "btn btn-primary", id: "button-lets-go" %>
     </div>
   </div>
 </div>

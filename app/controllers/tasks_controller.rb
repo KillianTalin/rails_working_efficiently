@@ -57,6 +57,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
+      @task.update(done: true) if params[:task][:done]
       redirect_to project_tasks_path(@task.project), notice: 'Task was successfully updated.'
     else
       render :new

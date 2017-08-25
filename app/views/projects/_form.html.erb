@@ -1,17 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-offset-4 col-sm-4">
+    <h3 class="text-center text-black">Create a project</h3>
       <%= simple_form_for(project) do |f| %>
-        <%= f.input :name %>
-        <%= f.input :description %>
-        <%= f.input :end_date %>
-        <%= f.input :price_per_day %>
-        <h3>Client</h3>
-        <%= f.association :client %>
-    <input class="form-control string optional" type="text" name="client[name]" id="new_client_name">
-        <%= f.submit %>
-      <% end %>
-<!-- -->
+
+        <%= f.input :name, placeholder:"Project Name", label: false %>
+        <%= f.input :description, placeholder:"Description", label: false%>
+        <div class="form-inline">
+          <h5 class="text-black"> End Date</h5>
+          <%= f.input :end_date, label: false%>
+        </div>
+        <%= f.input :price_per_day, placeholder:"Price per day", label: false, class: "price_per_day" %>
+        <%= f.association :client, prompt:"Select an existing Client", label: false %>
+    <input class="form-control string optional" type="text" name="client[name]" id="new_client_name" placeholder = "Add a new client">
+      <div class="text-center">
+          <%= f.submit class: "btn btn-primary btn-md active pro-btn" %>
+      </div>
+    <% end %>
     </div>
   </div>
 </div>

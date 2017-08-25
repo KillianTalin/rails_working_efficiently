@@ -2,7 +2,7 @@
   <div class="row text-black">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
       <div id="clockdiv">
-        <h2 class="text-black">C'est parti !</h2>
+        <h1 class="text-black">C'est parti !</h1>
         <div>
           <span class="hours"></span>
           <div class="smalltext">Hours</div>
@@ -28,6 +28,7 @@
         </div>
         <%= simple_form_for [@project, @task] do |f| %>
           <%= f.input :elapsed_time, as: :hidden %>
+          <%= f.input :done, as: :hidden, input_html: {value: true} %>
           <div class="btn-timer" id="button-finish">
             <%= f.submit 'Finish', class: "btn ma-btn btn-lg" %>
           </div>
@@ -40,9 +41,9 @@
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <div class="timer-description">
       <% if @task.mit_task == true %>
-        <h4> MIT Task : <%= @task.name %></h4>
+        <h4> Tâche : <%= @task.name %></h4>
       <% else %>
-        <h4> Secondary Task : <%= @task.name %></h4>
+        <h4>  Tâche : <%= @task.name %></h4>
       <% end %>
       <h4> Temps estimé : <%= @task.forecast_duration %>min</h2>
       </div>

@@ -1,3 +1,22 @@
+#project_price_per_day {
+   margin-top: 10px
+}
+
+.form-inline {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-control.date.optional {
+  flex: 1 0 auto;
+}
+
+.pro-btn {
+  margin-top: 10px;
+  background-color: emerald;
+}
+
+
 .full-btn {
 
     cursor: pointer;
@@ -121,4 +140,8 @@
 .btn-timer {
   margin: 20px;
   margin-top: 25px;
+}
+
+#button-lets-go {
+  margin-top: 40px;
 }

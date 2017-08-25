@@ -47,8 +47,7 @@ projects_attributes = [
     name: "Faire un site pour Poulpe",
     start_date: 20170320,
     end_date: 20170820,
-    total_worktime: 4.2,
-    client: Client.first
+    total_worktime: 4.2
   }
 ]
 Project.create!(projects_attributes)
