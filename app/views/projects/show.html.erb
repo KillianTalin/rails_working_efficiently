@@ -1,2 +1,22 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
+<div class="container">
+
+  <h1><%= @project.name %></h1>
+  <p> <%=@project.end_date  %></p>
+  <p><%= @project.client.name %></p>
+
+  <%= link_to project_tasks_path(@project) do%>
+  <button class="btn-primary">Voir les tâches</button>
+  <% end %>
+
+  <%= link_to projects_path do%>
+  <button class="btn-primary">Voir les autres projects</button>
+  <% end %>
+
+  <%= link_to project_path(@project), method: :delete, data: { confirm: "Are you sure?" } do %>
+  <button class="btn-danger">Supprimer la tâche</button>
+  <% end %>
+
+</div>
+
+
+

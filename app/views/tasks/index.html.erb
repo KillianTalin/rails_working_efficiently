@@ -21,8 +21,9 @@
   </div>
 
   <div class="col-sm-6">
-  <h4>My tasks</h4>
-  <% @tasks.each do |task| %>
+<% unless @tasks_no_realised.empty? %>
+  <h4>A faire</h4>
+  <% @tasks_no_realised.each do |task| %>
     <div class="card_task_dashboard">
       <div><b> <%= task.name.capitalize %> </b> </div>
       <div>Durée: <%= task.forecast_duration %> </div>
@@ -36,6 +37,44 @@
       <% end %>
     </div>
   <% end %>
+  <% end %>
+
+<% unless @tasks_finished.empty? %>
+
+  <h4>En cours</h4>
+  <% @tasks_finished.each do |task| %>
+    <div class="card_task_dashboard">
+      <div><b> <%= task.name.capitalize %> </b> </div>
+      <div>Durée: <%= task.forecast_duration %> </div>
+      <div>Real duration: <%= task.elapsed_time %></div>
+      <div><%= task.id %></div>
+      <%= link_to edit_project_task_path(task.project, task) do %>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to project_task_path(task.project.id, task.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fa fa-times" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  <% end %>
+    <% end %>
+
+<% unless @tasks_finished.empty? %>
+  <h4>Finis</h4>
+  <% @tasks_finished.each do |task| %>
+    <div class="card_task_dashboard">
+      <div><b> <%= task.name.capitalize %> </b> </div>
+      <div>Durée: <%= task.forecast_duration %> </div>
+      <div>Real duration: <%= task.elapsed_time %></div>
+      <div><%= task.id %></div>
+      <%= link_to edit_project_task_path(task.project, task) do %>
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to project_task_path(task.project.id, task.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <i class="fa fa-times" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
     <div class="card_task_dashboard">
       <h4 class="text-center">
         Ajouter une tâche <i class="fa fa-plus" aria-hidden="true"></i>
@@ -51,10 +90,11 @@
 
   <div class="col-sm-3" id="la">
     <h4>Data</h4>
+    <p>Échéance: <%= @date %></p>
     <p>Productivity score:</p>
     <div class="clearfix">
-      <div class="c100 p<%= @score.to_i %> big">
-          <span><%= @score %>%</span>
+      <div class="c100 p<%= @avancement.to_i %> big">
+          <span><%= @avancement %>%</span>
           <div class="slice">
               <div class="bar"></div>
               <div class="fill"></div>
