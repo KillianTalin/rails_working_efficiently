@@ -21,9 +21,7 @@ class ProjectsController < ApplicationController
     if @project.client_id.nil?
       @project.client = Client.create(name: params[:client][:name])
     end
-
     if @project.save
-      raise
         redirect_to project_tasks_path(@project.id), notice: 'Project was successfully created 👍 Add a task now!'
       else
         render :new
@@ -40,8 +38,8 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-
     @project.destroy
+    redirect_to projects_path
   end
 
   private
