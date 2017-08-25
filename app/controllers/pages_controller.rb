@@ -16,6 +16,4 @@ class PagesController < ApplicationController
     end
   # Formulaire avec checkbox
     end
-  end
-
 end
