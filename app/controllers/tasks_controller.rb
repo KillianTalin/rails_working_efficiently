@@ -73,6 +73,8 @@ class TasksController < ApplicationController
     @task = task.find(params[:task_id])
     @task.selected = true
     @task.save
+  end
+
   private
 
   def task_set
