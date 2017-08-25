@@ -29,7 +29,7 @@
                 <%= task.name %>
               </div>
               <div class="timer_btn">
-                btn
+                <p><%= link_to 'Start', project_task_path(task.project, task) %></p>
               </div>
             </div>
             <div class="l2">
