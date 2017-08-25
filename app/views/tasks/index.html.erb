@@ -15,6 +15,9 @@
     <%= link_to tasks_path do %>
       <p class='<%= "active" unless params[:project_id].present? %>'>All tasks</p>
     <% end %>
+        <%= link_to new_project_path do %>
+      Add a new project<i class="fa fa-plus" aria-hidden="true"></i>
+    <% end %>
   </div>
 
   <div class="col-sm-6">

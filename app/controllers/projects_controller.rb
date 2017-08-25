@@ -11,15 +11,23 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    authorize @project
+    authorize(@project)
   end
 
   def create
     @project = Project.new(project_params)
+    @project.user = current_user
+    authorize(@project)
     unless @project.client
       @project.client = Client.create(name: params[:project][:client][:name])
     end
-    @project.save
+
+
+    if @project.save
+        redirect_to project_tasks_path(@project.id), notice: 'Project was successfully created 👍 Add a task now!'
+      else
+        render :new
+      end
   end
 
   def edit
