@@ -1,12 +1,15 @@
-<h1>My list of projects</h1>
-<% @projects.each do |project| %>
-  <h2><%= project.name %></h2>
-  <p><%= project.description %></p>
-  <p><%= project.end_date %></p>
-  <p><%= project.client_id %></p>
-  <p><%= project.price_per_day %></p>
-<% end %>
-
-    <%= link_to new_project_path do %>
-      <i class="fa fa-plus" aria-hidden="true"></i>
+<div class="container">
+  <%= link_to new_project_path do %>
+    <p class="text-center">Add a new project</p>
+  <% end %>
+  <h1>My list of projects</h1>
+  <% @projects.each do |project| %>
+    <%= link_to project_path(project) do%>
+    <h3><%= project.name %></h3>
     <% end %>
+    <p><%= project.description %></p>
+    <p>Échéance: <%= project.end_date %></p>
+    <p>Client: <%= project.client.name %></p>
+    <p>Prix journalier: <%= project.price_per_day %></p>
+  <% end %>
+</div>
