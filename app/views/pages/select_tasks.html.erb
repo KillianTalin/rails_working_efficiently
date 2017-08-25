@@ -1,7 +1,15 @@
 <!-- Boucle de simple form avec la tâche concernée  -->
 
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4"></div>
+  </div>
+</div>
+
+
 <% @projects.each do |project| %>
-  <%= project.name %>
+  <h3> <%= project.name %> </h3>
+
 <% end %>
 <!-- Griser le bouton select avec un if else s'il a déja cliqué dessus et déja été envoyé ves le tasks_controler -->
 <!-- Faire des simple form en remote true en ajax pour éviter que ça recharge -->
