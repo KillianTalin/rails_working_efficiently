@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     @tasks = policy_scope(Task).where(project_id: @project)
     @tasks_finished = @tasks.where(done: true)
     @tasks_no_realised = @tasks.where(elapsed_time: 0)
-    @tasks_futur = @tasks.where("elapsed_time > ?", 0)
+    @tasks_futur = @tasks.where("elapsed_time > ?", 0).where(done: false)
     @time = @tasks.sum(:elapsed_time)
     @projects = Project.where(user_id: current_user.id)
     @date = @project.end_date
