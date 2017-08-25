@@ -57,6 +57,7 @@ puts 'Creating tasks...'
 tasks_attributes = [
   {
     name: "Finir le cahier des charges",
+    forecast_duration: 40,
     project: Project.first,
     user: User.first,
     mit_task: true,
