@@ -1,15 +1,2 @@
-<% if has_selected_mit %>
-  <!-- Put here a display of projects with the associated tasks -->
-  <div class="row">
-    <% @projects.each do |project| %>
-      <div class="col-xs-12 col-sm-4 col-md-4">
-        <div class="project">
-
-        </div>
-      </div>
-    </div>
-  <% @task.mit_task = true %>
-<% else %>
-  <!-- Put here a display of projects with the associated tasks -->
-  <% @task.secondary_task = true %>
-<% end %>
+<!-- Display here the page with the hour/tasks/etc -->
+<!-- Peut etre ne pas séparer dès aujourd'hui les MIT et Secondary vu que je n'ai pas eu le temps de le faire dans le back end -->

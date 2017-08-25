@@ -1,17 +1,7 @@
-  <div class="row">
-    <% @projects.each do |project| %>
-      <div class="col-xs-12 col-sm-4 col-md-4">
-        <div class="project">
-
-        </div>
-      </div>
-    </div>
-  <% @task.mit_task = true %>
-<% else %>
-  <!-- Put here a display of projects with the associated tasks -->
-  <% @task.secondary_task = true %>
-<% end %>
+<!-- Boucle de simple form avec la tâche concernée  -->
 
 
-<!-- Form tag avec checkbox -->
+<!-- Griser le bouton select avec un if else s'il a déja cliqué dessus et déja été envoyé ves le tasks_controler -->
+<!-- Faire des simple form en remote true en ajax pour éviter que ça recharge -->
+
 <!-- Submit qui part vers list_tasks avec form action-->
