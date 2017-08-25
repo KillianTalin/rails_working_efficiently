@@ -13,5 +13,4 @@ class PagesController < ApplicationController
     @projects = current_user.projects
   # Formulaire avec checkbox
   end
-
 end
