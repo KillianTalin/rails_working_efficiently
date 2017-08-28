@@ -68,7 +68,10 @@ class TasksController < ApplicationController
   def update
     if @task.update(task_params)
       @task.update(done: true) if params[:task][:done]
-      redirect_to project_tasks_path(@task.project), notice: 'Task was successfully updated.'
+      respond_to do |format|
+        format.html {   redirect_to project_tasks_path(@task.project), notice: 'Task was successfully updated.' }
+        format.js  # <-- will render `app/views/tasks/update.js.erb`
+      end
     else
       render :new
     end
