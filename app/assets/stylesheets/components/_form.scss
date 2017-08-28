@@ -1,5 +1,19 @@
 .task-list form {
   display: flex;
-  justify-content: space-around;
+  // justify-content: space-around;
   align-items: center;
+}
+
+.task-list-hidden {
+  display: none;
+}
+
+.project-name {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.project-name:hover {
+  cursor: pointer;
+  opacity: 1;
 }

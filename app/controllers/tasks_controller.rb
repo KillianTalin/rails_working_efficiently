@@ -91,9 +91,16 @@ class TasksController < ApplicationController
 
   def select
     @task = Task.find(params[:id])
-    @task.selected = true
-    @task.save
-    redirect_to dashboards_select_tasks_path
+    if params[:task][:submit] == "1"
+      @task.selected = false
+    else
+      @task.selected = true
+    end
+    @task.save!
+    respond_to do |format|
+      format.html { redirect_to dashboards_select_tasks_path }
+      format.js
+    end
   end
 
   private
