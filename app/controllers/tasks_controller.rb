@@ -91,7 +91,7 @@ class TasksController < ApplicationController
 
   def select
     @task = Task.find(params[:id])
-    if params[:task][:submit] == "1"
+    if params[:task][:submit] == "0"
       @task.selected = false
     else
       @task.selected = true

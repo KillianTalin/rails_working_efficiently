@@ -1,5 +1,5 @@
 <div class="container text-black">
-  <h2 class="text-center"> Quelles tâches veux-tu effectuer aujourd'hui ? :-) </h2>
+  <h2 class="text-center day-title"> Quelles tâches veux-tu effectuer aujourd'hui ? :-) </h2>
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <% @projects.each do |project| %>
@@ -7,7 +7,7 @@
         <div class="task-list" style="display: none" data-mission="<%= project.id %>">
           <% project.tasks.each do |task| %>
             <%= simple_form_for task, url: select_task_path(task), method: :patch, remote: true do |f| %>
-              <%= f.input :submit, :as => :boolean, input_html: {checked: false, class: "selected"}, label: task.name %>
+              <%= f.input :submit, :as => :boolean, label_html: { for: nil }, input_html: {checked: false, class: "selected"}, label: task.name %>
             <% end %>
           <% end %>
         </div>
