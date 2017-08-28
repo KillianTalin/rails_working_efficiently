@@ -24,9 +24,9 @@
 
   </div>
   <div class="col-sm-6">
-<% unless @tasks_no_realised.empty? %>
+<% unless @tasks_to_do.empty? %>
   <h4>To do</h4>
-  <% @tasks_no_realised.each do |task| %>
+  <% @tasks_to_do.each do |task| %>
     <div class="card_task_dashboard">
       <div><b>
       <%= link_to project_task_path(task.project, task) do %>
@@ -45,10 +45,10 @@
   <% end %>
   <% end %>
 
-<% unless @tasks_finished.empty? %>
+<% unless @tasks_in_progress.empty? %>
 
   <h4>In progress</h4>
-  <% @tasks_futur.each do |task| %>
+  <% @tasks_in_progress.each do |task| %>
     <div class="card_task_dashboard">
       <div><b> <%= task.name.capitalize %> </b> </div>
       <div>Durée: <%= task.forecast_duration %> </div>

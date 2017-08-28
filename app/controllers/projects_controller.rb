@@ -3,6 +3,8 @@ class ProjectsController < ApplicationController
 
   def index
    @projects = policy_scope(Project).where(user: current_user)
+
+   # pour afficher la stat sur les taches effectuées
   end
 
   def show
@@ -33,8 +35,8 @@ class ProjectsController < ApplicationController
   end
 
   def update
-
     @project.update(project_params)
+    redirect_to projects_path
   end
 
   def destroy
@@ -50,6 +52,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :user_id, :start_date, :end_date, :color, :total_worktime, :client_id)
+    params.require(:project).permit(:name, :user_id, :start_date, :end_date, :color, :total_worktime, :client_id, :description, :price_per_day)
   end
 end

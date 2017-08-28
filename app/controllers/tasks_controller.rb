@@ -5,29 +5,39 @@ class TasksController < ApplicationController
   def index
     @tasks = policy_scope(Task).where(project_id: @project)
     @tasks_finished = @tasks.where(done: true)
-    @tasks_no_realised = @tasks.where(elapsed_time: 0)
-    @tasks_futur = @tasks.where("elapsed_time > ?", 0).where(done: false)
-    @time = @tasks.sum(:elapsed_time)
+    @tasks_to_do = @tasks.where(done: false).where(elapsed_time: 0)
+    @tasks_in_progress = @tasks.where("elapsed_time > ?", 0).where(done: false)
+    @time_passed = Time.at(@tasks.sum(:elapsed_time)).utc.strftime("%Hh %Mmin %Ss")
     @projects = Project.where(user_id: current_user.id)
     @date = @project.end_date
-    @avancement = (@tasks.sum(:elapsed_time) / @tasks.sum(:forecast_duration)) * 100 unless @tasks.empty?
-    # @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
-    # if params[:project_id].present? && params[:tag_id].present?
-    #   @tag = Tag.find(params[:tag_id])
-    #   @project = Project.find(params[:project_id])
-    #   @tasks = @tasks.where(project: @project, tag_id: @tag)
-    #   @tag_projet = Task.where(project: @project, user_id: current_user.id)
-    #   @time = @tasks.where(project: @project).where(tag: @tag).sum(:real_duration)
-    #   @score = (@tasks.where(project: @project).where(tag: @tag).average(:productivity_score) / 5) * 100
-    #   @tags = @tag_projet.map { |task| {project: @project, id: task.tag.id, name: task.tag.name}  }.uniq
-
-    # elsif params[:project_id].present?
-    #   @project = Project.find(params[:project_id])
-    #   @tasks = @tasks.where(project: @project)
-    #   @time = @tasks.where(project: @project).sum(:real_duration)
-    #   @tags = @tasks.map { |task| {project: @project, id: task.tag.id, name: task.tag.name}  }.uniq
-    #   @score = (@tasks.where(project: @project).average(:productivity_score).round(2) / 5) * 100
     @task = Task.new
+
+    if @tasks.where(done: false).empty?
+      @time_to_do = '00:00:00'.to_time.strftime("%Hh %Mmin")
+    else
+      @time_to_do = @tasks.where(done: false).sum(:estimation).to_time.strftime("%Hh %Mmin")
+    end
+
+    unless @tasks_finished.empty?
+      # || @tasks_in_progress.empty?
+      #to do tache in progress
+
+      #tache done true
+      #(ladditionn de toute les heures des estimations des taches done: true les multiplié par 3600
+      @hours_passed = @tasks.where(done: true).sum(:estimation).to_time.strftime("%H").to_i * 3600
+      #laddition des minutes des estimations des taches done: true les mutiplié par 60)
+      @minutes_passed = @tasks.where(done: true).sum(:estimation).to_time.strftime("%M").to_i * 60
+      @passed = @hours_passed + @minutes_passed
+      #laddition d elasptimed_time des taches :done true
+      if @passed > 0
+        @prevision = @tasks.where(done: true).sum(:elapsed_time) - @passed
+      elsif @passed < 0
+        @prevision = @passed - @tasks.where(done: true).sum(:elapsed_time)
+      end
+    end
+    @tasks_done = @tasks_finished.count
+    @total_task = @tasks.count
+    @pourcent_done = (@tasks_done.to_f / @total_task.to_f) * 100
   end
 
   def show
@@ -72,8 +82,8 @@ class TasksController < ApplicationController
   def index_direct
     @tasks = policy_scope(Task).where(user: current_user)
     @tasks_finished = @tasks.where(done: true)
-    @tasks_no_realised = @tasks.where(elapsed_time: 0)
-    @tasks_futur = @tasks.where("elapsed_time > ?", 0).where(done: false)
+    @tasks_to_do = @tasks.where(done: false).where(elapsed_time: 0)
+    @tasks_in_progress = @tasks.where("elapsed_time > ?", 0).where(done: false)
     @time = @tasks.sum(:elapsed_time)
     @projects = Project.where(user_id: current_user.id)
     # @score = (@tasks.average(:productivity_score).round(2) / 5) * 100
@@ -99,7 +109,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :project_id, :name, :starts_at, :ends_at, :elapsed_time, :forecast_duration, :category, :productivity_score, :tag_id,)
+    params.require(:task).permit(:name, :project_id, :name, :starts_at, :ends_at, :elapsed_time, :forecast_duration, :category, :productivity_score, :estimation,)
   end
 
 end

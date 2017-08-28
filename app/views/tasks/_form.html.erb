@@ -2,7 +2,7 @@
   <div class="col-sm-4 col-sm-offset-4">
           <%= simple_form_for [@project, @task] do |f| %>
         <%= f.input :name %>
-        <%= f.input :forecast_duration %>
+        <%= f.input :estimation, minute_step: 15, selected: 1 %>
     <div class="text-center">
         <%= f.submit %>
       <% end %>
