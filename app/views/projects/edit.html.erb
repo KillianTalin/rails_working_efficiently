@@ -1,5 +1,15 @@
-<div class="full-sized">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-offset-4 col-sm-4">
+    <div class="tex-center">
 
-<%= render "form", project: @project %>
 
+      <h3 class="text-center text-black">Edit a project</h3>
+      <%= render "form", project: @project %>
+      <%= link_to project_path(@project), method: :delete, data: { confirm: "Are you sure?" } do %>
+        <button class="text-center btn-danger">Supprimer le project</button>
+      <% end %>
+          </div>
+    </div>
+  </div>
 </div>

@@ -20,8 +20,16 @@
     <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
 
       <div class="btn-timer-wrapper">
+      <!-- enregister le nombre en pause dans elapsed_time sans mettre done: true mais fait une redirection. todo: enlever la redirection -->
         <div class="btn ma-btn btn-lg btn-timer" id="button-pause">
-        Pause
+                <%= simple_form_for [@project, @task] do |f| %>
+          <%= f.input :elapsed_time, as: :hidden %>
+          <div class="btn-timer" id="button-finish">
+            <%= f.submit 'Pause', class: "btn ma-btn btn-lg" %>
+          </div>
+        <% end %>
+
+
         </div>
         <div class="btn ma-btn btn-lg hidden btn-timer" id="button-restart">
         Resume
