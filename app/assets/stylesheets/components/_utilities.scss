@@ -70,6 +70,10 @@ body {
   color: rgba(82, 196, 132, 1.00);
 }
 
+.text-transparent{
+  color: transparent;
+}
+
 .uppercased{
   text-transform: uppercase;
 }
@@ -87,7 +91,9 @@ body {
 }
 
 .decoration-none {
-  text-decoration: none;
+  :hover{
+    text-decoration: none;
+  }
 }
 
 .justify {
@@ -200,7 +206,7 @@ color: rgba(82, 196, 132, 1.00);
 
 .photo-background {
   position: relative;
-  background-image: url("http://deskbg.com/s3/wpp/0/479/rocky-mountain-desktop-background.jpg");
+  background-image: image-url("back.jpg");
   background-size: cover!important;
 }
 

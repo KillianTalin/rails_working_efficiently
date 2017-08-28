@@ -1,8 +1,3 @@
-.card_project {
-  background-color: white;
-  border-radius: 4px;
-  position: relative;
-}
 
 .task_stat {
   position: absolute;
@@ -18,13 +13,18 @@
 }
 
 
-.card {
-  height: 175px;
+.project-card {
+  height: 150px;
   background-color: white;
   color: black;
   position: relative;
   border-radius: 4px;
   margin-bottom: 15px;
+  opacity: 0.9;
+
+   h1 {
+    
+   }
 }
 .card-user {
   position: absolute;
