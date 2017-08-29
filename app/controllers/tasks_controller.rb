@@ -38,6 +38,7 @@ class TasksController < ApplicationController
     @tasks_done = @tasks_finished.count
     @total_task = @tasks.count
     @pourcent_done = (@tasks_done.to_f / @total_task.to_f) * 100
+    @pourcent_done = 70
   end
 
   def show
@@ -54,11 +55,17 @@ class TasksController < ApplicationController
     @task.elapsed_time = 0
     @task.project = @project
     authorize(@task)
-      if @task.save
-        redirect_to project_tasks_path(@task.project_id), notice: 'Task was successfully created 👍'
-      else
-        render :new
+    if @task.save
+      respond_to do |format|
+        format.html { redirect_to project_tasks_path(@task.project_id), notice: 'Task was successfully created 👍' }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
       end
+    else
+      respond_to do |format|
+        format.html { render :new }
+        format.js  # <-- idem
+      end
+    end
   end
 
   def edit
@@ -94,9 +101,16 @@ class TasksController < ApplicationController
 
   def select
     @task = Task.find(params[:id])
-    @task.selected = true
-    @task.save
-    redirect_to dashboards_select_tasks_path
+    if params[:task][:submit] == "0"
+      @task.selected = false
+    else
+      @task.selected = true
+    end
+    @task.save!
+    respond_to do |format|
+      format.html { redirect_to dashboards_select_tasks_path }
+      format.js
+    end
   end
 
   private

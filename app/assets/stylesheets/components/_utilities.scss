@@ -70,8 +70,25 @@ body {
   color: rgba(82, 196, 132, 1.00);
 }
 
+.text-transparent{
+  color: transparent;
+}
+
+.text-shadowed-white {
+  text-shadow: 0px 1px white;
+}
+
+.text-shadowed-grey {
+  text-shadow: 0px 1px grey;
+}
+
 .uppercased{
   text-transform: uppercase;
+}
+
+
+.text-ss{
+  font-size: 18px;
 }
 
 .text-ms{
@@ -87,7 +104,9 @@ body {
 }
 
 .decoration-none {
-  text-decoration: none;
+  :hover{
+    text-decoration: none;
+  }
 }
 
 .justify {
@@ -97,7 +116,7 @@ body {
 
 .bg-white{
   background-color: white;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .bg-emerald{
@@ -133,10 +152,20 @@ body {
 .padded{
   padding: 30px 30px;
 }
+
+.margin-classic{
+  margin: 20px;
+}
+
 .display-flex {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.cornerized{
+  border-radius: 5px;
+
 }
 
 .spaced {
@@ -151,7 +180,7 @@ body {
 // Border style
 
 .box-shadowed{
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
   padding: 30px;
 }
 
@@ -200,8 +229,6 @@ color: rgba(82, 196, 132, 1.00);
 
 .photo-background {
   position: relative;
-  background-image: url("http://deskbg.com/s3/wpp/0/479/rocky-mountain-desktop-background.jpg");
+  background-image: image-url("back.jpg");
   background-size: cover!important;
 }
-
-

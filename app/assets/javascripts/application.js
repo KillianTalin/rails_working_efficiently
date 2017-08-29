@@ -4,4 +4,6 @@
 //= require Chart.bundle
 //= require highcharts.js
 //= require chartkick
+//= require iCheck
+//= require progressbar.js.js
 //= require_tree .

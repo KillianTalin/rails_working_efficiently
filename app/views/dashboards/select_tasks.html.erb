@@ -1,18 +1,13 @@
 <div class="container text-black">
-  <h2 class="text-center"> Quelles tâches veux-tu effectuer aujourd'hui ? :-) </h2>
+  <h2 class="text-center day-title"> What are your tasks for today ? </h2>
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <% @projects.each do |project| %>
-        <h3> <%= project.name %> </h3>
-        <div class="task-list">
+        <h3 data-mission="<%= project.id %>" class="project-name"> <span class="chevron"> › </span> <%=  project.name %> </h3>
+        <div class="task-list" style="display: none" data-mission="<%= project.id %>">
           <% project.tasks.each do |task| %>
-            <%= simple_form_for task, url: select_task_path(task), method: :patch do |f| %>
-              <h5> <%= task.name %> </h5>
-              <% if task.selected %>
-              <%= f.button :submit, "Select task", class: "btn btn-secondary"%>
-              <% else %>
-              <%= f.button :submit, "Select task", class: "btn btn-primary"%>
-              <% end %>
+            <%= simple_form_for task, url: select_task_path(task), method: :patch, remote: true do |f| %>
+              <%= f.input :submit, :as => :boolean, label_html: { for: nil }, input_html: {checked: false, class: "selected"}, label: task.name %>
             <% end %>
           <% end %>
         </div>
@@ -21,10 +16,7 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center">
-      <%= link_to "C'est parti", dashboards_path, class: "btn btn-primary", id: "button-lets-go" %>
+      <%= link_to "Let's work!", dashboards_path, class: "btn btn-primary", id: "button-lets-go" %>
     </div>
   </div>
 </div>
-
-<!-- Faire des simple form en remote true en ajax pour éviter que ça recharge -->
-

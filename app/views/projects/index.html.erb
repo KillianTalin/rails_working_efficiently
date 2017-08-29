@@ -1,50 +1,189 @@
+<% content_for :body_id, "dashboard_user" %>
+<div class="photo-background">
 <div class="container text-black">
+<div class=" full-sized margin-top-max">
+  <div class="row">
+    <h1>My projects</h1>
+    <div class="col-sm-8 col-sm-offset-2">
 
-  <h1>My projects</h1>
-  <% @projects.each do |project| %>
+      <% unless @projects_today.empty?  %>
+          <h3>Today</h3>
+        <% @projects_today.each do |project| %>
+          <div class="card_projects">
 
-<div class="card">
-  <div class="card-description">
-    <%= link_to project_tasks_path(project) do%>
-        <h3><%= project.name %></h3>
-        <% end %>
-    <p><%= project.description %></p>
-        <p>Prix journalier: <%= project.price_per_day %></p>
-  </div>
+            <div class="card_description">
+              <div class="card_description_content_wrapper">
 
-  <div class="client_name">
-    <p>Client: <%= project.client.name %></p>
-  </div>
-  <div class="deadline">
-    <p>Deadline: <%= project.end_date %></p>
-  </div>
-  <div class="card-user">
-        <div class="clearfix">
-          <div class="c100 p<%=
+                <div class="card_info">
+                  <%= link_to project_tasks_path(project) do%>
+                    <h4><%= project.name %></h4>
+                  <% end %>
+                  <br>
+                  <%= project.description %>
+                </div>
 
-project.tasks.empty? ? "0" : ((project.tasks.where(done: true).count.to_f / project.tasks.count.to_f) * 100).to_i %> small">
-            <span><%= project.tasks.where(done: true).count %>/<%= project.tasks.count %></span>
-            <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
+                <div class="card_stats">
+                  <div class="clearfix">
+                    <div class="c100 p<%= project.tasks.empty? ? "0" : ((project.tasks.where(done: true).count.to_f / project.tasks.count.to_f) * 100).to_i %> small">
+                      <span> <%=project.tasks.where(done: true).count %>/<%= project.tasks.count %></span>
+                      <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="btn_setting">
+                  <%= link_to edit_project_path(project) do %>
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                  <% end %>
+
+                </div>
+              </div>
+            </div><br>
+
+            <div class="card_bas">
+              <span>
+                Client: <%= project.client.name %>
+              </span>
+              <span>
+                Coût du projet: <%= project.price_per_project %> €
+              </span>
+              <span>
+                <% if project.days_before_deadline > 0 %>
+                  J-<%= project.days_before_deadline %>
+                <% elsif project.days_before_deadline < 0 %>
+                  Passed
+                <% else %>
+                  Today
+                <% end %>
+              </span>
             </div>
-        </div>
-      </div>
-</div>
 
-<div class="setting">
-<%= link_to edit_project_path(project) do %>
-  <i class="fa fa-cog" aria-hidden="true"></i>
-  <% end %>
-</div>
+          </div><br>
+        <% end %>
+      <% end %>
 
+      <% unless @projects_futur.empty?  %>
+          <h3>Futur projects</h3>
+        <% @projects_futur.each do |project| %>
+          <div class="card_projects">
 
+            <div class="card_description">
+              <div class="card_description_content_wrapper">
 
+                <div class="card_info">
+                  <%= link_to project_tasks_path(project) do%>
+                    <h4><%= project.name %></h4>
+                  <% end %>
+                  <br>
+                  <%= project.description %>
+                </div>
 
+                <div class="card_stats">
+                  <div class="clearfix">
+                    <div class="c100 p<%= project.tasks.empty? ? "0" : ((project.tasks.where(done: true).count.to_f / project.tasks.count.to_f) * 100).to_i %> small">
+                      <span> <%=project.tasks.where(done: true).count %>/<%= project.tasks.count %></span>
+                      <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="btn_setting">
+                  <%= link_to edit_project_path(project) do %>
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                  <% end %>
 
+                </div>
+              </div>
+            </div><br>
+
+            <div class="card_bas">
+              <span>
+                Client: <%= project.client.name %>
+              </span>
+              <span>
+                Coût du projet: <%= project.price_per_project %> €
+              </span>
+              <span>
+                <% if project.days_before_deadline > 0 %>
+                  J-<%= project.days_before_deadline %>
+                <% elsif project.days_before_deadline < 0 %>
+                  Passed
+                <% else %>
+                  Today
+                <% end %>
+              </span>
+            </div>
+
+          </div><br>
+        <% end %>
+      <% end %>
+
+      <% unless @projects_passed.empty?  %>
+          <h3>Projects passed</h3>
+        <% @projects_passed.each do |project| %>
+          <div class="card_projects">
+
+            <div class="card_description">
+              <div class="card_description_content_wrapper">
+
+                <div class="card_info">
+                  <%= link_to project_tasks_path(project) do%>
+                    <h4><%= project.name %></h4>
+                  <% end %>
+                  <br>
+                  <%= project.description %>
+                </div>
+
+                <div class="card_stats">
+                  <div class="clearfix">
+                    <div class="c100 p<%= project.tasks.empty? ? "0" : ((project.tasks.where(done: true).count.to_f / project.tasks.count.to_f) * 100).to_i %> small">
+                      <span> <%=project.tasks.where(done: true).count %>/<%= project.tasks.count %></span>
+                      <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="btn_setting">
+                  <%= link_to edit_project_path(project) do %>
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                  <% end %>
+
+                </div>
+              </div>
+            </div><br>
+
+            <div class="card_bas">
+              <span>
+                Client: <%= project.client.name %>
+              </span>
+              <span>
+                Coût du projet: <%= project.price_per_project %> €
+              </span>
+              <span>
+                <% if project.days_before_deadline > 0 %>
+                  J-<%= project.days_before_deadline %>
+                <% elsif project.days_before_deadline < 0 %>
+                  Passed
+                <% else %>
+                  Today
+                <% end %>
+              </span>
+            </div>
+
+          </div><br>
+        <% end %>
+      <% end %>
     </div>
-  <% end %>
-  <%= link_to new_project_path do %>
-    <button class="text-center btn-success"> Add a new project </button>
-  <% end %>
+  </div>
+</div>
+      <%= link_to new_project_path do %>
+        <button class="text-center btn-success"> Add a new project </button>
+      <% end %>
+</div>
 </div>

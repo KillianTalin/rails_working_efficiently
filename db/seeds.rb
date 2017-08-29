@@ -34,7 +34,7 @@ User.create!(users_attributes)
 puts 'creating clients...'
 clients_attributes = [
 {
-  name: "Michel"
+  name: "Sébastien Saunier"
   }
 ]
 Client.create!(clients_attributes)
@@ -45,9 +45,8 @@ projects_attributes = [
     user: User.first,
     client: Client.first,
     name: "Faire un site pour Poulpe",
-    start_date: 20170320,
-    end_date: 20170820,
-    total_worktime: 4.2
+    total_worktime: 4.2,
+    end_date: 20171009
   }
 ]
 Project.create!(projects_attributes)
@@ -63,7 +62,8 @@ tasks_attributes = [
     secondary_task: false,
     elapsed_time: 0,
     done: false,
-    selected: true
+    selected: false,
+    estimation: "2000-01-01 01:30:00 UTC"
   },
   {
     name: "Réaliser le DB model",
@@ -74,7 +74,8 @@ tasks_attributes = [
     secondary_task: true,
     elapsed_time: 0,
     done: false,
-    selected: true
+    selected: false,
+    estimation: "2000-01-01 01:30:00 UTC"
   }
 ]
 Task.create!(tasks_attributes)

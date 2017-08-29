@@ -2,10 +2,30 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-   @projects = policy_scope(Project).where(user: current_user)
+    @projects = policy_scope(Project).where(user: current_user)
+    @projects_passed = @projects.where("end_date < ?", Date.today).order(end_date: :asc)
+    @projects_futur = @projects.where("end_date > ?", Date.today).order(end_date: :asc)
+    @projects_today = @projects.where("end_date = ?", Date.today).order(end_date: :asc)
 
    # pour afficher la stat sur les taches effectuées
-  end
+   #heure de taf = projet.tasks.sum(:estimation).to_time.strftime("%H").to_i
+   #minutes de taf = projet.tasks.sum(:estimation).to_time.strftime("%M").to_i / 60
+  #      unless @projects.tasks.empty?
+  #     # || @tasks_in_progress.empty?
+  #     #to do tache in progress
+  #     #tache done true
+  #     #(ladditionn de toute les heures des estimations des taches done: true les multiplié par 3600
+  #     @hours_passed = @projects.tasks.sum(:estimation).to_time.strftime("%H").to_i * 3600
+  #     #laddition des minutes des estimations des taches done: true les mutiplié par 60)
+  #     @passed = @hours_passed + @minutes_passed
+  #     #laddition d elasptimed_time des taches :done true
+  #     if @passed > 0
+  #       @prevision = @tasks.where(done: true).sum(:elapsed_time) - @passed
+  #     elsif @passed < 0
+  #       @prevision = @passed - @tasks.where(done: true).sum(:elapsed_time)
+  #     end
+  # end
+end
 
   def show
 

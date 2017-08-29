@@ -1,15 +1,18 @@
-<div class="container text-black">
-  <h1 class="text-center">Dashboard</h1>
-    <div class="col-sm-2">
+<% content_for :body_id, "dashboard_user" %>
+<div class="photo-background">
+<div class="container text-white">
+<div class=" full-sized margin-top-max">
+  <h1 class="text-center text-shadowed-white">Dashboard</h1>
+    <div class="col-sm-2 text-white text-shadowed-white">
       <h4>My projects</h4>
 
       <% @projects.each do |project| %>
         <%= link_to  project_tasks_path(project_id: project.id) do %>
-          <p class='<%= project == @project ? "active" : "" %>'><%= project.name.capitalize %></p>
+          <p class='<%= project == @project ? "active" : "" %> text-white'><%= project.name.capitalize %></p>
         <% end %>
       <% end %>
       <%= link_to tasks_path do %>
-        <p class='<%= "active" unless params[:project_id].present? %>'>All tasks</p>
+        <p class='<%= "active" unless params[:project_id].present? %> text-white'>All tasks</p>
       <% end %>
 
       <div class="test">
@@ -23,9 +26,9 @@
       </div>
 
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-6 margin-classic text-black ">
 <% unless @tasks_to_do.empty? %>
-  <h4>To do</h4>
+  <h4 class="text-white text-shadowed-white">To do</h4>
   <% @tasks_to_do.each do |task| %>
     <div class="card_task_dashboard">
       <div><b>
@@ -82,7 +85,7 @@
   <% end %>
 <% end %>
 </div>
-  <div class="col-sm-3" id="la">
+  <div class="col-sm-3 text-white text-shadowed-white" id="la">
     <h4>Data</h4>
     <p>Productivity score:</p>
               <div class="clearfix">
@@ -97,4 +100,6 @@
     <p>Total time: <%= @time %> min</p>
 
   </div>
+</div>
+</div>
 </div>

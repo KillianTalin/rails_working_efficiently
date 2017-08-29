@@ -21,6 +21,8 @@ gem 'uglifier'
 gem 'chartkick'
 gem 'sprockets', '>=3.0.0.beta'
 gem 'sprockets-es6'
+gem 'rails-assets-iCheck', source: 'https://rails-assets.org'
+gem 'rails-assets-progressbar.js', source: 'https://rails-assets.org'
 
 group :development, :test do
   gem 'pry-byebug'
