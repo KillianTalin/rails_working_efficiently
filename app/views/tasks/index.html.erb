@@ -85,7 +85,7 @@
 
   <div class="col-sm-3" id="la">
     <h4>Data</h4>
-    <p>Deadline: <%= @date %></p>
+    <p>Deadline: <%= @date.strftime("%d-%m-%Y") %></p>
     <p>Progress:</p>
     <div class="clearfix">
       <div class="c100 p<%= @tasks.empty? ? "0" : @pourcent_done.to_i  %> big">
@@ -103,9 +103,9 @@
     <% unless @tasks_finished.empty?  %>
     <% if @prevision < 0
       if Time.at(@prevision).utc.strftime("%H").to_i == 0 %>
-      <div class="text-green"> <%= Time.at(@prevision).utc.strftime("+%Mmin") %></div>
+      <div class="text-green text-center"> <%= Time.at(@prevision).utc.strftime("+%Mmin") %></div>
       <% else %>
-        <div class="text-green"> <%= Time.at(@prevision).utc.strftime("+%Hh %Mmin") %></div>
+        <div class="text-green text-center"> <%= Time.at(@prevision).utc.strftime("+%Hh %Mmin") %></div>
       <% end %>
     <% elsif @prevision > 0 %>
       <% if Time.at(@prevision).utc.strftime("%H").to_i == 0 %>

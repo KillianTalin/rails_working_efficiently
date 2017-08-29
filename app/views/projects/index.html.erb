@@ -44,7 +44,13 @@
               Coût du projet: <%= project.price_per_project %> €
             </span>
             <span>
-              Deadline: <%= project.end_date %>
+              <% if project.days_before_deadline > 0 %>
+                J-<%= project.days_before_deadline %>
+              <% elsif project.days_before_deadline < 0 %>
+                Passed
+              <% else %>
+                Today
+              <% end %>
             </span>
           </div>
 
