@@ -1,27 +1,30 @@
 <% content_for :body_id, "dashboard_user" %>
 <div class="photo-background">
-<div class="container text-black">
+<div class="container text-white">
 <div class=" full-sized margin-top-max">
   <h1 class="text-center">Dashboard</h1>
 
-  <div class="col-sm-2" id="la">
+  <div class="col-sm-2 text-white text-shadowed-white" id="la">
     <h4>My projects</h4>
+
+    <div class="bg-white text-black cornerized padded margin-top-classic box-shadowed">
     <% @projects.each do |project| %>
       <%= link_to  project_tasks_path(project_id: project.id) do %>
-        <p class='<%= project == @project ? "active" : "" %>'><%= project.name.capitalize %></p>
+        <p class='<%= project == @project ? "active" : "" %> text-black'><%= project.name.capitalize %></p>
       <% end %>
     <% end %>
     <%= link_to tasks_path do %>
-      <p class='<%= "active" unless params[:project_id].present? %>'>All tasks</p>
+      <p class='<%= "active" unless params[:project_id].present? %> text-black'>All tasks</p>
     <% end %>
     <%= link_to new_project_path do %>
-      Add a new project<i class="fa fa-plus" aria-hidden="true"></i>
+      Add a new project<i class="fa fa-plus" aria-hidden="true text-black"></i>
     <% end %>
+    </div>
   </div>
 
-  <div class="col-sm-6">
+  <div class="col-sm-6 text-black">
     <% unless @tasks_to_do.empty? %>
-      <h4>To do</h4>
+      <h4 class="text-white text-shadowed-white">To do</h4>
       <% @tasks_to_do.each do |task| %>
         <div class="card_task_dashboard">
           <div>
@@ -86,43 +89,44 @@
   </div>
 
   <div class="col-sm-3" id="la">
-    <h4>Data</h4>
-    <p>Deadline: <%= @date.strftime("%d-%m-%Y") %></p>
-    <p>Progress:</p>
-    <div class="clearfix">
-      <div class="c100 p<%= @tasks.empty? ? "0" : @pourcent_done.to_i  %> big">
-          <span><%= @tasks_done %>/<%= @total_task %></span>
-          <div class="slice">
-              <div class="bar"></div>
-              <div class="fill"></div>
-          </div>
+    <h4>Data Test</h4>
+    <div class="text-black text-shadowed-black box-shadowed">
+      <h4>Deadline: <%= @date.strftime("%d-%m-%Y") %></h4>
+      <p>Progress:</p>
+      <div class="clearfix">
+        <div class="c100 p<%= @tasks.empty? ? "0" : @pourcent_done.to_i  %> big">
+            <span><%= @tasks_done %>/<%= @total_task %></span>
+            <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+            </div>
+        </div>
       </div>
+
+      <p>Total passed in this project: <%= @time_passed  %></p>
+
+      <p>Temps de travail restant à faire: <%= @time_to_do%> </p>
+      <% unless @tasks_finished.empty?  %>
+      <% if @prevision < 0
+        if Time.at(@prevision).utc.strftime("%H").to_i == 0 %>
+        <div class="text-green text-center"> <%= Time.at(@prevision).utc.strftime("+%Mmin") %></div>
+        <% else %>
+          <div class="text-green text-center"> <%= Time.at(@prevision).utc.strftime("+%Hh %Mmin") %></div>
+        <% end %>
+      <% elsif @prevision > 0 %>
+        <% if Time.at(@prevision).utc.strftime("%H").to_i == 0 %>
+          <div class="text-red text-center"><%= Time.at(@prevision).utc.strftime("-%Mmin") %></div>
+        <% else %>
+          <div class="text-red text-center"><%=Time.at(@prevision).utc.strftime("-%Hh %Mmin")%></div>
+        <% end %>
+      <% elsif @prevision == 0 %>
+      <div class="text-blue text-center">Keep going like that 👍</div>
+
+      <% end %>
+      <p>Depassement en euros: €</p>
+      <% end %>
     </div>
-
-    <p>Total passed in this project: <%= @time_passed  %></p>
-
-    <p>Temps de travail restant à faire: <%= @time_to_do%> </p>
-    <% unless @tasks_finished.empty?  %>
-    <% if @prevision < 0
-      if Time.at(@prevision).utc.strftime("%H").to_i == 0 %>
-      <div class="text-green text-center"> <%= Time.at(@prevision).utc.strftime("+%Mmin") %></div>
-      <% else %>
-        <div class="text-green text-center"> <%= Time.at(@prevision).utc.strftime("+%Hh %Mmin") %></div>
-      <% end %>
-    <% elsif @prevision > 0 %>
-      <% if Time.at(@prevision).utc.strftime("%H").to_i == 0 %>
-        <div class="text-red text-center"><%= Time.at(@prevision).utc.strftime("-%Mmin") %></div>
-      <% else %>
-        <div class="text-red text-center"><%=Time.at(@prevision).utc.strftime("-%Hh %Mmin")%></div>
-      <% end %>
-    <% elsif @prevision == 0 %>
-    <div class="text-blue text-center">Keep going like that 👍</div>
-
-    <% end %>
-    <p>Depassement en euros: €</p>
-    <% end %>
   </div>
-
 </div>
 </div>
 </div>
