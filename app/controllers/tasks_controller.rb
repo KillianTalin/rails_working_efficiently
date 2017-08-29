@@ -55,11 +55,17 @@ class TasksController < ApplicationController
     @task.elapsed_time = 0
     @task.project = @project
     authorize(@task)
-      if @task.save
-        redirect_to project_tasks_path(@task.project_id), notice: 'Task was successfully created 👍'
-      else
-        render :new
+    if @task.save
+      respond_to do |format|
+        format.html { redirect_to project_tasks_path(@task.project_id), notice: 'Task was successfully created 👍' }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
       end
+    else
+      respond_to do |format|
+        format.html { render :new }
+        format.js  # <-- idem
+      end
+    end
   end
 
   def edit
