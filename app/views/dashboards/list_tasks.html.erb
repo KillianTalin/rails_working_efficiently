@@ -25,20 +25,19 @@
             <div class="task_card box-shadowed text-center">
               <div class="l1">
                 <div class="duration">
-                  <h3><%= task.forecast_duration %>min</h3>
+                  <span class="task-title-dashboard"><%= task.forecast_duration %>min</span>
                 </div>
                 <div class="task_name">
-                  <h3><%= task.name %></h3>
+                  <span class="task-title-dashboard"><%= task.name %></span>
                 </div>
-                <div class="timer_btn">
-                  <%= link_to project_task_path(task.project, task) do %>
-                    <i class="fa fa-play-circle"></i>
-                 <% end %>
+                <div class="l1-third-child">
+                  <div class="timer_btn">
+                      <i class="fa fa-play-circle" id="start-start"></i>
+                  </div>
+                  <div id="toggle-timer">
+                    <%= render "timer", task: task, project: task.project %>
+                  </div>
                 </div>
-                <div id= class=display:none>
-                  <%= render "timer", task: task, project: task.project %>
-<!--                   , task: @task
- -->                </div>
               </div>
               <div class="l2">
                 <div class="project_name">

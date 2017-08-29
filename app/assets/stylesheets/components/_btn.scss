@@ -2,6 +2,11 @@
    margin-top: 10px
 }
 
+#start-start {
+  color: #19a598;
+}
+
+
 .form-inline {
   display: flex;
   justify-content: space-between;
@@ -41,7 +46,7 @@
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
-    border: 2px solid;
+    // border: 2px solid;
     width: auto;
     -webkit-font-smoothing: antialiased;
     background: 0 0;
@@ -138,7 +143,7 @@
 }
 
 .btn-timer {
-  margin: 20px;
+  // margin: 20px;
   margin-top: 25px;
 }
 

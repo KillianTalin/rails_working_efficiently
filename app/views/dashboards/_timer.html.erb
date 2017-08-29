@@ -1,7 +1,7 @@
-<div class="row text-black">
+<!-- <div class="row text-black timer-button-inline"> -->
+<div class="text-black timer-button-inline">
     <!-- <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center"> -->
       <div id="clockdiv">
-        <h1 class="text-black">C'est parti !</h1>
         <div>
           <span class="hours"></span>
           <div class="smalltext">Hours</div>
@@ -16,23 +16,31 @@
         </div>
       </div>
     <!-- </div> -->
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center">
+    <!-- <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center"> -->
+    <div class="">
 
       <div class="btn-timer-wrapper">
       <!-- enregister le nombre en pause dans elapsed_time sans mettre done: true mais fait une redirection. todo: enlever la redirection -->
-        <%= simple_form_for [project, task], remote: true do |f| %>
-          <%= f.input :elapsed_time, as: :hidden %>
-          <%= f.submit 'Pause', class: "btn ma-btn btn-lg btn-timer", id: "button-pause" %>
+        <!-- <div class="btn ma-btn btn-lg btn-timer" id="button-pause"> -->
+          <input id="current_elapsed_time" type="text" style="display: none;" value="<%= task.elapsed_time %>">
+          <%= simple_form_for [project, task], remote: true do |f| %>
+            <%= f.input :elapsed_time, as: :hidden, input_html:{id: "elapsed_time_pause"} %>
+            <!-- <div class="btn-timer" id="button-finish"> -->
+              <%= button_tag type: 'submit', class: "btn ma-btn btn-timer", id: "button-pause" do %>
+                  <i class="fa fa-3x fa-pause-circle-o" aria-hidden="true"></i>
+              <% end %>
         <% end %>
 
-        <div class="btn ma-btn btn-lg hidden btn-timer" id="button-restart">
-          Resume
+        <div class="btn ma-btn hidden btn-timer" id="button-restart">
+          <i class="fa fa-3x fa-play-circle" aria-hidden="true"></i>
         </div>
         <%= simple_form_for [project, task] do |f| %>
           <%= f.input :elapsed_time, as: :hidden %>
           <%= f.input :done, as: :hidden, input_html: {value: true} %>
           <div class="btn-timer" id="button-finish">
-            <%= f.submit 'Finish', class: "btn ma-btn btn-lg" %>
+            <%= button_tag type: 'submit' , class: "btn ma-btn" do %>
+              <i class="fa fa-3x fa-check-circle-o" aria-hidden="true"></i>
+            <% end %>
           </div>
         <% end %>
       </div>
