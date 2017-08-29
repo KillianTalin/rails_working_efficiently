@@ -46,3 +46,8 @@ box-shadow: 0px 1px 10px grey;
 .graph svg .visual {
   fill: #EFC100;
 }
+
+#la {
+  position: sticky !important; /* !important to override Gmaps inline CSS */
+  top: 17px;
+}

@@ -2,7 +2,7 @@
   <h1 class="text-center">Dashboard
   </h1>
 
-  <div class="col-sm-2">
+  <div class="col-sm-2" id="la">
     <h4>My projects</h4>
     <% @projects.each do |project| %>
       <%= link_to  project_tasks_path(project_id: project.id) do %>
@@ -23,9 +23,7 @@
       <% @tasks_to_do.each do |task| %>
         <div class="card_task_dashboard">
           <div>
-            <%= link_to project_task_path(task.project, task) do %>
-              <b><%= task.name.capitalize %></b>
-            <% end %>
+            <b><%= task.name.capitalize %></b>
           </div>
           <div>Estimation: <%= Time.at(task.estimation).utc.strftime("%Hh %Mmin")  %></div>
           <%= link_to edit_project_task_path(task.project, task) do %>
@@ -43,11 +41,8 @@
       <% @tasks_in_progress.each do |task| %>
         <div class="card_task_dashboard">
           <div>
-            <%= link_to project_task_path(task.project, task) do %>
-              <b><%= task.name.capitalize %></b>
-            <% end %>
+            <b><%= task.name.capitalize %></b>
           </div>
-          <div>Durée: <%= task.forecast_duration %> </div>
           <div>Estimation: <%= Time.at(task.estimation).utc.strftime("%Hh %Mmin") %> </div>
           <div>Time realised: <%= Time.at(task.elapsed_time).utc.strftime("%Hh %Mmin") %></div>
           <%= link_to edit_project_task_path(task.project, task) do %>
