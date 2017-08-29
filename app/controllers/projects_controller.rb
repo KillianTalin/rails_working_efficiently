@@ -7,15 +7,12 @@ class ProjectsController < ApplicationController
     @projects_futur = @projects.where("end_date > ?", Date.today).order(end_date: :asc)
     @projects_today = @projects.where("end_date = ?", Date.today).order(end_date: :asc)
 
-
    # pour afficher la stat sur les taches effectuées
    #heure de taf = projet.tasks.sum(:estimation).to_time.strftime("%H").to_i
    #minutes de taf = projet.tasks.sum(:estimation).to_time.strftime("%M").to_i / 60
-
   #      unless @projects.tasks.empty?
   #     # || @tasks_in_progress.empty?
   #     #to do tache in progress
-
   #     #tache done true
   #     #(ladditionn de toute les heures des estimations des taches done: true les multiplié par 3600
   #     @hours_passed = @projects.tasks.sum(:estimation).to_time.strftime("%H").to_i * 3600

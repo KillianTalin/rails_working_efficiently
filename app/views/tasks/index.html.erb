@@ -18,23 +18,29 @@
   </div>
 
   <div class="col-sm-6">
+  <% if @tasks_to_do.empty?  %>
+      <div id="tasks">
+        <% @tasks_to_do.each do |task| %>
+          <%= render 'tasks/show', task: task %>
+        <% end %>
+      </div>
+    <% end %>
+
     <% unless @tasks_to_do.empty? %>
       <h4>To do</h4>
-      <% @tasks_to_do.each do |task| %>
-        <div class="card_task_dashboard">
-          <div>
-            <b><%= task.name.capitalize %></b>
-          </div>
-          <div>Estimation: <%= Time.at(task.estimation).utc.strftime("%Hh %Mmin")  %></div>
-          <%= link_to edit_project_task_path(task.project, task) do %>
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          <% end %>
-          <%= link_to project_task_path(task.project.id, task.id), method: :delete, data: { confirm: "Are you sure?" } do %>
-            <i class="fa fa-times" aria-hidden="true"></i>
-          <% end %>
-        </div>
-      <% end %>
+      <div id="tasks">
+        <% @tasks_to_do.each do |task| %>
+          <%= render 'tasks/show', task: task %>
+        <% end %>
+      </div>
     <% end %>
+
+    <div class="card_task_dashboard">
+      <h4 class="text-center">
+        Ajouter une tâche <i class="fa fa-plus" aria-hidden="true"></i>
+      </h4>
+      <%= render 'tasks/form', project: @project, task: @task %>
+    </div>
 
     <% unless @tasks_in_progress.empty? %>
       <h4>In progress</h4>
@@ -70,17 +76,6 @@
     </div>
   <% end %>
 <% end %>
-    <div class="card_task_dashboard">
-      <h4 class="text-center">
-        Ajouter une tâche <i class="fa fa-plus" aria-hidden="true"></i>
-      </h4>
-      <%= simple_form_for [@project, @task] do |f| %>
-        <%= f.input :name, placeholder: "Create a database" %>
-        <%= f.input :estimation, minute_step: 15, selected: 1 %>
-        <%= f.hidden_field :project_id, value: @project.id %>
-        <%= f.submit %>
-      <% end %>
-    </div>
   </div>
 
   <div class="col-sm-3" id="la">
