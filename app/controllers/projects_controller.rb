@@ -2,7 +2,11 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-   @projects = policy_scope(Project).where(user: current_user).order(end_date: :desc)
+    @projects = policy_scope(Project).where(user: current_user)
+    @projects_passed = @projects.where("end_date < ?", Date.today).order(end_date: :asc)
+    @projects_futur = @projects.where("end_date > ?", Date.today).order(end_date: :asc)
+    @projects_today = @projects.where("end_date = ?", Date.today).order(end_date: :asc)
+
 
    # pour afficher la stat sur les taches effectuées
    #heure de taf = projet.tasks.sum(:estimation).to_time.strftime("%H").to_i
