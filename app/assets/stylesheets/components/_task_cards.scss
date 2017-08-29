@@ -14,26 +14,31 @@
 	    display: flex;
 	    justify-content: space-between;
 	    align-items: center;
-	    padding: 20px 10px;
-	    border-bottom: 1px solid grey; 
+	    padding: 20px 30px 20px 20px;
+	    border-bottom: 1px solid grey;
 	    margin-left: -10px;
 	    margin-right: -10px;
 
 	    & .task_name {
-	        flex: 0 0 60%;
+	        flex: 1 0° auto;
 	    }
 
 	    & .duration {
-	        padding: 10px;
-	        position: relative;
-    		left: 5%;
+	        // padding: 10px;
+          flex: 0 0 15%;
+	        // position: relative;
+    		// left: 5%;
 	    }
 
 	    & .timer_btn {
-	        position: relative;
-    		left: -5%;
+	        // position: relative;
+    		// left: -5%;
 	        font-size: 45px;
 	    }
+
+      &.l1-third-child{
+          flex: 1 0 35%;
+      }
 
 	   }
 
@@ -54,5 +59,7 @@
 
 }
 
-
+.task-title-dashboard{
+  font-size: 30px;
+}
 
