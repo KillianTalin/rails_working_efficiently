@@ -39,7 +39,31 @@
           <% end %>
         </div>
       <% end %>
+
+  <div class="col-sm-6">
+  <% if @tasks_to_do.empty?  %>
+      <div id="tasks">
+        <% @tasks_to_do.each do |task| %>
+          <%= render 'tasks/show', task: task %>
+        <% end %>
+      </div>
     <% end %>
+
+    <% unless @tasks_to_do.empty? %>
+      <h4>To do</h4>
+      <div id="tasks">
+        <% @tasks_to_do.each do |task| %>
+          <%= render 'tasks/show', task: task %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="card_task_dashboard">
+      <h4 class="text-center">
+        Ajouter une tâche <i class="fa fa-plus" aria-hidden="true"></i>
+      </h4>
+      <%= render 'tasks/form', project: @project, task: @task %>
+    </div>
 
     <% unless @tasks_in_progress.empty? %>
       <h4>In progress</h4>
@@ -75,24 +99,13 @@
     </div>
   <% end %>
 <% end %>
-    <div class="card_task_dashboard">
-      <h4 class="text-center">
-        Ajouter une tâche <i class="fa fa-plus" aria-hidden="true"></i>
-      </h4>
-      <%= simple_form_for [@project, @task] do |f| %>
-        <%= f.input :name, placeholder: "Create a database" %>
-        <%= f.input :estimation, minute_step: 15, selected: 1 %>
-        <%= f.hidden_field :project_id, value: @project.id %>
-        <%= f.submit %>
-      <% end %>
-    </div>
   </div>
 
   <div class="col-sm-3" id="la">
-    <h4>Data Test</h4>
+    <h4>Data</h4>
     <div class="text-black text-shadowed-black box-shadowed">
       <h4>Deadline: <%= @date.strftime("%d-%m-%Y") %></h4>
-      <p>Progress:</p>
+      <p>Tasks:</p>
       <div class="clearfix">
         <div class="c100 p<%= @tasks.empty? ? "0" : @pourcent_done.to_i  %> big">
             <span><%= @tasks_done %>/<%= @total_task %></span>
@@ -122,6 +135,17 @@
       <% elsif @prevision == 0 %>
       <div class="text-blue text-center">Keep going like that 👍</div>
 
+    <p> Progress: </p>
+    <div id="progress-bar" data-percent_done="<%= @pourcent_done %>"></div>
+
+
+    <% unless @tasks_finished.empty?  %>
+    <% if @prevision < 0
+      if Time.at(@prevision).utc.strftime("%H").to_i == 0 %>
+      <div class="text-green text-center"> <%= Time.at(@prevision).utc.strftime("+%Mmin") %></div>
+      <% else %>
+        <div class="text-green text-center"> <%= Time.at(@prevision).utc.strftime("+%Hh %Mmin") %></div>
+      
       <% end %>
       <p>Depassement en euros: €</p>
       <% end %>

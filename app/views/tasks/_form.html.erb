@@ -1,11 +1,12 @@
-<div class="container">
-  <div class="col-sm-4 col-sm-offset-4">
-          <%= simple_form_for [@project, @task] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :estimation, minute_step: 15, selected: 1 %>
-    <div class="text-center">
-        <%= f.submit %>
-      <% end %>
-      </div>
+<%= simple_form_for([project, task], remote: true) do |f| %>
+<div class="form_add">
+  <div class="form_name">
+    <%= f.input :name, placeholder: "Create a database" %>
   </div>
+  <div class="form_estimation">
+    <%= f.input :estimation, minute_step: 15, selected: Time.new(2000, 1, 1, 1, 0, 0) %>
+  </div>
+  <%= f.hidden_field :project_id, value: project.id %>
 </div>
+  <%= f.submit %>
+<% end %>

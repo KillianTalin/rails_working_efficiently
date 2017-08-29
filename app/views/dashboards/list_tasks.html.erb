@@ -25,7 +25,11 @@
             <div class="task_card box-shadowed text-center">
               <div class="l1">
                 <div class="duration">
-                  <h3><%= task.forecast_duration %>min</h3>
+                  <% if task.estimation.hour > 0  %>
+                    <h3><%= "#{task.estimation.hour}h" + Time.at(task.estimation).utc.strftime("%Mmin") %></h3>
+                  <% else %>
+                    <h3><%= Time.at(task.estimation).utc.strftime("%Mmin") %></h3>
+                  <% end %>
                 </div>
                 <div class="task_name">
                   <h3><%= task.name %></h3>
