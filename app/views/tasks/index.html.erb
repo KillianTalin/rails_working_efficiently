@@ -88,7 +88,7 @@
   <div class="col-sm-3" id="la">
     <h4>Data</h4>
     <p>Deadline: <%= @date.strftime("%d-%m-%Y") %></p>
-    <p>Progress:</p>
+    <p>Tasks:</p>
     <div class="clearfix">
       <div class="c100 p<%= @tasks.empty? ? "0" : @pourcent_done.to_i  %> big">
           <span><%= @tasks_done %>/<%= @total_task %></span>
@@ -99,9 +99,12 @@
       </div>
     </div>
 
-    <p>Total passed in this project: <%= @time_passed  %></p>
+<!--     <p>Time spent: <%= @time_passed  %></p>
+    <p>Time left: <%= @time_to_do%> </p> -->
+    <p> Progress: </p>
+    <div id="progress-bar" data-percent_done="<%= @pourcent_done %>"></div>
 
-    <p>Temps de travail restant à faire: <%= @time_to_do%> </p>
+
     <% unless @tasks_finished.empty?  %>
     <% if @prevision < 0
       if Time.at(@prevision).utc.strftime("%H").to_i == 0 %>
