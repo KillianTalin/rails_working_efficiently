@@ -1,13 +1,13 @@
 <div class="container text-black">
-  <h2 class="text-center day-title"> Quelles tâches veux-tu effectuer aujourd'hui ? :-) </h2>
+  <h2 class="text-center day-title"> What are your tasks for today ? </h2>
   <div class="row">
     <div class="col-xs-12 col-sm-4 col-sm-offset-4">
       <% @projects.each do |project| %>
-        <h3 data-mission="<%= project.id %>" class="project-name"> <%= project.name %> </h3>
+        <h3 data-mission="<%= project.id %>" class="project-name"> <span class="chevron"> › </span> <%=  project.name %> </h3>
         <div class="task-list" style="display: none" data-mission="<%= project.id %>">
           <% project.tasks.each do |task| %>
             <%= simple_form_for task, url: select_task_path(task), method: :patch, remote: true do |f| %>
-              <%= f.input :submit, :as => :boolean, label_html: { for: nil, class: "" }, input_html: {checked: false, class: "selected iCheck-box"}, label: task.name %>
+              <%= f.input :submit, :as => :boolean, label_html: { for: nil }, input_html: {checked: false, class: "selected"}, label: task.name %>
             <% end %>
           <% end %>
         </div>
@@ -15,8 +15,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      <%= link_to "Let's go !", dashboards_path, class: "btn btn-primary", id: "button-lets-go" %>
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center">
+      <%= link_to "Let's work!", dashboards_path, class: "btn btn-primary", id: "button-lets-go" %>
     </div>
   </div>
 </div>

@@ -12,6 +12,7 @@
 .project-name {
   cursor: pointer;
   opacity: 0.8;
+  font-size: 28px;
 }
 
 .project-name:hover {
@@ -21,4 +22,13 @@
 
 .icheckbox_square-green {
   margin-right: 20px;
+}
+
+.rotate {
+  transform: rotate(90deg);
+}
+
+.chevron {
+  transition: transform 0.5s;
+  display: inline-block;
 }
