@@ -4,7 +4,8 @@
     <div class="full-sized margin-top-max">
       <h1 class="text-center">Dashboard</h1>
 
-      <div class="col-sm-3 text-white text-shadowed-white" id="la">
+      <div class="col-sm-3 text-white text-shadowed-white la">
+        <div id="dashboard-left">
         <h4>My projects</h4>
         <div class="bg-white text-black cornerized padded margin-top-classic box-shadowed">
           <% @projects.each do |project| %>
@@ -18,6 +19,7 @@
           <%= link_to new_project_path do %>
           <i class="fa fa-plus" aria-hidden="true text-black">Add a new project</i>
           <% end %>
+        </div>
         </div>
       </div>
 
@@ -78,7 +80,8 @@
         <% end %>
       </div>
 
-      <div class="col-sm-3" id="la">
+      <div class="col-sm-3">
+      <div id="dashboard-right">
         <h4>Data</h4>
         <div class="bg-white text-black cornerized padded margin-top-classic box-shadowed">
           <h4>Deadline: <%= @date.strftime("%d-%m-%Y") %></h4>
@@ -115,9 +118,10 @@
               <p> Progress: </p>
               <div id="progress-bar" data-percent_done="<%= @pourcent_done %>"></div>
             <% end %>
-          <p>Depassement en euros: €</p>
+          <p><%= @project.price_avancement %> €</p>
           <% end %>
         </div>
+      </div>
       </div>
 
 

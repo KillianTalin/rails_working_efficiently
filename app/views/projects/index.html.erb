@@ -141,7 +141,7 @@
 
                 <div class="card_stats">
                   <div class="clearfix">
-                    <div class="c100 p<%= project.tasks.empty? ? "0" : ((project.tasks.where(done: true).count.to_f / project.tasks.count.to_f) * 100).to_i %> small">
+                    <div class="c100 p<%= project.tasks.empty? ? 0 : ((project.tasks.where(done: true).count.to_f / project.tasks.count.to_f) * 100).to_i %> small">
                       <span> <%=project.tasks.where(done: true).count %>/<%= project.tasks.count %></span>
                       <div class="slice">
                         <div class="bar"></div>
@@ -181,11 +181,11 @@
         <% end %>
       <% end %>
         <%= link_to new_project_path do %>
-                <button class="text-center btn-medium margin-top-max"> + New project </button>
-              <% end %>
+          <button class="text-center btn-medium margin-top-max"> + New project </button>
+        <% end %>
     </div>
   </div>
 </div>
-      
+
 </div>
 </div>
