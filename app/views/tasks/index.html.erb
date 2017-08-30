@@ -1,5 +1,5 @@
 <% content_for :body_id, "dashboard_user" %>
-<div class="photo-background">
+<div class="gradient-background">
   <div class="container text-white">
     <div class=" full-sized margin-top-max">
       <h1 class="text-center">Dashboard</h1>
@@ -10,6 +10,27 @@
             <%= link_to  project_tasks_path(project_id: project.id) do %>
               <p class='<%= project == @project ? "active" : "" %> text-black'><%= project.name.capitalize %></p>
             <% end %>
+    <% end %>
+    <%= link_to tasks_path do %>
+      <p class='<%= "active" unless params[:project_id].present? %> text-black'>All tasks</p>
+    <% end %>
+    <%= link_to new_project_path do %>
+      <i class="fa fa-plus" aria-hidden="true text-black">Add a new project</i>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="col-sm-6 text-black">
+    <% unless @tasks_to_do.empty? %>
+      <h4 class="text-white text-shadowed-white">To do</h4>
+      <% @tasks_to_do.each do |task| %>
+        <div class="card_task_dashboard">
+          <div>
+            <b><%= task.name.capitalize %></b>
+          </div>
+          <div>Estimation: <%= Time.at(task.estimation).utc.strftime("%Hh %Mmin")  %></div>
+          <%= link_to edit_project_task_path(task.project, task) do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
           <% end %>
           <%= link_to tasks_path do %>
             <p class='<%= "active" unless params[:project_id].present? %> text-black'>All tasks</p>

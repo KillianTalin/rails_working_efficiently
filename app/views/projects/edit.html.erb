@@ -1,15 +1,21 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-offset-4 col-sm-4">
-    <div class="tex-center">
-
-
-      <h3 class="text-center text-black">Edit a project</h3>
-      <%= render "form", project: @project %>
-      <%= link_to project_path(@project), method: :delete, data: { confirm: "Are you sure?" } do %>
-        <button class="text-center btn-danger">Supprimer le project</button>
-      <% end %>
+<% content_for :body_id, "dashboard_user" %>
+<div class="gradient-background">
+  <div class="container text-black">
+    <div class=" full-sized margin-top-max">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-offset-4 col-sm-4 bg-white padded cornerized">
+          <div class="text-center">
+            <h3 class="text-center text-black margin-bottom-classic">Edit a Project</h3>
+            <%= render "form", project: @project %>
+            <%= link_to project_path(@project), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <button class="btn-medium-red">Delete Project</button>
+            <% end %>
+                </div>
           </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+

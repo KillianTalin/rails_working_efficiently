@@ -1,11 +1,10 @@
 <% content_for :body_id, "dashboard_user" %>
-<div class="photo-background">
+<div class="gradient-background">
   <div class="container text-white">
     <div class=" full-sized margin-top-max">
       <h1 class="text-center text-shadowed-white">Dashboard</h1>
       <div class="col-sm-2 text-white text-shadowed-white">
         <h4>My projects</h4>
-
         <% @projects.each do |project| %>
         <%= link_to  project_tasks_path(project_id: project.id) do %>
         <p class='<%= project == @project ? "active" : "" %> text-white'><%= project.name.capitalize %></p>
@@ -14,17 +13,7 @@
         <%= link_to tasks_path do %>
         <p class='<%= "active" unless params[:project_id].present? %> text-white'>All tasks</p>
         <% end %>
-
-        <div class="test">
-          <form action="/tasks" method="get">
-            Du:
-            <input type="date" name="between_first">
-            Au:
-            <input type="date" name="between_last">
-
-          </form>
-        </div>
-
+        
       </div>
       <div class="col-sm-6 margin-classic text-black ">
         <% unless @tasks_to_do.empty? %>
