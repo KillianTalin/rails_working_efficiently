@@ -1,10 +1,11 @@
 <% content_for :body_id, "dashboard_user" %>
-<div class="photo-background">
+<div class="gradient-background">
 <div class="container text-black">
 <div class=" full-sized margin-top-max">
   <div class="row">
-    <h1>My projects</h1>
-    <div class="col-sm-8 col-sm-offset-2">
+    <h1 class="text-white text-shadow-white margin-bottom-classic">My projects</h1>
+
+    <div class="col-sm-8 col-sm-offset-2 bg-grey min-height-classic cornerized padded">
 
       <% unless @projects_today.empty?  %>
           <h3>Today</h3>
@@ -65,19 +66,19 @@
       <% end %>
 
       <% unless @projects_futur.empty?  %>
-          <h3>Futur projects</h3>
+          <h3 class="margin-bottom-classic">Futur projects</h3>
         <% @projects_futur.each do |project| %>
-          <div class="card_projects">
+          <div class="card_projects box-shadowed-classic">
 
             <div class="card_description">
               <div class="card_description_content_wrapper">
 
                 <div class="card_info">
                   <%= link_to project_tasks_path(project) do%>
-                    <h4><%= project.name %></h4>
+                    <h4 class="text-black"><%= project.name %></h4>
                   <% end %>
                   <br>
-                  <%= project.description %>
+                  <p class="text-black"> <%= project.description %></p>
                 </div>
 
                 <div class="card_stats">
@@ -91,9 +92,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="btn_setting">
+                <div class="btn_setting ">
                   <%= link_to edit_project_path(project) do %>
-                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <i class="fa fa-cog text-black" aria-hidden="true"></i>
                   <% end %>
 
                 </div>
@@ -123,7 +124,7 @@
       <% end %>
 
       <% unless @projects_passed.empty?  %>
-          <h3>Projects passed</h3>
+          <h3>Projects Done</h3>
         <% @projects_passed.each do |project| %>
           <div class="card_projects">
 
@@ -179,11 +180,12 @@
           </div><br>
         <% end %>
       <% end %>
+        <%= link_to new_project_path do %>
+                <button class="text-center btn-medium margin-top-max"> + New project </button>
+              <% end %>
     </div>
   </div>
 </div>
-      <%= link_to new_project_path do %>
-        <button class="text-center btn-success"> Add a new project </button>
-      <% end %>
+      
 </div>
 </div>

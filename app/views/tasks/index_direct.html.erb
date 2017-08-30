@@ -1,5 +1,5 @@
 <% content_for :body_id, "dashboard_user" %>
-<div class="photo-background">
+<div class="gradient-background">
 <div class="container text-white">
 <div class=" full-sized margin-top-max">
   <h1 class="text-center text-shadowed-white">Dashboard</h1>
@@ -15,15 +15,7 @@
         <p class='<%= "active" unless params[:project_id].present? %> text-white'>All tasks</p>
       <% end %>
 
-      <div class="test">
-        <form action="/tasks" method="get">
-          Du:
-          <input type="date" name="between_first">
-          Au:
-          <input type="date" name="between_last">
 
-        </form>
-      </div>
 
   </div>
   <div class="col-sm-6 margin-classic text-black ">
