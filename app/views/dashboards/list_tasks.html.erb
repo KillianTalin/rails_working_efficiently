@@ -21,7 +21,12 @@
       <div class="row text-align">
         <div class="col-xs-12">
           <% @selected_tasks.each do |task| %>
-            <div class="task_card box-shadowed text-center">
+            <div class="task_card box-shadowed-card text-center">
+              <div class="l2">
+                <div class="project_name">
+                  <h4><%= task.project.name %></h4>
+                </div>
+              </div>
               <div class="l1">
                 <div class="duration">
                   <span class="task-title-dashboard">
@@ -45,15 +50,9 @@
                   </div>
                 </div>
               </div>
-              <div class="l2">
-                <div class="project_name">
-                  <h4><%= task.project.name %></h4>
-                </div>
-              </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
-      </div>
     </div>
   </div>
 </div>

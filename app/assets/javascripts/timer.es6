@@ -41,7 +41,7 @@ function initializeClock(id, starttime) {
     let t = getTime(starttime);
     buttonHiddenInput.value = t.total / 1000;
     pauseButtonHiddenInput.value = t.total / 1000;
-    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    // hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
   }
