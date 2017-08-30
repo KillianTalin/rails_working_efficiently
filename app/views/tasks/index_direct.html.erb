@@ -13,7 +13,7 @@
         <%= link_to tasks_path do %>
         <p class='<%= "active" unless params[:project_id].present? %> text-white'>All tasks</p>
         <% end %>
-        
+
       </div>
       <div class="col-sm-6 margin-classic text-black ">
         <% unless @tasks_to_do.empty? %>

@@ -7,6 +7,9 @@
   var new_task = $("<%= j render 'tasks/show', task: @task %>").hide();
   // Add it to the DOM, at the end of the existing tasks. It's still hidden.
   $('#tasks').append(new_task);
+
+  // display todo
+  $("#todo-title").removeClass("hidden");
   // Show the new task with an animation!
   new_task.slideDown();
   // Reset the form
