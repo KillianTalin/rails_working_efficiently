@@ -2,7 +2,6 @@ const startButton = document.getElementById("start-start");
 
 startButton.addEventListener("click", function(event) {
   initializeClock('clockdiv', start);
-  startButton
 });
 
 const currentElapsedTime = document.getElementById("current_elapsed_time");
@@ -12,6 +11,7 @@ if (currentElapsedTime.value === "") {
 } else {
   var start = new Date(parseInt(currentElapsedTime.value) * 1000);
 }
+
 
 
 
