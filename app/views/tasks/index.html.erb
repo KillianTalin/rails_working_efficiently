@@ -3,7 +3,7 @@
   <div class="container text-white">
     <div class=" full-sized margin-top-max">
       <h1 class="text-center">Dashboard</h1>
-      <div class="col-sm-2 text-white text-shadowed-white" id="la">
+      <div class="col-sm-3 text-white text-shadowed-white" id="la">
         <h4>My projects</h4>
         <div class="bg-white text-black cornerized padded margin-top-classic box-shadowed">
           <% @projects.each do |project| %>
@@ -19,25 +19,8 @@
           <% end %>
         </div>
       </div>
-      <div class="col-sm-6 text-black">
-        <% unless @tasks_to_do.empty? %>
-          <h4 class="text-white text-shadowed-white">To do</h4>
-          <% @tasks_to_do.each do |task| %>
-          <div class="card_task_dashboard">
-            <div>
-              <b><%= task.name.capitalize %></b>
-            </div>
-            <div> Estimation: <%= Time.at(task.estimation).utc.strftime("%Hh %Mmin")  %></div>
-            <%= link_to edit_project_task_path(task.project, task) do %>
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-            <% end %>
-            <%= link_to project_task_path(task.project.id, task.id), method: :delete, data: { confirm: "Are you sure?" } do %>
-              <i class="fa fa-times" aria-hidden="true"></i>
-            <% end %>
-          </div>
-          <% end %>
-        <% end %>
-        <div class="col-sm-6">
+
+        <div class="col-sm-6 text-black">
           <% if @tasks_to_do.empty?  %>
             <div id="tasks">
               <% @tasks_to_do.each do |task| %>
@@ -53,7 +36,7 @@
               <% end %>
             </div>
           <% end %>
-          <div class="card_task_dashboard">
+          <div class="card_task_dashboard text-black">
             <h4 class="text-center"> Ajouter une tâche
             <i class="fa fa-plus" aria-hidden="true"></i>
             </h4>
@@ -62,7 +45,7 @@
           <% unless @tasks_in_progress.empty? %>
             <h4>In progress</h4>
             <% @tasks_in_progress.each do |task| %>
-              <div class="card_task_dashboard">
+              <div class="card_task_dashboard text-black">
                 <div>
                   <b><%= task.name.capitalize %></b>
                 </div>
@@ -80,7 +63,7 @@
           <% unless @tasks_finished.empty? %>
             <h4>Finished</h4>
             <% @tasks_finished.each do |task| %>
-              <div class="card_task_dashboard">
+              <div class="card_task_dashboard text-black">
                 <div><b> <%= task.name.capitalize %> </b> </div>
                 <div>Estimation: <%= Time.at(task.estimation).utc.strftime("%Hh %Mmin")  %> </div>
                 <div>Real time: <%= Time.at(task.elapsed_time).utc.strftime("%Hh %Mmin")  %></div>
@@ -96,11 +79,11 @@
         </div>
         <div class="col-sm-3" id="la">
           <h4>Data</h4>
-          <div class="text-black text-shadowed-black box-shadowed">
+          <div class="bg-white text-black cornerized padded margin-top-classic box-shadowed">
             <h4>Deadline: <%= @date.strftime("%d-%m-%Y") %></h4>
             <p>Tasks:</p>
             <div class="clearfix">
-              <div class="c100 p<%= @tasks.empty? ? "0" : @pourcent_done.to_i  %> big">
+              <div class="c100 p<%= @tasks.empty? ? "0" : @pourcent_done.to_i  %> medium">
                 <span><%= @tasks_done %>/<%= @total_task %></span>
                 <div class="slice">
                   <div class="bar"></div>
@@ -135,6 +118,8 @@
           </div>
          </div>
         </div>
+      </div>
+
       </div>
     </div>
   </div>
