@@ -21,7 +21,6 @@
       <div class="row text-align">
         <div class="col-xs-12">
           <% @selected_tasks.each do |task| %>
-
             <div class="task_card box-shadowed text-center">
               <div class="l1">
                 <div class="duration">
@@ -32,7 +31,6 @@
                       <h3><%= Time.at(task.estimation).utc.strftime("%Mmin") %></h3>
                     <% end %>
                   </span>
-
                 </div>
                 <div class="task_name">
                   <span class="task-title-dashboard"><%= task.name %></span>
@@ -53,7 +51,6 @@
                 </div>
               </div>
             </div>
-
           <% end %>
         </div>
       </div>
