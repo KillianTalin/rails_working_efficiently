@@ -6,4 +6,5 @@
 //= require chartkick
 //= require iCheck
 //= require progressbar.js.js
+//= require_tree ./vendors
 //= require_tree .
