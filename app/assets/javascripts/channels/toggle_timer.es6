@@ -3,5 +3,6 @@ $(document).ready(function(){
         $("#start-start").hide();
         $("#toggle-timer").show();
     });
+
 })
 
