@@ -6,7 +6,7 @@
 
 .day-title {
   margin-bottom: 40px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .project-name {
@@ -33,4 +33,8 @@
   transition: transform 0.5s;
   display: inline-block;
   margin-right: 5px;
+}
+
+.title-top {
+  margin-top: 130px;
 }
