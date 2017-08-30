@@ -251,14 +251,18 @@
 }
 .c100 > span {
   position: absolute;
-  width: 100%;
+  // width: 100%;
   z-index: 1;
   left: 0;
   top: 0;
-  width: 5em;
-  line-height: 5em;
-  font-size: 0.2em;
-  color: #cccccc;
+  // width: 5em;
+  width: 3.33em;
+  line-height: 3.33em;
+  font-size: 0.3em;
+  color: #307bbb;
+  // line-height: 5em;
+  // font-size: 0.2em;
+  // color: #cccccc;
   display: block;
   text-align: center;
   white-space: nowrap;
