@@ -119,6 +119,11 @@ body {
   opacity: 1;
 }
 
+.bg-grey{
+  background-color: #E2E4E6;
+  opacity: 1;
+}
+
 .bg-emerald{
   background-color: $emerald!important;
   opacity: 1;
@@ -144,6 +149,9 @@ body {
   margin-top: 15vh;
 }
 
+.min-height-classic {
+  min-height: 70vh;
+}
 
 .margin-bottom-classic{
   margin-bottom: 30px;
@@ -184,6 +192,10 @@ body {
   padding: 30px;
 }
 
+.box-shadowed-classic{
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+}
 
 .column-align{
   display: flex;
@@ -225,10 +237,16 @@ color: rgba(82, 196, 132, 1.00);
 }
 
 
-// Photos
+// Global BG
 
 .photo-background {
   position: relative;
   background-image: image-url("back.jpg");
   background-size: cover!important;
 }
+
+
+.gradient-background {
+  background: linear-gradient(135deg, #6190E8, #A7BFE8);
+}
+
