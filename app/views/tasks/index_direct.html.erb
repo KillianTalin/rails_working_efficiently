@@ -3,7 +3,9 @@
   <div class="container text-white">
     <div class=" full-sized margin-top-max">
       <h1 class="text-center text-shadowed-white">Dashboard</h1>
-      <div class="col-sm-2 text-white text-shadowed-white">
+
+      <div class="col-sm-12 bg-grey min-height-classic cornerized padded">
+      <div class="col-sm-2 text-white text-shadowed-white bg-white">
         <h4>My projects</h4>
         <% @projects.each do |project| %>
         <%= link_to  project_tasks_path(project_id: project.id) do %>
@@ -87,7 +89,7 @@
             </div>
           </div>
           <p>Total time: <%= @time %> min</p>
-
+          </div>
         </div>
       </div>
     </div>

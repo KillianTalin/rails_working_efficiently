@@ -3,11 +3,11 @@
   <div class="container text-white">
     <div class="full-sized margin-top-max">
       <h1 class="text-center">Dashboard</h1>
-
-      <div class="col-sm-3 text-white text-shadowed-white la">
+        
+      <div class="col-sm-3 text-whiter la">
         <div id="dashboard-left">
-        <h4>My projects</h4>
-        <div class="bg-white text-black cornerized padded margin-top-classic box-shadowed">
+        <h4 class="text-white text-center">My projects</h4>
+        <div class="bg-white text-black cornerized padded margin-top-classic box-shadowed min-height-classic">
           <% @projects.each do |project| %>
             <%= link_to  project_tasks_path(project_id: project.id) do %>
               <p class='<%= project == @project ? "active" : "" %> text-black'><%= project.name.capitalize %></p>
@@ -17,7 +17,7 @@
             <p class='<%= "active" unless params[:project_id].present? %> text-black'>All tasks</p>
           <% end %>
           <%= link_to new_project_path do %>
-          <i class="fa fa-plus" aria-hidden="true text-black">Add a new project</i>
+          <i class="fa fa-plus " aria-hidden="true text-black"> Add a new project</i>
           <% end %>
         </div>
         </div>
@@ -82,8 +82,8 @@
 
       <div class="col-sm-3">
       <div id="dashboard-right">
-        <h4>Data</h4>
-        <div class="bg-white text-black cornerized padded margin-top-classic box-shadowed">
+        <h4 class="text-white text-center">Data</h4>
+        <div class="bg-white text-black cornerized padded margin-top-classic box-shadowed min-height-classic">
           <h4>Deadline: <%= @date.strftime("%d-%m-%Y") %></h4>
           <p>Tasks:</p>
           <div class="clearfix">
@@ -120,11 +120,9 @@
             <% end %>
           <p><%= @project.price_avancement %> €</p>
           <% end %>
+          </div>
         </div>
       </div>
-      </div>
-
-
     </div>
   </div>
 </div>
