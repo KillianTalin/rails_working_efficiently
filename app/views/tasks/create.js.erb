@@ -1,0 +1,14 @@
+// Here you will write *javascript* that would be executed by the browser
+<% if @task.errors.any? %>
+  // Render new task form with errors
+  $('#new_task').html("<%= j render 'tasks/form', project: @project, task: @task %>");
+<% else %>
+  // Create a paragraph for the new task. But hide it.
+  var new_task = $("<%= j render 'tasks/show', task: @task %>").hide();
+  // Add it to the DOM, at the end of the existing tasks. It's still hidden.
+  $('#tasks').append(new_task);
+  // Show the new task with an animation!
+  new_task.slideDown();
+  // Reset the form
+  $('#new_task').html("<%= j render 'tasks/form', project: @project, task: Task.new %>");
+<% end %>
