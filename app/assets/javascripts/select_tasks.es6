@@ -19,5 +19,3 @@ window.addEventListener("load", function(event) {
 $(document).on("ifToggled", ".icheckbox_square-green", function(event) {
   $(this).parents("form").submit();
 });
-
-

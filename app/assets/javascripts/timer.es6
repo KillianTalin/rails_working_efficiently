@@ -1,11 +1,23 @@
-window.addEventListener("load", function(event) {
+const startButton = document.getElementById("start-start");
+
+startButton.addEventListener("click", function(event) {
   initializeClock('clockdiv', start);
+  startButton
 });
 
-let start = new Date(0);
+const currentElapsedTime = document.getElementById("current_elapsed_time");
+
+if (currentElapsedTime.value === "") {
+  var start = new Date(0);
+} else {
+  var start = new Date(parseInt(currentElapsedTime.value) * 1000);
+}
+
+
+
+// let start = new Date(0);
 function getTime(starttime) {
   let t = starttime.setSeconds(starttime.getSeconds() + 1);
-  // console.log(t);
   const seconds = Math.floor( (t/1000) % 60 );
   const minutes = Math.floor( (t/1000/60) % 60 );
   const hours = Math.floor( (t/(1000*60*60)) % 24 );
@@ -24,10 +36,11 @@ function initializeClock(id, starttime) {
   const minutesSpan = clock.querySelector('.minutes');
   const secondsSpan = clock.querySelector('.seconds');
   const buttonHiddenInput = document.querySelector("#task_elapsed_time");
+  const pauseButtonHiddenInput = document.querySelector("#elapsed_time_pause");
   function updateClock() {
     let t = getTime(starttime);
-    console.log(t);
     buttonHiddenInput.value = t.total / 1000;
+    pauseButtonHiddenInput.value = t.total / 1000;
     hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);

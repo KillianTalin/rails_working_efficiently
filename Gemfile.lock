@@ -76,6 +76,8 @@ GEM
     ffi (1.9.18)
     figaro (1.1.1)
       thor (~> 0.14)
+    font-awesome-rails (4.7.0.2)
+      railties (>= 3.2, < 5.2)
     font-awesome-sass (4.7.0)
       sass (>= 3.2)
     globalid (0.4.0)
@@ -155,6 +157,7 @@ GEM
     rails-assets-iCheck (1.0.2)
       rails-assets-jquery (>= 1.7)
     rails-assets-jquery (3.2.1)
+    rails-assets-progressbar.js (1.0.1)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -234,6 +237,7 @@ DEPENDENCIES
   chartkick
   devise
   figaro
+  font-awesome-rails
   font-awesome-sass
   jbuilder (~> 2.0)
   jquery-rails
@@ -246,6 +250,7 @@ DEPENDENCIES
   pundit
   rails (= 5.0.5)
   rails-assets-iCheck!
+  rails-assets-progressbar.js!
   redis
   sass-rails
   simple_form
