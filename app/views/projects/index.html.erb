@@ -3,12 +3,12 @@
 <div class="container text-black">
 <div class=" full-sized margin-top-max">
   <div class="row">
-    <h1 class="text-white text-shadow-white margin-bottom-classic">My projects</h1>
+    <h1 class="text-white text-shadow-white margin-bottom-classic text-center">My projects</h1>
 
     <div class="col-sm-8 col-sm-offset-2 bg-grey min-height-classic cornerized padded">
 
       <% unless @projects_today.empty?  %>
-          <h3>Today</h3>
+          <h3 class="text-black">Today</h3>
         <% @projects_today.each do |project| %>
           <div class="card_projects">
 
@@ -36,7 +36,7 @@
                 </div>
                 <div class="btn_setting">
                   <%= link_to edit_project_path(project) do %>
-                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <i class="fa fa-cog text-black" aria-hidden="true"></i>
                   <% end %>
 
                 </div>
@@ -66,7 +66,7 @@
       <% end %>
 
       <% unless @projects_futur.empty?  %>
-          <h3 class="margin-bottom-classic">Futur projects</h3>
+          <h3 class="margin-bottom-classic">Due Projects</h3>
         <% @projects_futur.each do |project| %>
           <div class="card_projects box-shadowed-classic">
 
