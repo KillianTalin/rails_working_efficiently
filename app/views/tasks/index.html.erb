@@ -1,5 +1,5 @@
 <% content_for :body_id, "dashboard_user" %>
-<div class="photo-background">
+<div class="gradient-background">
 <div class="container text-white">
 <div class=" full-sized margin-top-max">
   <h1 class="text-center">Dashboard</h1>
@@ -17,7 +17,7 @@
       <p class='<%= "active" unless params[:project_id].present? %> text-black'>All tasks</p>
     <% end %>
     <%= link_to new_project_path do %>
-      Add a new project<i class="fa fa-plus" aria-hidden="true text-black"></i>
+      <i class="fa fa-plus" aria-hidden="true text-black">Add a new project</i>
     <% end %>
     </div>
   </div>
