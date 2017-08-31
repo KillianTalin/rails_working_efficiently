@@ -95,8 +95,10 @@
               </div>
             </div>
           </div>
-          <p>Total passed in this project: <%= @time_passed  %></p>
-          <p>Temps de travail restant à faire: <%= @time_to_do%> </p>
+
+          <p> Progress: </p>
+          <div id="progress-bar" data-percent_done="<%= @pourcent_done %>"></div>
+
           <% unless @tasks_finished.empty?  %>
             <% if @prevision < 0 %>
               <% if Time.at(@prevision).utc.strftime("%H").to_i == 0 %>
@@ -115,16 +117,12 @@
               <% end %>
             <% elsif @prevision == 0 %>
               <div class="text-blue text-center">Keep going like that 👍</div>
-              <p> Progress: </p>
-              <div id="progress-bar" data-percent_done="<%= @pourcent_done %>"></div>
             <% end %>
           <p><%= @project.price_avancement %> €</p>
           <% end %>
         </div>
       </div>
       </div>
-
-
     </div>
   </div>
 </div>
