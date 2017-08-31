@@ -1,33 +1,52 @@
 .btn-size{
   font-size: 15px!important;
 }
-.clockdiv{
+
+.controls-timer form:last-child button {
+  padding: 0 !important;
+}
+
+.controls-timer form:first-child button {
+  padding: 0 10px !important;
+
+}
+
+.controls-timer {
+  height: 56px;
+  & button:active {
+    box-shadow: none;
+}
+}
+
+.clockdiv {
   display: flex;
   font-size: 30px;
   margin-right: 10px;
   min-width: 80px;
 }
 
-#clockdiv {
+
+.clockdiv {
   // display: flex;
   // flex-direction: row;
   height: 100%;
   font-family: sans-serif;
   color: #fff;
   font-weight: 100;
-  font-size: 1.2em;
+  font-size: 1.4em;
+  background: #19a598;
+  border-radius: 3px;
 }
 
-#clockdiv > div {
+.clockdiv > div {
   //padding: 10px;
   // border-radius: 3px;
   // background: #00BF96;
   // display: inline-block;
 }
 
-#clockdiv div > span {
+.clockdiv div > span {
   padding: 8px;
-  background: #00816A;
   // display: inline-block;
 }
 
@@ -62,4 +81,5 @@
 #button-restart, #button-finish {
   padding: 0px;
 }
+
 

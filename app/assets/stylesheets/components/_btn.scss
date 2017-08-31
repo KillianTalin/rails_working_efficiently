@@ -64,7 +64,7 @@
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 14px;
     // border: 2px solid;
     width: auto;
     -webkit-font-smoothing: antialiased;
@@ -182,7 +182,11 @@
 }
 
 .btn-timer {
-  font-size: 15px;
+  font-size: 40px !important;
+  padding: 0px;
+  & button {
+    padding: 0px;
+  }
 }
 
 #button-lets-go {

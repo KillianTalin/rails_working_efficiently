@@ -6,7 +6,7 @@
       <div class="row ">
         <div class="col-xs-12">
           <div class="citation"> </div>
-          <div class="time text-center text-white" style="font-size: 130px;">
+          <div class="time text-center text-white" style="font-size: 120px; padding-top: 30px;">
             <%= Time.now.strftime("%H:%M")%>
           </div>
           <div class="welcome text-white text-center margin-top-classic">
@@ -24,7 +24,7 @@
             <div class="task_card box-shadowed-card text-center">
               <div class="l2">
                 <div class="project_name">
-                  <h4><%= task.project.name %></h4>
+                  <h4>› <%= task.project.name %></h4>
                 </div>
               </div>
               <div class="l1">
@@ -45,7 +45,7 @@
                       <i class="fa fa-play-circle js-start" id="start-start-<%= task.id %>"></i>
                   </div>
                 </div> -->
-                  <div id="toggle-timer-<%= task.id %>">
+                  <div id="toggle-timer-<%= task.id %>" class="controls-timer">
                     <%= render "timer", task: task, project: task.project %>
                   </div>
                 </div>
