@@ -38,7 +38,6 @@ class TasksController < ApplicationController
     @tasks_done = @tasks_finished.count
     @total_task = @tasks.count
     @pourcent_done = (@tasks_done.to_f / @total_task.to_f) * 100
-    @pourcent_done = 70
 
   end
 
