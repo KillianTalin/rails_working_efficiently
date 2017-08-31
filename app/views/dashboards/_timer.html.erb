@@ -4,26 +4,33 @@
       <span class="hours"></span>
     </div> -->
     <div>
-      <span class="minutes"></span>
+      <span class="minutes"><%= task.minutes.to_s.rjust(2, "0") if task.elapsed_time %></span>
     </div>
     <div>
-      <span class="seconds"></span>
+      <span class="seconds"><%= task.minus_seconds.to_s.rjust(2, "0") if task.elapsed_time %></span>
     </div>
   </div>
-  <input id="current_elapsed_time" type="text" style="display: none;" value="<%= task.elapsed_time %>">
+  <input id="current_elapsed_time-<%= task.id %>" type="text" style="display: none;" value="<%= task.elapsed_time %>">
+
   <%= simple_form_for [project, task], remote: true do |f| %>
     <%= f.input :elapsed_time, as: :hidden, input_html:{id: "elapsed_time_pause"} %>
-    <%= button_tag type: 'submit', class: "btn ma-btn btn-timer", id: "button-pause" do %>
+    <%= button_tag type: 'submit', class: "btn ma-btn btn-timer hidden", id: "button-pause-#{task.id}" do %>
       <i class="fa fa-3x fa-pause-circle-o button-dashboard-padding" aria-hidden="true"></i>
     <% end %>
   <% end %>
-  <div class="btn ma-btn hidden btn-timer" id="button-restart">
+
+  <div class="timer_btn">
+    <i class="fa fa-play-circle js-start" id="start-start-<%= task.id %>"></i>
+  </div>
+
+  <div class="btn ma-btn hidden btn-timer" id="button-restart-<%= task.id %>">
     <i class="fa fa-3x fa-play-circle button-dashboard-padding" aria-hidden="true"></i>
   </div>
+
   <%= simple_form_for [project, task] do |f| %>
     <%= f.input :elapsed_time, as: :hidden %>
     <%= f.input :done, as: :hidden, input_html: {value: true} %>
-    <div class="btn ma-btn btn-timer" id="button-finish">
+    <div class="btn ma-btn btn-timer hidden" id="button-finish-<%= task.id %>">
       <%= button_tag type: 'submit' , class: "btn ma-btn" do %>
         <i class="fa fa-3x fa-check-circle-o" aria-hidden="true"></i>
       <% end %>

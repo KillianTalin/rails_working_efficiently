@@ -40,11 +40,11 @@
                 <div class="task_name">
                   <span class="task-title-dashboard"><%= task.name %></span>
                 </div>
-                <div class="l1-third-child">
+                <!-- <div class="l1-third-child">
                   <div class="timer_btn">
                       <i class="fa fa-play-circle js-start" id="start-start-<%= task.id %>"></i>
                   </div>
-                </div>
+                </div> -->
                   <div id="toggle-timer-<%= task.id %>">
                     <%= render "timer", task: task, project: task.project %>
                   </div>
