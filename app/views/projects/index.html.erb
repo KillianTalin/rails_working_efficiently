@@ -8,7 +8,7 @@
     <div class="col-sm-8 col-sm-offset-2 bg-grey min-height-classic cornerized padded">
 
       <% unless @projects_today.empty?  %>
-          <h3 class="text-black">Today</h3>
+          <h3 class="text-black margin-bottom-classic">Today</h3>
         <% @projects_today.each do |project| %>
           <div class="card_projects">
 
@@ -17,9 +17,9 @@
 
                 <div class="card_info decoration-none">
                   <%= link_to project_tasks_path(project) do%>
-                    <h4><%= project.name %></h4>
+                    <h4 class="jen-ai-marre"><%= project.name %></h4>
                   <% end %>
-                  <br>
+
                   <%= project.description %>
                 </div>
 
@@ -41,14 +41,14 @@
 
                 </div>
               </div>
-            </div><br>
+            </div>
 
             <div class="card_bas">
               <span>
                 Client: <%= project.client.name %>
               </span>
               <span>
-                Coût du projet: <%= project.price_per_project %> €
+                Project invoice: <%= project.price_per_project %> €
               </span>
               <span>
                 <% if project.days_before_deadline > 0 %>
@@ -61,7 +61,7 @@
               </span>
             </div>
 
-          </div><br>
+          </div>
         <% end %>
       <% end %>
 
@@ -75,9 +75,8 @@
 
                 <div class="card_info decoration-none">
                   <%= link_to project_tasks_path(project) do%>
-                    <h4 class="text-black"><%= project.name %></h4>
+                    <h4 class="text-black jen-ai-marre"><%= project.name %></h4>
                   <% end %>
-                  <br>
                   <p class="text-black"> <%= project.description %></p>
                 </div>
 
@@ -96,17 +95,16 @@
                   <%= link_to edit_project_path(project) do %>
                     <i class="fa fa-cog text-black" aria-hidden="true"></i>
                   <% end %>
-
                 </div>
               </div>
-            </div><br>
+            </div>
 
             <div class="card_bas">
               <span>
                 Client: <%= project.client.name %>
               </span>
               <span>
-                Coût du projet: <%= project.price_per_project %> €
+                Project invoice: <%= project.price_per_project %> €
               </span>
               <span>
                 <% if project.days_before_deadline > 0 %>
@@ -119,7 +117,7 @@
               </span>
             </div>
 
-          </div><br>
+          </div>
         <% end %>
       <% end %>
 
@@ -133,9 +131,8 @@
 
                 <div class="card_info decoration-none">
                   <%= link_to project_tasks_path(project) do%>
-                    <h4><%= project.name %></h4>
+                    <h4 class="jen-ai-marre"><%= project.name %></h4>
                   <% end %>
-                  <br>
                   <%= project.description %>
                 </div>
 
@@ -157,14 +154,13 @@
 
                 </div>
               </div>
-            </div><br>
-
+            </div>
             <div class="card_bas">
               <span>
                 Client: <%= project.client.name %>
               </span>
               <span>
-                Coût du projet: <%= project.price_per_project %> €
+                Project invoice: <%= project.price_per_project %> €
               </span>
               <span>
                 <% if project.days_before_deadline > 0 %>
@@ -177,7 +173,7 @@
               </span>
             </div>
 
-          </div><br>
+          </div>
         <% end %>
       <% end %>
       <div class="col-sm-4 col-sm-offset-4">
