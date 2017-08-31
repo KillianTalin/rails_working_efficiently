@@ -32,13 +32,14 @@ class TasksController < ApplicationController
       if @passed > 0
         @prevision = @tasks.where(done: true).sum(:elapsed_time) - @passed
       elsif @passed < 0
-        @prevision = @passed - @tasks.where(done: true).sum(:elapsed_time)
+        @prevision =  @tasks.where(done: true).sum(:elapsed_time) - @passed
       end
     end
     @tasks_done = @tasks_finished.count
     @total_task = @tasks.count
     @pourcent_done = (@tasks_done.to_f / @total_task.to_f) * 100
     @pourcent_done = 70
+
   end
 
   def show
