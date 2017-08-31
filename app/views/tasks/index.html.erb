@@ -21,10 +21,8 @@
             <% end %>
           </div>
         <% end %>
+        
         <div class="card_task_dashboard text-black" id="tache_form">
-          <h4 class="text-center"> Ajouter une tâche
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          </h4>
           <%= render 'tasks/form', project: @project, task: @task %>
         </div>
         <% unless @tasks_in_progress.empty? %>
@@ -76,8 +74,10 @@
               </div>
             </div>
           </div>
-          <p>Total passed in this project: <%= @time_passed  %></p>
-          <p>Temps de travail restant à faire: <%= @time_to_do%> </p>
+
+          <p> Progress: </p>
+          <div id="progress-bar" data-percent_done="<%= @pourcent_done %>"></div>
+
           <% unless @tasks_finished.empty?  %>
             <% if @prevision < 0 %>
               <div class="text-green text-center">
@@ -99,15 +99,11 @@
               </div>
             <% elsif @prevision == 0 %>
               <div class="text-blue text-center">Keep going like that 👍</div>
-              <p> Progress: </p>
-              <div id="progress-bar" data-percent_done="<%= @pourcent_done %>"></div>
             <% end %>
           <% end %>
         </div>
       </div>
       </div>
-
-
     </div>
   </div>
 </div>

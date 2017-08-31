@@ -5,9 +5,7 @@
   font-family: sans-serif;
   color: #fff;
   font-weight: 100;
-  text-align: center;
-  font-size: 30px;
-  //padding-top: 100px;
+  font-size: 1.2em;
 }
 
 #clockdiv > div {
@@ -18,8 +16,7 @@
 }
 
 #clockdiv div > span {
-  padding: 15px;
-  border-radius: 50%;
+  padding: 8px;
   background: #00816A;
   display: inline-block;
 }
@@ -30,15 +27,29 @@
 }
 
 #toggle-timer{
-
-  // position: relative;
-  // right: 10%;
   display: none;
-  // visibility: hidden;
+  flex: 0 0 20%;
+  & .timer-button-inline form button {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 15px !important;
+    & > *:nth-child(2) {
+    padding: 0 5px;
+    }
+  }
+
+  & .button-dashboard-padding {
+    padding: 0 10px;
+  }
 }
 
 .timer-button-inline{
   display: flex;
   justify-content: space-between;
-  height: 100%;
+  align-items: center;
 }
+
+#button-restart, #button-finish {
+  padding: 0px;
+}
+

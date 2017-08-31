@@ -1,12 +1,12 @@
-<%= simple_form_for([project, task], remote: true) do |f| %>
+<%= simple_form_for [project, task], remote: true, html: { class: 'form-inline' } do |f| %>
 <div class="form_add">
   <div class="form_name">
-    <%= f.input :name, placeholder: "Create a database" %>
+    <%= f.submit "+", class: "btn-add"%>
+    <%= f.input :name, placeholder: "Create a database", label: false %>
+    <%= f.input :estimation, minute_step: 1, selected: Time.new(2000, 1, 1, 1, 0, 0), label: false %>
+  </div>
   </div>
   <div class="form_estimation">
-    <%= f.input :estimation, minute_step: 15, selected: Time.new(2000, 1, 1, 1, 0, 0) %>
-  </div>
-  <%= f.hidden_field :project_id, value: project.id %>
+    <%= f.hidden_field :project_id, value: project.id %>
 </div>
-  <%= f.submit %>
 <% end %>
