@@ -1,5 +1,5 @@
-if (document.getElementById("progress-bar") != null) {
-  var bar = new ProgressBar.Line("#progress-bar", {
+if (document.getElementById("progress-bar_2") != null) {
+  var bar = new ProgressBar.Line("#progress-bar_2", {
     strokeWidth: 4,
     easing: 'easeInOut',
     duration: 1400,
@@ -25,12 +25,10 @@ if (document.getElementById("progress-bar") != null) {
     to: {color: '#ED6A5A'},
 
     step: (state, bar) => {
-      bar.setText("");
-
       bar.path.setAttribute('stroke', state.color);
     }
   });
 
-  var percentDone = document.getElementById("progress-bar").dataset.percent_done;
+  var percentDone = document.getElementById("progress-bar_2").dataset.percent_done;
   bar.animate(percentDone/100);  // Number from 0.0 to 1.0
 }

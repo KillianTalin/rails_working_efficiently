@@ -17,7 +17,7 @@
 
                 <div class="card_info">
                   <%= link_to project_tasks_path(project) do%>
-                    <h4><%= project.name %></h4>
+                    <h4><%= project.name.capitalize %></h4>
                   <% end %>
                   <br>
                   <%= project.description %>
@@ -48,7 +48,7 @@
                 Client: <%= project.client.name %>
               </span>
               <span>
-                Coût du projet: <%= project.price_per_project %> €
+                Coût du projet: <%= project.price_per_project || 0   %> €
               </span>
               <span>
                 <% if project.days_before_deadline > 0 %>

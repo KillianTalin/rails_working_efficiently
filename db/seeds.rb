@@ -14,6 +14,13 @@ Client.destroy_all
 
 puts 'Creating users...'
 users_attributes = [
+{
+    email:      "amin.diez@gmail.com",
+    password:   "123456",
+    first_name: "Amin",
+    last_name:  "Bouhassoune",
+    photo: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAARFAAAAJDgwZDNiZjI0LTQ3MDctNDcxYS04YjU4LTI5ZDcxM2RhZjRhYQ.jpg"
+  },
   {
     email:      "killian.talin@gmail.com",
     password:   "123456",
@@ -21,6 +28,7 @@ users_attributes = [
     last_name:  "Talin",
     photo: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAARFAAAAJDgwZDNiZjI0LTQ3MDctNDcxYS04YjU4LTI5ZDcxM2RhZjRhYQ.jpg"
   },
+
   {
     email:      "julien.colletas@gmail.com",
     password:   "123456",
@@ -34,7 +42,10 @@ User.create!(users_attributes)
 puts 'creating clients...'
 clients_attributes = [
 {
-  name: "Sébastien Saunier"
+  name: "André Dufour"
+  },
+  {
+  name: "Jean paul"
   }
 ]
 Client.create!(clients_attributes)
@@ -44,8 +55,15 @@ projects_attributes = [
   {
     user: User.first,
     client: Client.first,
-    name: "Faire un site pour Poulpe",
-    total_worktime: 4.2,
+    name: "Fnac - Faire un site ecommerce",
+    price_per_day: 400,
+    end_date: 20171009
+  },
+    {
+    user: User.first,
+    client: Client.last,
+    name: "Aircall - Refaire l'intranet",
+    price_per_day: 200,
     end_date: 20171009
   }
 ]
@@ -55,27 +73,26 @@ puts 'Creating tasks...'
 tasks_attributes = [
   {
     name: "Finir le cahier des charges",
-    forecast_duration: 40,
     project: Project.first,
     user: User.first,
     mit_task: true,
     secondary_task: false,
-    elapsed_time: 0,
+    elapsed_time: 3600,
     done: false,
     selected: false,
-    estimation: "2000-01-01 01:30:00 UTC"
+    estimation: "2000-01-01 01:30:00 UTC",
+    done: false,
   },
   {
-    name: "Réaliser le DB model",
-    forecast_duration: 60,
+    name: "Réaliser la database",
     project: Project.first,
     user: User.first,
-    mit_task: false,
-    secondary_task: true,
-    elapsed_time: 0,
+    secondary_task: false,
+    elapsed_time: 3600,
     done: false,
     selected: false,
-    estimation: "2000-01-01 01:30:00 UTC"
+    estimation: "2000-01-01 01:30:00 UTC",
+    done: false,
   }
 ]
 Task.create!(tasks_attributes)
