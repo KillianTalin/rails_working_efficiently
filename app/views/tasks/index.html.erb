@@ -2,11 +2,11 @@
 <div class="gradient-background">
   <div class="container text-white">
     <div class="full-sized margin-top-max">
-      <h1 class="text-center">Dashboard</h1>
+      <h1 class="text-center"><%= @project.name %></h1>
 
 
 
-      <div class="col-sm-9 text-black">
+      <div class="col-sm-8 text-black">
         <% if @tasks_to_do.empty?  %>
           <h4 id="todo-title" class="hidden">To do</h4>
           <div id="tasks">
@@ -63,7 +63,7 @@
         <% end %>
       </div>
 
-      <div class="col-sm-3">
+      <div class="col-sm-4">
       <div id="dashboard-right">
         <h4>Data</h4>
         <div class="text-center bg-white text-black cornerized padded margin-top-classic box-shadowed">
