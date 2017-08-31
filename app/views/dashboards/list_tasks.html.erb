@@ -42,10 +42,10 @@
                 </div>
                 <div class="l1-third-child">
                   <div class="timer_btn">
-                      <i class="fa fa-play-circle" id="start-start"></i>
+                      <i class="fa fa-play-circle js-start" id="start-start-<%= task.id %>"></i>
                   </div>
                 </div>
-                  <div id="toggle-timer">
+                  <div id="toggle-timer-<%= task.id %>">
                     <%= render "timer", task: task, project: task.project %>
                   </div>
                 </div>

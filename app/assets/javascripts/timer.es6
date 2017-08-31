@@ -1,21 +1,33 @@
-const startButton = document.getElementById("start-start");
+// const currentElapsedTime = document.getElementById("current_elapsed_time");
 
-startButton.addEventListener("click", function(event) {
-  initializeClock('clockdiv', start);
-});
+// if (currentElapsedTime.value === "") {
+//   var start = new Date(0);
+// } else {
+//   var start = new Date(parseInt(currentElapsedTime.value) * 1000);
+// }
 
-const currentElapsedTime = document.getElementById("current_elapsed_time");
+playButtons = [].slice.call(document.getElementsByClassName("js-start"));
+playButtons.forEach(
+  function(element, index){
+    element.addEventListener("click", function(event){
+      var taskId = event.target.id.substring(12, event.target.id.length);
+      var clockDivId = "clockdiv-" + taskId;
+      console.log(clockDivId);
+      $("#start-start-" + taskId).hide();
+      $("#toggle-timer-" + taskId).show();
+      initializeClock(clockDivId, new Date(0));
 
-if (currentElapsedTime.value === "") {
-  var start = new Date(0);
-} else {
-  var start = new Date(parseInt(currentElapsedTime.value) * 1000);
-}
 
 
 
 
-// let start = new Date(0);
+
+    })
+  }
+);
+
+
+
 function getTime(starttime) {
   let t = starttime.setSeconds(starttime.getSeconds() + 1);
   const seconds = Math.floor( (t/1000) % 60 );
@@ -32,8 +44,9 @@ function getTime(starttime) {
 
 function initializeClock(id, starttime) {
   const clock = document.getElementById(id);
-  const hoursSpan = clock.querySelector('.hours');
+  // const hoursSpan = clock.querySelector('.hours');
   const minutesSpan = clock.querySelector('.minutes');
+  console.log(clock);
   const secondsSpan = clock.querySelector('.seconds');
   const buttonHiddenInput = document.querySelector("#task_elapsed_time");
   const pauseButtonHiddenInput = document.querySelector("#elapsed_time_pause");
@@ -64,7 +77,4 @@ function initializeClock(id, starttime) {
     buttonRestart.classList.add("hidden");
     buttonPause.classList.remove("hidden");
   });
-
-// Maintain Clock progress accross Pages
-
 }
