@@ -3,6 +3,8 @@ class Task < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: :true
+  validates :estimation, presence: :true
+
 
   scope :done, -> { where(done: true) }
 

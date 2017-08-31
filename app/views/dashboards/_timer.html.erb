@@ -1,10 +1,13 @@
 <div class="text-black timer-button-inline">
-  <div id="clockdiv-<%= task.id %>">
+  <div id="clockdiv-<%= task.id %>" class="clockdiv">
 <!--     <div>
       <span class="hours"></span>
     </div> -->
-    <div>
+    <div class="timer-finis">
       <span class="minutes"><%= task.minutes.to_s.rjust(2, "0") if task.elapsed_time %></span>
+    </div>
+    <div>
+      :
     </div>
     <div>
       <span class="seconds"><%= task.minus_seconds.to_s.rjust(2, "0") if task.elapsed_time %></span>
@@ -30,8 +33,8 @@
   <%= simple_form_for [project, task] do |f| %>
     <%= f.input :elapsed_time, as: :hidden %>
     <%= f.input :done, as: :hidden, input_html: {value: true} %>
-    <div class="btn ma-btn btn-timer hidden" id="button-finish-<%= task.id %>">
-      <%= button_tag type: 'submit' , class: "btn ma-btn" do %>
+    <div class="btn btn-timer hidden" id="button-finish-<%= task.id %>">
+      <%= button_tag type: 'submit' , class: "btn ma-btn-2" do %>
         <i class="fa fa-3x fa-check-circle-o" aria-hidden="true"></i>
       <% end %>
     </div>
