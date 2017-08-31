@@ -3,7 +3,7 @@
 <div class="container text-black">
 <div class=" full-sized margin-top-max">
   <div class="row">
-    <h1 class="text-white text-shadow-white margin-bottom-classic text-center">My projects</h1>
+    <h1 class="text-white text-shadow-white margin-bottom-classic text-center marged-top">My projects</h1>
 
     <div class="col-sm-8 col-sm-offset-2 bg-grey min-height-classic cornerized padded">
 
@@ -15,7 +15,7 @@
             <div class="card_description">
               <div class="card_description_content_wrapper">
 
-                <div class="card_info">
+                <div class="card_info decoration-none">
                   <%= link_to project_tasks_path(project) do%>
                     <h4><%= project.name %></h4>
                   <% end %>
@@ -54,7 +54,7 @@
                 <% if project.days_before_deadline > 0 %>
                   J-<%= project.days_before_deadline %>
                 <% elsif project.days_before_deadline < 0 %>
-                  Passed
+                  Finished
                 <% else %>
                   Today
                 <% end %>
@@ -66,14 +66,14 @@
       <% end %>
 
       <% unless @projects_futur.empty?  %>
-          <h3 class="margin-bottom-classic">Due Projects</h3>
+          <h3 class="margin-bottom-classic">Current projects</h3>
         <% @projects_futur.each do |project| %>
           <div class="card_projects box-shadowed-classic">
 
             <div class="card_description">
               <div class="card_description_content_wrapper">
 
-                <div class="card_info">
+                <div class="card_info decoration-none">
                   <%= link_to project_tasks_path(project) do%>
                     <h4 class="text-black"><%= project.name %></h4>
                   <% end %>
@@ -112,7 +112,7 @@
                 <% if project.days_before_deadline > 0 %>
                   J-<%= project.days_before_deadline %>
                 <% elsif project.days_before_deadline < 0 %>
-                  Passed
+                  Finished
                 <% else %>
                   Today
                 <% end %>
@@ -124,14 +124,14 @@
       <% end %>
 
       <% unless @projects_passed.empty?  %>
-          <h3>Projects Done</h3>
+          <h3 class="margin-bottom-classic">Projects finished</h3>
         <% @projects_passed.each do |project| %>
           <div class="card_projects">
 
             <div class="card_description">
               <div class="card_description_content_wrapper">
 
-                <div class="card_info">
+                <div class="card_info decoration-none">
                   <%= link_to project_tasks_path(project) do%>
                     <h4><%= project.name %></h4>
                   <% end %>
@@ -170,7 +170,7 @@
                 <% if project.days_before_deadline > 0 %>
                   J-<%= project.days_before_deadline %>
                 <% elsif project.days_before_deadline < 0 %>
-                  Passed
+                  Finished
                 <% else %>
                   Today
                 <% end %>

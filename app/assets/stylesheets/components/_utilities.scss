@@ -22,6 +22,7 @@ body {
 
 }
 
+
 .container {
   position: relative;
   min-height: 100%;
@@ -154,7 +155,7 @@ body {
 }
 
 .margin-bottom-classic{
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .padded{
@@ -253,5 +254,9 @@ color: rgba(82, 196, 132, 1.00);
 
 .gradient-background {
   background: linear-gradient(135deg, #6190E8, #A7BFE8);
+}
+
+.marged-top {
+  margin-top: 40px;
 }
 
