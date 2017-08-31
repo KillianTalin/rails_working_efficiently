@@ -26,6 +26,7 @@ if (document.getElementById("progress-bar") != null) {
 
     step: (state, bar) => {
       bar.setText(Math.round(bar.value() * 100) + ' %');
+      bar.path.setAttribute('stroke', state.color);
     }
   });
 

@@ -169,3 +169,21 @@
 #button-lets-go {
   margin-top: 40px;
 }
+
+
+.btn-add {
+  border-radius: 50%;
+  background-color: rgba(82, 196, 132, 1.00);
+  color: white;
+  font-weight: bolder;
+  border: 1px solid rgba(82, 196, 132, 1.00);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  // padding: 10px 25px;
+  margin-right: 20px;
+  opacity: 1;
+  // margin-bottom: 15px;
+}
+
+.btn-add:hover {
+  opacity: 0.8;
+}
