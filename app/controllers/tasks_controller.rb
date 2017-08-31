@@ -38,7 +38,6 @@ class TasksController < ApplicationController
     @tasks_done = @tasks_finished.count
     @total_task = @tasks.count
     @pourcent_done = (@tasks_done.to_f / @total_task.to_f) * 100
-
   end
 
   def show
@@ -56,6 +55,10 @@ class TasksController < ApplicationController
     @task.project = @project
     authorize(@task)
     if @task.save
+      @tasks = policy_scope(Task).where(project_id: @project)
+      tasks_finished = @tasks.where(done: true)
+      @tasks_done = tasks_finished.count
+      @total_task = @tasks.count
       respond_to do |format|
         format.html { redirect_to project_tasks_path(@task.project_id) }
         format.js  # <-- will render `app/views/reviews/create.js.erb`
@@ -76,7 +79,7 @@ class TasksController < ApplicationController
     if @task.update(task_params)
       @task.update(done: true) if params[:task][:done]
       respond_to do |format|
-        format.html {   redirect_to project_tasks_path(@task.project) }
+        format.html { redirect_to project_tasks_path(@task.project) }
         format.js  # <-- will render `app/views/tasks/update.js.erb`
       end
     else

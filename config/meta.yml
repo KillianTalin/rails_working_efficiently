@@ -1,0 +1,5 @@
+meta_product_name: "The FlowNinja"
+meta_title: "The FlowNinja - Manage your workflow as a freelancer"
+meta_description: "Project manager for freelancers."
+meta_image: "meta-banner.jpg"                       # should exist in `app/assets/images/`
+twitter_account: "@julien_colletas"   # required for Twitter Cards

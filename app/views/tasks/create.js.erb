@@ -14,4 +14,6 @@
   new_task.slideDown();
   // Reset the form
   $('#new_task').html("<%= j render 'tasks/form', project: @project, task: Task.new %>");
+  // Update total number of tasks
+  $('.clearfix > .c100 > span').text("<%= @tasks_done %>/<%= @total_task %>");
 <% end %>
