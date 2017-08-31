@@ -44,7 +44,7 @@ end
       @project.client = Client.create(name: params[:client][:name])
     end
     if @project.save
-        redirect_to project_tasks_path(@project.id), notice: 'Project was successfully created 👍 Add a task now!'
+        redirect_to project_tasks_path(@project.id)
       else
         render :new
       end

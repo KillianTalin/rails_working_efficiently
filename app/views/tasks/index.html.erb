@@ -6,7 +6,7 @@
 
 
 
-      <div class="col-sm-8 text-black">
+      <div class="col-sm-8">
         <% if @tasks_to_do.empty?  %>
           <h4 id="todo-title" class="hidden">To do</h4>
           <div id="tasks">
@@ -21,7 +21,7 @@
             <% end %>
           </div>
         <% end %>
-        <div class="card_task_dashboard text-black">
+        <div class="card_task_dashboard text-black" id="tache_form">
           <h4 class="text-center"> Ajouter une tâche
             <i class="fa fa-plus" aria-hidden="true"></i>
           </h4>
@@ -31,9 +31,7 @@
           <h4>In progress</h4>
           <% @tasks_in_progress.each do |task| %>
             <div class="card_task_dashboard text-black">
-              <div>
-                <b><%= task.name.capitalize %></b>
-              </div>
+              <div><b><%= task.name.capitalize %></b></div>
               <div>Estimation: <%= Time.at(task.estimation).utc.strftime("%Hh %Mmin") %> </div>
               <div>Time realised: <%= Time.at(task.elapsed_time).utc.strftime("%Hh %Mmin") %></div>
               <%= link_to edit_project_task_path(task.project, task) do %>
