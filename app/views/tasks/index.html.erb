@@ -22,9 +22,6 @@
           </div>
         <% end %>
         <div class="card_task_dashboard text-black">
-          <h4 class="text-center"> Ajouter une tâche
-            <i class="fa fa-plus" aria-hidden="true"></i>
-          </h4>
           <%= render 'tasks/form', project: @project, task: @task %>
         </div>
         <% unless @tasks_in_progress.empty? %>
