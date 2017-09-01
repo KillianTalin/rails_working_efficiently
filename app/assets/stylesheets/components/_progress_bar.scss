@@ -1,7 +1,30 @@
+.progress_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 14px;
+}
+
 #progress-bar {
-  margin: 20px;
-  width: 250px;
-  height: 8px;
-  margin-bottom: 80px;
+  margin: 0px 14px;
+  width: 258px;
+  height: 14px;
+  margin-bottom: 3px;
   position: relative;
+}
+
+#progress-bar_2 {
+  margin: 0px 14px;
+  width: 258px;
+  height: 14px;
+  margin-bottom: 3px;
+  position: relative;
+}
+
+.text_progress {
+  text-align: left;
+}
+
+.hour_progress {
+  margin-right: 4px;
 }

@@ -7,21 +7,19 @@ class TasksController < ApplicationController
     @tasks_finished = @tasks.where(done: true)
     @tasks_to_do = @tasks.where(done: false).where(elapsed_time: 0)
     @tasks_in_progress = @tasks.where("elapsed_time > ?", 0).where(done: false)
-    @time_passed = Time.at(@tasks.sum(:elapsed_time)).utc.strftime("%Hh %Mmin %Ss")
     @projects = Project.where(user_id: current_user.id)
-    @date = @project.end_date
     @task = Task.new
 
-    if @tasks.where(done: false).empty?
-      @time_to_do = '00:00:00'.to_time.strftime("%Hh %Mmin")
-    else
-      @time_to_do = @tasks.where(done: false).sum(:estimation).to_time.strftime("%Hh %Mmin")
-    end
+
+    #--------temps total-------
+    @time_passed_integer = @tasks.sum(:elapsed_time)
+
+    @total_hours_passed = @tasks.sum(:estimation).to_time.strftime("%H").to_i * 3600
+      #laddition des minutes des estimations des taches done: true les mutiplié par 60)
+    @total_minutes_passed = @tasks.sum(:estimation).to_time.strftime("%M").to_f * 60
+    @time_total_integer = @total_hours_passed.to_f + @total_minutes_passed.to_f
 
     unless @tasks_finished.empty?
-      # || @tasks_in_progress.empty?
-      #to do tache in progress
-
       #tache done true
       #(ladditionn de toute les heures des estimations des taches done: true les multiplié par 3600
       @hours_passed = @tasks.where(done: true).sum(:estimation).to_time.strftime("%H").to_i * 3600
@@ -29,16 +27,27 @@ class TasksController < ApplicationController
       @minutes_passed = @tasks.where(done: true).sum(:estimation).to_time.strftime("%M").to_i * 60
       @passed = @hours_passed + @minutes_passed
       #laddition d elasptimed_time des taches :done true
-      if @passed > 0
-        @prevision = @tasks.where(done: true).sum(:elapsed_time) - @passed
-      elsif @passed < 0
-        @prevision =  @tasks.where(done: true).sum(:elapsed_time) - @passed
-      end
+      @prevision = @passed - @tasks.sum(:elapsed_time)
+
+      @hours_passed_false = @tasks.sum(:estimation).to_time.strftime("%H").to_i * 3600
+      #laddition des minutes des estimations des taches done: true les mutiplié par 60)
+      @minutes_passed_false = @tasks.sum(:estimation).to_time.strftime("%M").to_i * 60
+
+      @passed_false = @hours_passed_false + @minutes_passed_false
+
+      @pourcent_estimation_time = ((@passed.to_f / @passed_false.to_f) * 100).to_i
+      @time_reel_task_done = @tasks.where(done: true).sum(:elapsed_time)
+      @pourcent_reel_time_true = ((@time_reel_task_done.to_f / @passed_false.to_f) * 100).to_i
+
+      @tasks_done = @tasks_finished.count
+
     end
-    @tasks_done = @tasks_finished.count
+
     @total_task = @tasks.count
     @pourcent_done = (@tasks_done.to_f / @total_task.to_f) * 100
+
   end
+
 
   def show
   end
@@ -129,7 +138,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :project_id, :name, :starts_at, :ends_at, :elapsed_time, :forecast_duration, :category, :productivity_score, :estimation,)
+    params.require(:task).permit(:name, :project_id, :name, :starts_at, :ends_at, :elapsed_time, :category, :productivity_score, :estimation,)
   end
 
 end

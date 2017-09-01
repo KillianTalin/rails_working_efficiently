@@ -17,7 +17,9 @@
 
                 <div class="card_info decoration-none">
                   <%= link_to project_tasks_path(project) do%>
+
                     <h4 class="jen-ai-marre"><%= project.name %></h4>
+
                   <% end %>
 
                   <%= project.description %>
@@ -48,7 +50,9 @@
                 Client: <%= project.client.name %>
               </span>
               <span>
-                Project invoice: <%= project.price_per_project %> €
+
+                Project invoice: <%= project.price_per_project || 0 %> €
+
               </span>
               <span>
                 <% if project.days_before_deadline > 0 %>
