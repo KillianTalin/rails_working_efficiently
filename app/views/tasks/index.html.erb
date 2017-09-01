@@ -62,46 +62,48 @@
       <div id="dashboard-right">
         <h4>Data</h4>
         <div class="text-center bg-white text-black cornerized padded margin-top-classic box-shadowed">
-          <h5>Deadline: <%= @project.end_date.strftime("%d-%m-%Y") %></h5>
-          <p>Completed</p>
-          <div class="clearfix">
-            <div class="c100 p<%= @tasks.empty? ? 0 : @pourcent_done.to_i  %> medium">
-              <span><%= @tasks_done %>/<%= @total_task %></span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
+          <p> <b>Deadline:</b> <%= @project.end_date.strftime("%d-%m-%Y") %></p>
+          <p> <b> Project forecast:</b> <%= Time.at(@time_total_integer).utc.strftime('%Hh %Mmin') %></p>
+          <div class="lign_separation">
+            <h4>Tasks completed</h4>
+            <div class="clearfix">
+              <div class="c100 p<%= @tasks.empty? ? 0 : @pourcent_done.to_i  %> medium">
+                <span><%= @tasks_done %>/<%= @total_task %></span>
+                <div class="slice">
+                  <div class="bar"></div>
+                  <div class="fill"></div>
+                </div>
               </div>
             </div>
           </div>
-
           <% unless @prevision == 0  %>
 
           <div class="progress_div">
-            <div class="text_progress">Forescast time:</div>
+            <div class="text_progress">Duration planned:</div>
             <div class="hour_progress"><%= Time.at(@passed).utc.strftime('%Hh %Mmin')%></div>
           </div>
             <div id="progress-bar" data-percent_done="<%= @pourcent_estimation_time %>"></div>
 
             <div id="progress-bar_2" data-percent_done="<%= @pourcent_reel_time_true %>"></div>
           <div class="progress_div">
-            <div class="text_progress">Real time:</div>
+            <div class="text_progress">Actual duration:</div>
             <div class="hour_progress"><%= Time.at(@time_reel_task_done).utc.strftime('%Hh %Mmin')%></div>
           </div>
             <% if @prevision < 0 %>
             <% @prevision += (-@prevision *2) %>
               <div class="text-red text-center">
                 <% if Time.at(@prevision).utc.strftime("%H").to_i == 0 %>
-                  You are losted <%= Time.at(@prevision).utc.strftime("%Mmin") %>
+                  Behind schedule: <%= Time.at(@prevision).utc.strftime("%Mmin") %>
                 <% else %>
-                  You are losted <%= Time.at(@prevision).utc.strftime("%Hh %Mmin") %>
+                  Behind schedule: <%= Time.at(@prevision).utc.strftime("%Hh %Mmin") %>
                 <% end %>
               </div>
             <% elsif @prevision > 0 %>
               <div class="text-green text-center">
                 <% if Time.at(@prevision).utc.strftime("%H").to_i == 0 %>
-                  You are <%= Time.at(@prevision).utc.strftime("%Mmin") %> ahead
+                  Ahead of schedule: <%= Time.at(@prevision).utc.strftime("%Mmin") %>
                 <% else %>
-                  You are <%=Time.at(@prevision).utc.strftime("%Hh %Mmin")%> ahead
+                  Ahead of schedule: <%=Time.at(@prevision).utc.strftime("%Hh %Mmin")%>
                 <% end %>
               </div>
             <% elsif @prevision == 0 %>
