@@ -1,7 +1,8 @@
 class DashboardsController < ApplicationController
 
   def list_tasks
-    @selected_tasks = current_user.tasks.where(selected: true).order(created_at: :desc)
+
+    @selected_tasks = current_user.tasks.where(done: false).where(selected: true).order(created_at: :desc)
     authorize(@selected_tasks)
     redirect_to dashboards_select_tasks_path if @selected_tasks.blank?
   end

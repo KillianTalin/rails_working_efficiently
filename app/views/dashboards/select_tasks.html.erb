@@ -7,13 +7,17 @@
           <div class="col-xs-12 col-sm-6 col-sm-offset-3 bg-grey cornerized padded box-shadowed">
             <h2 class="text-center day-title"> What are your tasks for today ? </h2>
             <% @projects.each do |project| %>
+                <% unless project.tasks.where(done: false).count == 0 %>
               <div class="card-projects-select">
                 <h3 data-mission="<%= project.id %>" class="project-name"> <span class="chevron"> › </span> <%=  project.name %> </h3>
                 <div class="task-list" style="display: none" data-mission="<%= project.id %>">
                   <% project.tasks.each do |task| %>
+                  <% unless task.done == true %>
                     <%= simple_form_for task, url: select_task_path(task), method: :patch, remote: true do |f| %>
                       <%= f.input :submit, :as => :boolean, label_html: { for: nil }, input_html: {checked: false, class: "selected"}, label: task.name %>
                     <% end %>
+                    <% end %>
+                  <% end %>
                   <% end %>
                 </div>
               </div>
