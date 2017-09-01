@@ -21,7 +21,7 @@ if (document.getElementById("progress-bar_2") != null) {
       },
       autoStyleContainer: false
     },
-    from: {color: '#FFEA82'},
+    from: {color: '#FEAA00'},
     to: {color: '#ED6A5A'},
 
     step: (state, bar) => {
