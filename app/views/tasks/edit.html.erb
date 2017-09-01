@@ -3,4 +3,7 @@
     <h1>Edit a task</h1>
   </div>
   <%= render 'form', project: @project, task: @task %>
+    <%= link_to project_task_path(@task.project.id, @task.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+    <i class="fa fa-times" aria-hidden="true"></i>
+  <% end %>
 </div>
