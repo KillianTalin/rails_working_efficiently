@@ -17,23 +17,24 @@
 
   <%= simple_form_for [project, task], remote: true do |f| %>
     <%= f.input :elapsed_time, as: :hidden, input_html:{id: "elapsed_time_pause_#{task.id}"} %>
-    <%= button_tag type: 'submit', class: "btn ma-btn btn-timer hidden", id: "button-pause-#{task.id}" do %>
+    <%= button_tag type: 'submit', class: "btn ma-btn-2 hidden", :style => "padding: 0 8px 0 5px;", id: "button-pause-#{task.id}" do %>
       <i class="fa fa-3x fa-pause-circle-o button-dashboard-padding" aria-hidden="true"></i>
     <% end %>
   <% end %>
+
 
   <div class="timer_btn">
     <i class="fa fa-play-circle js-start" id="start-start-<%= task.id %>"></i>
   </div>
 
-  <div class="btn ma-btn hidden btn-timer" id="button-restart-<%= task.id %>">
-    <i class="fa fa-3x fa-play-circle button-dashboard-padding" aria-hidden="true"></i>
+  <div class="hidden" id="button-restart-<%= task.id %>">
+    <i class="fa fa-3x fa-play-circle button-dashboard-padding" aria-hidden="true" style=" font-size: 40px; padding: 0 12px 0 5px;"></i>
   </div>
 
   <%= simple_form_for [project, task] do |f| %>
     <%= f.input :elapsed_time, as: :hidden, input_html:{id: "elapsed_time_#{task.id}"}%>
     <%= f.input :done, as: :hidden, input_html: {value: true} %>
-    <div class="btn btn-timer hidden" id="button-finish-<%= task.id %>">
+    <div class="hidden" id="button-finish-<%= task.id %>">
       <%= button_tag type: 'submit' , class: "btn ma-btn-2" do %>
         <i class="fa fa-3x fa-check-circle-o" aria-hidden="true"></i>
       <% end %>

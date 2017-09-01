@@ -4,7 +4,7 @@
     <div class=" full-sized margin-top-max">
       <div class="container text-black title-top">
         <div class="row">
-          <div class="col-xs-12 col-sm-6 col-sm-offset-3 bg-grey cornerized padded box-shadowed">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-3 bg-grey cornerized padded box-shadowed" id="container-title">
             <h2 class="text-center day-title"> What are your tasks for today ? </h2>
             <% @projects.each do |project| %>
                 <% unless project.tasks.where(done: false).count == 0 %>
@@ -19,9 +19,9 @@
                     <% end %>
                   <% end %>
                   <% end %>
+                  <% end %>
                 </div>
               </div>
-            <% end %>
             <div class="row">
               <div class="col-xs-12 col-sm-4 col-sm-offset-4 text-center">
                 <%= link_to "Let's work!", dashboards_path, class: "btn-medium", id: "button-lets-go" %>

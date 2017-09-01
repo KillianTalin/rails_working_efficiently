@@ -6,6 +6,11 @@
 
 .day-title {
   margin-bottom: 40px;
+  margin-top: 20px;
+  font-size: 30px !important;
+}
+
+#container-title {
   margin-top: 40px;
 }
 
@@ -35,3 +40,8 @@
   margin-right: 5px;
 }
 
+.form_add {
+  // display: flex;
+  // justify-content: space-between;
+  width: 100%;
+}

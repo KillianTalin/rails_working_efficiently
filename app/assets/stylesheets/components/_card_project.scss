@@ -19,7 +19,7 @@
   background-color: #F6F6F6;
   color: black;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 35px;
   padding: 15px;
 }
 .card_description {
@@ -116,4 +116,15 @@ background: linear-gradient(to right, #3f4c6b, #606c88); /* W3C, IE 10+/ Edge, F
   font-weight: bold;
   font-size: 25px;
   padding-top: 29px;
+}
+
+.align-add {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.form_name {
+  display: flex;
+  align-items: center;
 }

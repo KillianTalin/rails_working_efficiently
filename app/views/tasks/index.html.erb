@@ -48,7 +48,6 @@
             <div class="card_task_dashboard text-black">
 
               <div><b> <%= task.name.capitalize %> </b> </div>
-
             <div class="display">
               <div>Duration planned: <%= Time.at(task.estimation).utc.strftime("%Hh %Mmin")  %> </div>
               <div>Actual duration: <%= Time.at(task.elapsed_time).to_time.utc.strftime("%Hh %Mmin")  %></div>
