@@ -3,23 +3,25 @@
 <div class="container text-black">
 <div class=" full-sized margin-top-max">
   <div class="row">
-    <h1 class="text-white text-shadow-white margin-bottom-classic text-center">My projects</h1>
+    <h1 class="text-white text-shadow-white margin-bottom-classic text-center marged-top">My projects</h1>
 
     <div class="col-sm-8 col-sm-offset-2 bg-grey min-height-classic cornerized padded">
 
       <% unless @projects_today.empty?  %>
-          <h3 class="text-black">Today</h3>
+          <h3 class="text-black margin-bottom-classic">Today</h3>
         <% @projects_today.each do |project| %>
           <div class="card_projects">
 
             <div class="card_description">
               <div class="card_description_content_wrapper">
 
-                <div class="card_info">
+                <div class="card_info decoration-none">
                   <%= link_to project_tasks_path(project) do%>
-                    <h4><%= project.name.capitalize %></h4>
+
+                    <h4 class="jen-ai-marre"><%= project.name %></h4>
+
                   <% end %>
-                  <br>
+
                   <%= project.description %>
                 </div>
 
@@ -41,43 +43,44 @@
 
                 </div>
               </div>
-            </div><br>
+            </div>
 
             <div class="card_bas">
               <span>
                 Client: <%= project.client.name %>
               </span>
               <span>
-                Coût du projet: <%= project.price_per_project || 0   %> €
+
+                Project invoice: <%= project.price_per_project || 0 %> €
+
               </span>
               <span>
                 <% if project.days_before_deadline > 0 %>
                   J-<%= project.days_before_deadline %>
                 <% elsif project.days_before_deadline < 0 %>
-                  Passed
+                  Finished
                 <% else %>
                   Today
                 <% end %>
               </span>
             </div>
 
-          </div><br>
+          </div>
         <% end %>
       <% end %>
 
       <% unless @projects_futur.empty?  %>
-          <h3 class="margin-bottom-classic">Due Projects</h3>
+          <h3 class="margin-bottom-classic">Current projects</h3>
         <% @projects_futur.each do |project| %>
           <div class="card_projects box-shadowed-classic">
 
             <div class="card_description">
               <div class="card_description_content_wrapper">
 
-                <div class="card_info">
+                <div class="card_info decoration-none">
                   <%= link_to project_tasks_path(project) do%>
-                    <h4 class="text-black"><%= project.name %></h4>
+                    <h4 class="text-black jen-ai-marre"><%= project.name %></h4>
                   <% end %>
-                  <br>
                   <p class="text-black"> <%= project.description %></p>
                 </div>
 
@@ -96,46 +99,44 @@
                   <%= link_to edit_project_path(project) do %>
                     <i class="fa fa-cog text-black" aria-hidden="true"></i>
                   <% end %>
-
                 </div>
               </div>
-            </div><br>
+            </div>
 
             <div class="card_bas">
               <span>
                 Client: <%= project.client.name %>
               </span>
               <span>
-                Coût du projet: <%= project.price_per_project %> €
+                Project invoice: <%= project.price_per_project %> €
               </span>
               <span>
                 <% if project.days_before_deadline > 0 %>
                   J-<%= project.days_before_deadline %>
                 <% elsif project.days_before_deadline < 0 %>
-                  Passed
+                  Finished
                 <% else %>
                   Today
                 <% end %>
               </span>
             </div>
 
-          </div><br>
+          </div>
         <% end %>
       <% end %>
 
       <% unless @projects_passed.empty?  %>
-          <h3>Projects Done</h3>
+          <h3 class="margin-bottom-classic">Projects finished</h3>
         <% @projects_passed.each do |project| %>
           <div class="card_projects">
 
             <div class="card_description">
               <div class="card_description_content_wrapper">
 
-                <div class="card_info">
+                <div class="card_info decoration-none">
                   <%= link_to project_tasks_path(project) do%>
-                    <h4><%= project.name %></h4>
+                    <h4 class="jen-ai-marre"><%= project.name %></h4>
                   <% end %>
-                  <br>
                   <%= project.description %>
                 </div>
 
@@ -157,27 +158,26 @@
 
                 </div>
               </div>
-            </div><br>
-
+            </div>
             <div class="card_bas">
               <span>
                 Client: <%= project.client.name %>
               </span>
               <span>
-                Coût du projet: <%= project.price_per_project %> €
+                Project invoice: <%= project.price_per_project %> €
               </span>
               <span>
                 <% if project.days_before_deadline > 0 %>
                   J-<%= project.days_before_deadline %>
                 <% elsif project.days_before_deadline < 0 %>
-                  Passed
+                  Finished
                 <% else %>
                   Today
                 <% end %>
               </span>
             </div>
 
-          </div><br>
+          </div>
         <% end %>
       <% end %>
       <div class="col-sm-4 col-sm-offset-4">

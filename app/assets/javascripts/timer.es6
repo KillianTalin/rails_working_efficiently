@@ -44,11 +44,12 @@ function initializeClock(id, taskId, starttime) {
   const minutesSpan = clock.querySelector('.minutes');
   console.log(clock);
   const secondsSpan = clock.querySelector('.seconds');
-  const buttonHiddenInput = document.querySelector("#task_elapsed_time");
-  const pauseButtonHiddenInput = document.querySelector("#elapsed_time_pause");
+  const buttonHiddenInput = document.querySelector("#elapsed_time_" + taskId);
+  const pauseButtonHiddenInput = document.querySelector("#elapsed_time_pause_" + taskId);
 
   function updateClock() {
     let t = getTime(starttime);
+    console.log(t.total/1000)
     buttonHiddenInput.value = t.total / 1000;
     pauseButtonHiddenInput.value = t.total / 1000;
     // hoursSpan.innerHTML = ('0' + t.hours).slice(-2);

@@ -1,11 +1,15 @@
 
+.jen-ai-marre{
+  padding: 0px !important;
+}
+
 .card_projects {
   // height: 117px;
   background-color: #F6F6F6;
   color: black;
   border-radius: 5px;
   margin-bottom: 40px;
-  padding-top: 20px;
+  // padding-top: 20px;
   background: #F6F6F6;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right,  #F6F6F6, #F6F6F6);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right,  #F6F6F6, #F6F6F6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -15,7 +19,7 @@
   background-color: #F6F6F6;
   color: black;
   border-radius: 5px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   padding: 15px;
 }
 .card_description {

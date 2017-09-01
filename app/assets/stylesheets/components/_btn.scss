@@ -56,6 +56,25 @@
 
 }
 
+.ma-btn-2 {
+
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 15px;
+    // border: 2px solid;
+    width: auto;
+    -webkit-font-smoothing: antialiased;
+    background: 0 0;
+    color: $java ;
+    background-color: transparent;
+    border-color: #java;
+
+}
+
 .gd-btn {
 
     cursor: pointer;
