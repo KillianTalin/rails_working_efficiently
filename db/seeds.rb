@@ -81,7 +81,6 @@ tasks_attributes = [
     done: false,
     selected: false,
     estimation: "2000-01-01 01:30:00 UTC",
-    done: false,
   },
   {
     name: "Réaliser la database",
@@ -92,7 +91,6 @@ tasks_attributes = [
     done: false,
     selected: false,
     estimation: "2000-01-01 01:30:00 UTC",
-    done: false,
   }
 ]
 Task.create!(tasks_attributes)
