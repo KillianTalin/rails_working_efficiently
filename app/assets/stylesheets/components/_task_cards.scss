@@ -1,3 +1,9 @@
+.display{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .task_card {
     background: white;
     margin: auto;

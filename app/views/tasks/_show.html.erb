@@ -1,13 +1,13 @@
-<div class="card_task_dashboard text-black">
-
+<div class="card_task_dashboard text-black display">
+<div>
   <div>
     <b><%= task.name.capitalize %></b>
   </div>
   <div>Estimation: <%= task.estimation.utc.strftime("%Hh %Mmin")  %></div>
-  <%= link_to edit_project_task_path(task.project, task) do %>
-    <i class="fa fa-pencil" aria-hidden="true"></i>
-  <% end %>
-  <%= link_to project_task_path(task.project.id, task.id), method: :delete, data: { confirm: "Are you sure?" } do %>
-    <i class="fa fa-times" aria-hidden="true"></i>
-  <% end %>
+</div>
+    <div class="btn_setting ">
+    <%= link_to edit_project_task_path(task.project, task) do %>
+      <i class="fa fa-cog text-black" aria-hidden="true"></i>
+    <% end %>
+  </div>
 </div>
