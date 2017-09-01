@@ -10,15 +10,29 @@ class TasksController < ApplicationController
     @projects = Project.where(user_id: current_user.id)
     @task = Task.new
 
+    if @tasks.sum(:estimation) == "0"
 
-    #--------temps total-------
+     @time_passed_integer = 0
+
+     @total_hours_passed = 0
+       #laddition des minutes des estimations des taches done: true les mutiplié par 60)
+     @total_minutes_passed = 0
+     @time_total_integer = 0
+
+     else
+
     @time_passed_integer = @tasks.sum(:elapsed_time)
 
     @total_hours_passed = @tasks.sum(:estimation).to_time.strftime("%H").to_i * 3600
       #laddition des minutes des estimations des taches done: true les mutiplié par 60)
     @total_minutes_passed = @tasks.sum(:estimation).to_time.strftime("%M").to_f * 60
     @time_total_integer = @total_hours_passed.to_f + @total_minutes_passed.to_f
+    end
 
+
+    #--------temps total-------
+    @passed = 0
+    @time_reel_task_done = 0
     unless @tasks_finished.empty?
       #tache done true
       #(ladditionn de toute les heures des estimations des taches done: true les multiplié par 3600

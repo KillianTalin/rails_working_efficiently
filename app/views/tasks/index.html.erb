@@ -89,6 +89,8 @@
             <div class="text_progress">Actual duration:</div>
             <div class="hour_progress"><%= Time.at(@time_reel_task_done).utc.strftime('%Hh %Mmin')%></div>
           </div>
+          <% unless @prevision == nil %>
+
             <% if @prevision < 0 %>
             <% @prevision += (-@prevision *2) %>
               <div class="text-red text-center">
@@ -109,6 +111,8 @@
             <% elsif @prevision == 0 %>
               <div class="text-blue text-center">Keep going like that 👍</div>
             <% end %>
+          <% end %>
+
           <% end %>
         </div>
       </div>
