@@ -3,7 +3,7 @@
   <div>
     <b><%= task.name.capitalize %></b>
   </div>
-  <div>Estimation: <%= task.estimation.utc.strftime("%Hh %Mmin")  %></div>
+  <div>Duration planned: <%= task.estimation.utc.strftime("%Hh %Mmin")  %></div>
 </div>
     <div class="btn_setting ">
     <%= link_to edit_project_task_path(task.project, task) do %>
