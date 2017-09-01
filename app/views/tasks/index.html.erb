@@ -46,7 +46,7 @@
               <div><b> <%= task.name.capitalize %> </b> </div>
               <div>Estimation: <%= Time.at(task.estimation).utc.strftime("%Hh %Mmin")  %> </div>
               <div>Real time: <%= Time.at(task.elapsed_time).to_time.utc.strftime("%Hh %Mmin")  %></div>
-              <div><%= task.elapsed_time %></div>
+              <!-- <div><%= task.elapsed_time %></div> -->
               <%= link_to edit_project_task_path(task.project, task) do %>
               <i class="fa fa-pencil" aria-hidden="true"></i>
               <% end %>
