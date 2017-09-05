@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
 
   def index
    @clients = policy_scope(Client).all
-   @my_clients = User.find(current_user).clients
+   @my_clients = Client.where(user_id: current_user)
   end
 
   def show
@@ -12,12 +12,18 @@ class ClientsController < ApplicationController
 
   def new
     @client = Client.new
-    authorize @client
+    authorize(@client)
   end
 
   def create
     @client = Client.new(client_params)
-    @client.save
+    @client.user = current_user
+    authorize(@client)
+    if @client.save
+      redirect_to clients_path(@client)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -25,13 +31,13 @@ class ClientsController < ApplicationController
   end
 
   def update
-
     @client.update(client_params)
+    redirect_to clients_path
   end
 
   def destroy
-
     @client.destroy
+    redirect_to clients_path
   end
 
   private

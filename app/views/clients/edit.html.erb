@@ -1,0 +1,21 @@
+<div class="gradient-background">
+  <div class="container text-black">
+    <div class=" full-sized margin-top-max">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-offset-4 col-sm-4 bg-white padded cornerized">
+          <div class="text-center">
+            <h3 class="text-center text-black margin-bottom-classic">Edit a client</h3>
+            <%= render "form", client: @client %>
+              <%= link_to client_path(@client), method: :delete, data: { confirm: "Are you sure?" } do %>
+              <button class="btn-medium-red">Delete client</button>
+            <% end %>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

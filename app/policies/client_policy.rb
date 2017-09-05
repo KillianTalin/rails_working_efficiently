@@ -1,7 +1,7 @@
 class ClientPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(user: user)
     end
   end
 
@@ -24,7 +24,8 @@ class ClientPolicy < ApplicationPolicy
   private
 
   def is_user_the_owner?
-    record.user == user
+    record.user_id == user.id
+
   end
 end
 

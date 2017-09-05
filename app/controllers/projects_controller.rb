@@ -6,29 +6,9 @@ class ProjectsController < ApplicationController
     @projects_passed = @projects.where("end_date < ?", Date.today).order(end_date: :asc)
     @projects_futur = @projects.where("end_date > ?", Date.today).order(end_date: :asc)
     @projects_today = @projects.where("end_date = ?", Date.today).order(end_date: :asc)
-
-   # pour afficher la stat sur les taches effectuées
-   #heure de taf = projet.tasks.sum(:estimation).to_time.strftime("%H").to_i
-   #minutes de taf = projet.tasks.sum(:estimation).to_time.strftime("%M").to_i / 60
-  #      unless @projects.tasks.empty?
-  #     # || @tasks_in_progress.empty?
-  #     #to do tache in progress
-  #     #tache done true
-  #     #(ladditionn de toute les heures des estimations des taches done: true les multiplié par 3600
-  #     @hours_passed = @projects.tasks.sum(:estimation).to_time.strftime("%H").to_i * 3600
-  #     #laddition des minutes des estimations des taches done: true les mutiplié par 60)
-  #     @passed = @hours_passed + @minutes_passed
-  #     #laddition d elasptimed_time des taches :done true
-  #     if @passed > 0
-  #       @prevision = @tasks.where(done: true).sum(:elapsed_time) - @passed
-  #     elsif @passed < 0
-  #       @prevision = @passed - @tasks.where(done: true).sum(:elapsed_time)
-  #     end
-  # end
-end
+  end
 
   def show
-
   end
 
   def new
@@ -42,7 +22,10 @@ end
     authorize(@project)
 
     if @project.client_id.nil? && params[:client][:name].empty? == false
-      @project.client = Client.create(name: params[:client][:name])
+      @project.client = Client.new(name: params[:client][:name])
+      @project.client.user_id = current_user.id
+      @project.client.save
+
     end
     if @project.save
         redirect_to project_tasks_path(@project.id)
