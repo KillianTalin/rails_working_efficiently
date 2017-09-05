@@ -1,8 +1,12 @@
-<h1>My list of clients</h1>
-<% @clients.each do |client| %>
-  <h2><%= client.name %></h2>
-  <p><%= client.siret_num %></p>
-  <p><%= client.address %></p>
-  <p><%= client.phone_number %></p>
-  <p><%= client.email %></p>
-<% end %>
+<div class="container text-black">
+  <h1>My list of clients</h1>
+  <% @my_clients.each do |client| %>
+    <div class="card_task_dashboard">
+      <h2><%= client.name %></h2>
+      <p><%= client.siret_num %></p>
+      <p><%= client.address %></p>
+      <p><%= client.phone_number %></p>
+      <p><%= client.email %></p>
+    </div>
+  <% end %>
+</div>

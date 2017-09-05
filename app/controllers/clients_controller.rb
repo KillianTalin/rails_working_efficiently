@@ -2,7 +2,8 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   def index
-   @clients = policy_scope(Client).joins(:users).where(users: { id: current_user.id })
+   @clients = policy_scope(Client).all
+   @my_clients = User.find(current_user).clients
   end
 
   def show

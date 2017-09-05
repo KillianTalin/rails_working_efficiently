@@ -40,7 +40,8 @@ end
     @project = Project.new(project_params)
     @project.user = current_user
     authorize(@project)
-    if @project.client_id.nil?
+
+    if @project.client_id.nil? && params[:client][:name].empty? == false
       @project.client = Client.create(name: params[:client][:name])
     end
     if @project.save
