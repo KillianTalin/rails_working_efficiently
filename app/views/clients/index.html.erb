@@ -1,8 +1,25 @@
-<h1>My list of clients</h1>
-<% @clients.each do |client| %>
-  <h2><%= client.name %></h2>
-  <p><%= client.siret_num %></p>
-  <p><%= client.address %></p>
-  <p><%= client.phone_number %></p>
-  <p><%= client.email %></p>
-<% end %>
+  <div class="container text-black">
+    <h1>My list of clients</h1>
+    <% @my_clients.each do |client| %>
+      <div class="card_task_dashboard">
+        <div>
+          <h2><%= client.name %></h2>
+          <p><%= client.siret_num %></p>
+          <p><%= client.address %></p>
+          <p><%= client.phone_number %></p>
+          <p><%= client.email %></p>
+        </div>
+        <div class="btn_setting">
+          <%= link_to edit_client_path(client) do %>
+            <i class="fa fa-cog text-black" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <div class="col-sm-4 col-sm-offset-4">
+      <%= link_to new_client_path do %>
+        <button class="text-center btn-medium"> + New client </button>
+      <% end %>
+    </div>
+  </div>
+</div>

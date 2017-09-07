@@ -2,7 +2,8 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
 
   def index
-   @clients = policy_scope(Client).joins(:users).where(users: { id: current_user.id })
+   @clients = policy_scope(Client).all
+   @my_clients = Client.where(user_id: current_user)
   end
 
   def show
@@ -11,12 +12,18 @@ class ClientsController < ApplicationController
 
   def new
     @client = Client.new
-    authorize @client
+    authorize(@client)
   end
 
   def create
     @client = Client.new(client_params)
-    @client.save
+    @client.user = current_user
+    authorize(@client)
+    if @client.save
+      redirect_to clients_path(@client)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -24,13 +31,13 @@ class ClientsController < ApplicationController
   end
 
   def update
-
     @client.update(client_params)
+    redirect_to clients_path
   end
 
   def destroy
-
     @client.destroy
+    redirect_to clients_path
   end
 
   private

@@ -8,7 +8,7 @@
           <%= f.input :end_date, label: false%>
         </div>
         <%= f.input :price_per_day, placeholder:"Price per day", label: false, class: "price_per_day" %>
-        <%= f.association :client, prompt:"Select an existing Client", label: false %>
+        <%= f.association :client, collection: Client.where(user_id: current_user.id), prompt:"Select an existing Client", error: 'Select a client or create a new below', label: false %>
     <input class="form-control string optional" type="text" name="client[name]" id="new_client_name" placeholder = "Add a new client">
       <div class="text-center margin-top-classic">
           <%= f.submit class: "btn btn-medium btn-md active pro-btn " %>
